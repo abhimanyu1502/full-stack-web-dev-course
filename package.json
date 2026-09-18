@@ -1,0 +1,15 @@
+{
+  "name": "full-stack-web-dev-course",
+  "version": "1.0.0",
+  "description": "Full Stack Web Development Mastery Platform - Interactive Curriculum, Playgrounds, and Cloud Engine",
+  "scripts": {
+    "start": "node html-mastery/server/index.js",
+    "dev": "node --watch html-mastery/server/index.js",
+    "test": "node html-mastery/tests/regression-suite.test.js"
+  },
+  "author": "Abhimanyu Tiwari",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
