@@ -1,0 +1,30 @@
+{
+  "name": "html-css-mastery-fullstack",
+  "version": "1.0.0",
+  "description": "Production-grade Full Stack Web Development Learning Platform with Interactive Playgrounds, Code Sandbox, Gamified XP/Streak Engine, Cloud Progress Sync, and AI Tutor",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node tests/regression-suite.test.js"
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "web-development",
+    "fullstack",
+    "interactive-learning",
+    "ai-tutor",
+    "code-sandbox",
+    "gamification",
+    "sqlite",
+    "nodejs",
+    "portfolio-project"
+  ],
+  "author": "Abhimanyu",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,8 +1,4 @@
-# Course Mentor / Prompt Documentation
-/full-stack-mentor.md
-/guide_document_generation.md
-
-# Dependencies & Package Managers
+# Dependencies
 node_modules/
 package-lock.json
 
@@ -17,21 +13,25 @@ package-lock.json
 *.db
 *.sqlite
 *.sqlite3
-**/server/data/*.db
+server/data/*.db
 
 # Logs & Diagnostics
 logs/
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS & Editor Files
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
 
-# Agent Scratch Files
+# Scratch / Temp Agent Artifacts
 .agents/
 .gemini/
 scratch/
-**/scratch/
