@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery — Text Formatting &amp; Semantic Text Elements</title>
+    <meta name="description" content="Master HTML text formatting tags: strong, em, mark, del, ins, sub, sup, small, blockquote, abbr, and code elements.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Progress Indicator -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="introduction.html">HTML Mastery</a>
+            </div>
+
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search HTML topics..."
+                    aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+
+            <div class="header-actions">
+                <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="#practice-editor" class="button primary-button">Practice</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-button github-link"
+                    aria-label="GitHub Repository">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+                <button type="button" id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <nav id="table-of-contents" aria-label="Table of contents">
+                <ul id="toc-list">
+                    <!-- Dynamic ToC generated by script.js -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area" id="main-content">
+            <section id="text-formatting" data-title="7. Text Formatting">
+                <h1>7. Text Formatting &amp; Semantic Text Elements</h1>
+
+                <div class="explanation">
+                    <p>HTML provides semantic tags specifically designed to give contextual meaning and styling to inline text. Unlike generic CSS formatting, these tags convey importance, emphasis, citations, deletions, or mathematical notations to browsers, screen readers, and search engines.</p>
+                    <p>While browsers render tags like <code>&lt;strong&gt;</code> as bold and <code>&lt;em&gt;</code> as italic, their primary purpose in modern HTML5 is semantic meaning rather than purely visual presentation.</p>
+                </div>
+
+                <h2>Key Semantic Formatting Elements</h2>
+                <div class="explanation">
+                    <ul>
+                        <li><code>&lt;strong&gt;</code>: Indicates that its contents have strong importance, seriousness, or urgency (e.g., warnings or crucial terms).</li>
+                        <li><code>&lt;em&gt;</code>: Marks text that has stress emphasis, changing the verbal nuance of a sentence.</li>
+                        <li><code>&lt;mark&gt;</code>: Represents text highlighted for reference or notation purposes.</li>
+                        <li><code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code>: Represent deleted and inserted content, often used in document revisions and pricing discounts.</li>
+                        <li><code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code>: Render subscript (H<sub>2</sub>O) and superscript (x<sup>2</sup> or 1<sup>st</sup>).</li>
+                        <li><code>&lt;small&gt;</code>: Denotes side-comments and small print, such as copyright and legal disclaimers.</li>
+                        <li><code>&lt;abbr&gt;</code>: Defines an abbreviation or acronym with an optional <code>title</code> attribute for its expansion.</li>
+                        <li><code>&lt;blockquote&gt;</code> and <code>&lt;q&gt;</code>: Represent extended section quotes and inline short quotes.</li>
+                        <li><code>&lt;code&gt;</code>, <code>&lt;kbd&gt;</code>, and <code>&lt;pre&gt;</code>: Format computer code, user keyboard input, and preformatted whitespace text.</li>
+                    </ul>
+                </div>
+
+                <h2>Syntax</h2>
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">HTML</span>
+                        <button type="button" class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-html">&lt;p&gt;This is &lt;strong&gt;crucial&lt;/strong&gt; and &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;
+&lt;p&gt;Sale Price: &lt;del&gt;$99&lt;/del&gt; &lt;ins&gt;$49&lt;/ins&gt;&lt;/p&gt;
+&lt;p&gt;Water formula is H&lt;sub&gt;2&lt;/sub&gt;O and Einstein wrote E = mc&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; to copy.&lt;/p&gt;</code></pre>
+                </div>
+
+                <h2>Code Example</h2>
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">HTML</span>
+                        <button type="button" class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-html">&lt;article&gt;
+    &lt;h2&gt;Product Announcement&lt;/h2&gt;
+    &lt;p&gt;Our new framework is &lt;strong&gt;officially released&lt;/strong&gt;!&lt;/p&gt;
+    &lt;p&gt;Special launch price: &lt;del&gt;$120&lt;/del&gt; &lt;mark&gt;$59&lt;/mark&gt; for the &lt;abbr title="First Edition"&gt;FE&lt;/abbr&gt;.&lt;/p&gt;
+    &lt;blockquote cite="https://example.com/quote"&gt;
+        "Simplicity is the soul of efficiency."
+    &lt;/blockquote&gt;
+    &lt;p&gt;To install, run &lt;code&gt;npm install my-app&lt;/code&gt; in your terminal.&lt;/p&gt;
+    &lt;p&gt;&lt;small&gt;&amp;copy; 2026 Developer Corp. All rights reserved.&lt;/small&gt;&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+
+                <h2>Explanation of the Code</h2>
+                <ul class="code-explanation-list">
+                    <li><code>&lt;strong&gt;</code> clearly highlights "officially released" as the most vital information in the sentence.</li>
+                    <li><code>&lt;del&gt;</code> strikes through the outdated price, and <code>&lt;mark&gt;</code> calls visual and semantic attention to the new price.</li>
+                    <li><code>&lt;abbr title="First Edition"&gt;</code> provides accessibility tools and desktop hover tooltips with the full expansion.</li>
+                    <li><code>&lt;blockquote&gt;</code> creates an indented quotation block with optional citation source tracking via the <code>cite</code> attribute.</li>
+                    <li><code>&lt;code&gt;</code> renders the installation command in a monospace font for visual clarity and code semantics.</li>
+                </ul>
+
+                <h2>Common Mistakes</h2>
+                <div class="card bad-card">
+                    <div class="card-icon">❌</div>
+                    <div class="card-content">
+                        <strong>Using &lt;b&gt; and &lt;i&gt; instead of &lt;strong&gt; and &lt;em&gt;</strong>
+                        <p><code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> are purely stylistic elements from early HTML. They do not convey semantic weight or verbal emphasis to assistive devices like screen readers. Always prefer <code>&lt;strong&gt;</code> for importance and <code>&lt;em&gt;</code> for stress emphasis.</p>
+                    </div>
+                </div>
+
+                <div class="card bad-card">
+                    <div class="card-icon">❌</div>
+                    <div class="card-content">
+                        <strong>Nesting block elements inside inline formatting tags</strong>
+                        <p>Never place block-level elements like <code>&lt;div&gt;</code> or <code>&lt;p&gt;</code> inside inline formatting tags like <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code>.</p>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise</h2>
+                <div class="card practice-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-content">
+                        <strong>Task:</strong>
+                        <p>Create a formatted product review paragraph that includes:
+                            1. A product name with strong importance using <code>&lt;strong&gt;</code>.
+                            2. An emphasized customer sentiment using <code>&lt;em&gt;</code>.
+                            3. The original price struck out with <code>&lt;del&gt;</code> and new price highlighted with <code>&lt;mark&gt;</code>.
+                            4. A chemical formula or mathematical notation using <code>&lt;sub&gt;</code> or <code>&lt;sup&gt;</code>.
+                            5. A keyboard shortcut formatted with <code>&lt;kbd&gt;</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Mini Challenge</h2>
+                <div class="card tip-card">
+                    <div class="card-icon">🏆</div>
+                    <div class="card-content">
+                        <strong>Mini Challenge:</strong>
+                        <p>Write an HTML quote block using <code>&lt;blockquote&gt;</code> containing an inline quote with <code>&lt;q&gt;</code>, an abbreviation with <code>&lt;abbr&gt;</code>, and a legal notice footer with <code>&lt;small&gt;</code>.</p>
+                    </div>
+                </div>
+
+                <div class="card best-practice-card">
+                    <div class="card-icon">⭐</div>
+                    <div class="card-content">
+                        <strong>Key Takeaways</strong>
+                        <p>Semantic text formatting enriches content meaning beyond styling. Screen readers announce <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> with different voice inflections, improving accessibility and SEO.</p>
+                    </div>
+                </div>
+
+                <!-- Knowledge Check Quiz -->
+                <div class="quiz-container">
+                    <div class="quiz-title"><span>🧠</span> Knowledge Check</div>
+                    <div class="quiz-question">Which HTML element should you use to denote text of strong importance and urgency for both screen readers and browsers?</div>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q-formatting" value="b">
+                            <code>&lt;b&gt;</code>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q-formatting" value="strong">
+                            <code>&lt;strong&gt;</code>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q-formatting" value="bold">
+                            <code>&lt;bold&gt;</code>
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q-formatting"></div>
+                </div>
+
+                <!-- Live Practice Editor -->
+                <div class="live-editor-section" id="practice-editor">
+                    <h2 class="live-editor-title">💻 Try it Yourself</h2>
+                    <div class="live-editor-container">
+                        <div class="live-editor-pane">
+                            <div class="live-editor-header">
+                                <span>index.html</span>
+                                <div class="editor-btn-group">
+                                    <button type="button" class="run-code-btn btn-reset" id="btn-reset-editor">Reset</button>
+                                    <button type="button" class="run-code-btn" id="btn-run-code">Run Code ▶</button>
+                                </div>
+                            </div>
+                            <textarea class="live-editor-textarea" id="html-code-input" aria-label="Text formatting code editor" placeholder="Write your HTML here..." title="HTML Code Input" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; line-height: 1.6; }
+    mark { background: #fef08a; padding: 0.1rem 0.3rem; border-radius: 3px; }
+    kbd { background: #e2e8f0; border: 1px solid #cbd5e1; border-radius: 4px; padding: 2px 6px; font-family: monospace; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Text Formatting Sandbox&lt;/h2&gt;
+  &lt;p&gt;Water is &lt;strong&gt;essential&lt;/strong&gt;: H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;
+  &lt;p&gt;Save with shortcut: &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                        <div class="live-editor-pane">
+                            <div class="live-editor-header preview-header">
+                                <span>Live Output</span>
+                            </div>
+                            <iframe class="live-editor-iframe" id="html-preview-frame" sandbox="allow-scripts allow-modals" title="Live Preview Output"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="pagination-container">
+                <a href="paragraphs-and-basic-text.html" class="button button-secondary">&larr; Previous Topic</a>
+                <a href="links.html" class="button primary-button">Next Topic &rarr;</a>
+            </div>
+
+        </main>
+    </div>
+
+    <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="editor.js?v=4"></script>
+    <script src="hints.js?v=4"></script>
+    <script src="exercise.js?v=5"></script>
+    <script src="quiz-engine.js?v=1"></script>
+    <script src="quiz-data.js?v=1"></script>
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=3"></script>
+    <script>
+        // Inline quiz validation for this page
+        document.querySelectorAll('input[name="q-formatting"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const feedback = document.getElementById('feedback-q-formatting');
+                if (e.target.value === 'strong') {
+                    feedback.className = 'quiz-feedback correct';
+                    feedback.innerHTML = '<strong>Correct!</strong> <code>&lt;strong&gt;</code> communicates strong importance and urgency to search engines, browsers, and screen readers.';
+                } else {
+                    feedback.className = 'quiz-feedback incorrect';
+                    feedback.innerHTML = '<strong>Incorrect.</strong> <code>&lt;b&gt;</code> only makes text bold visually without semantic meaning, and <code>&lt;bold&gt;</code> is not a valid HTML tag.';
+                }
+            });
+        });
+    </script>
+    <script src="ai-assistant.js?v=1"></script>
+    <script src="ai-ui.js?v=1"></script>
+</body>
+
+</html>

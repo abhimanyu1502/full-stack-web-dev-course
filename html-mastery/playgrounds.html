@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Interactive Visual Playgrounds — Box Model, Flexbox, Grid, Position</title>
+    <meta name="description" content="Experiment and manipulate CSS layout models in real time with interactive controls for Box Model, Flexbox, Grid, and Position.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="css.html">CSS Mastery</a>
+            </div>
+
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search CSS topics..." aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <nav id="table-of-contents" aria-label="Table of contents">
+                <ul id="toc-list">
+                    <li><a href="introduction.html">📚 HTML Curriculum</a></li>
+                    <li><a href="css.html">🎨 CSS Curriculum</a></li>
+                    <li><a href="projects.html">🚀 Project Hub</a></li>
+                    <li><a href="playgrounds.html" class="active">🎮 Visual Playgrounds</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area" id="main-content">
+            <section class="playgrounds-hub-section">
+                <div class="playgrounds-hero-banner">
+                    <h1>🎮 Visual Interactive CSS Playgrounds</h1>
+                    <p>Manipulate sliders, dropdowns, and toggles in real time to visualize how tricky CSS concepts behave under the hood. Perfect for building intuitive spatial understanding of modern web layouts.</p>
+                </div>
+
+                <!-- Playground Navigation Tabs -->
+                <div class="playground-nav-tabs">
+                    <button type="button" class="pg-tab-btn active" data-pg="box-model">📦 Box Model</button>
+                    <button type="button" class="pg-tab-btn" data-pg="flexbox">↔️ Flexbox</button>
+                    <button type="button" class="pg-tab-btn" data-pg="grid">▦ CSS Grid</button>
+                    <button type="button" class="pg-tab-btn" data-pg="position">📍 Positioning & z-index</button>
+                </div>
+
+                <!-- Playground Mount Container -->
+                <div id="active-playground-container" class="active-playground-mount"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=3"></script>
+    <script src="playgrounds.js?v=1"></script>
+    <script src="ai-assistant.js?v=1"></script>
+    <script src="ai-ui.js?v=1"></script>
+    <script>
+        function initPlaygroundsHub() {
+            const tabs = document.querySelectorAll('.pg-tab-btn');
+            const mount = document.getElementById('active-playground-container');
+
+            function loadPlayground(key) {
+                if (!window.CSSPlaygrounds) return;
+                if (key === 'box-model') window.CSSPlaygrounds.renderBoxModel(mount);
+                else if (key === 'flexbox') window.CSSPlaygrounds.renderFlexbox(mount);
+                else if (key === 'grid') window.CSSPlaygrounds.renderGrid(mount);
+                else if (key === 'position') window.CSSPlaygrounds.renderPosition(mount);
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    const key = e.currentTarget.getAttribute('data-pg');
+                    loadPlayground(key);
+                });
+            });
+
+            // Initial load (check URL parameter ?pg=...)
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialPg = urlParams.get('pg') || 'box-model';
+            const initialTab = Array.from(tabs).find(t => t.getAttribute('data-pg') === initialPg);
+            if (initialTab) {
+                tabs.forEach(t => t.classList.remove('active'));
+                initialTab.classList.add('active');
+            }
+            loadPlayground(initialPg);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPlaygroundsHub);
+        } else {
+            initPlaygroundsHub();
+        }
+    </script>
+</body>
+</html>
