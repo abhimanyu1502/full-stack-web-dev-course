@@ -124,26 +124,39 @@ graph TD
 
 ```text
 html-mastery/
-├── .github/workflows/ci.yml # GitHub Actions automated CI workflow
-├── server/
-│   ├── index.js             # HTTP static server & REST API router
-│   ├── database.js          # SQLite connection, schema & operations
-│   ├── ai-proxy.js          # AI tutor endpoint & pedagogical heuristics
-│   └── data/                # SQLite database storage (git-ignored)
-├── tests/
-│   └── regression-suite.test.js # 150-assertion automated test suite
-├── dashboard.html           # Gamified learning dashboard
-├── dashboard.css            # Dashboard styles & theme variables
-├── dashboard.js             # Daily goals, streaks, and progress tracking
-├── playgrounds.html         # Interactive CSS layout visualizers
-├── playgrounds.js           # Box Model, Flexbox, Grid, Position logic
-├── cloud-sync.js            # Frontend client for SQLite sync & leaderboard
-├── progress.js              # XP, streak, bookmark, and progress engine
-├── editor.js                # Sandboxed in-browser code editor
-├── styles.css               # Core design tokens & responsive utilities
-├── package.json             # NPM scripts & project metadata
-├── LICENSE                  # MIT Open Source License
-└── README.md                # Project documentation & showcase
+│
+├── README.md               # Standardized portfolio documentation & benchmarks
+├── LICENSE                 # MIT Open Source License (Author: Abhimanyu Tiwari)
+├── package.json            # NPM scripts & project configuration
+├── requirements.txt        # Python curriculum & data utilities
+├── .gitignore              # Production git exclusions
+├── .env.example            # Environment configuration template
+│
+├── src/                    # Modular source architecture
+│   ├── models/             # UserProfile & Progress schemas
+│   ├── preprocessing/      # HTML/CSS code sanitization & validation
+│   ├── services/           # AI tutor & sync services
+│   └── utils/              # DOM utilities & storage helpers
+│
+├── server/                 # Fullstack Node.js backend
+│   ├── index.js            # HTTP static server & REST API router
+│   ├── database.js         # Native SQLite database operations & schemas
+│   └── ai-proxy.js         # AI tutor proxy & pedagogical heuristics
+│
+├── tests/                  # 150-assertion automated test suite
+├── notebooks/              # Jupyter curriculum & progress analytics
+├── data/                   # Structured curriculum manifest
+├── assets/                 # Architecture diagrams, screenshots & media
+│
+├── dashboard.html          # Gamified learning dashboard
+├── dashboard.css           # Dashboard styles & theme variables
+├── dashboard.js            # Daily goals, streaks, and progress tracking
+├── playgrounds.html        # Interactive CSS layout visualizers
+├── playgrounds.js          # Box Model, Flexbox, Grid, Position logic
+├── cloud-sync.js           # Frontend client for SQLite sync & leaderboard
+├── progress.js             # XP, streak, bookmark, and progress engine
+├── editor.js               # Sandboxed in-browser code editor
+└── styles.css              # Core design tokens & responsive utilities
 ```
 
 ---

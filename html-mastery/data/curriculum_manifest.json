@@ -1,0 +1,39 @@
+{
+  "platform": "HTML & CSS Mastery",
+  "version": "1.0.0",
+  "tracks": {
+    "html": {
+      "total_modules": 52,
+      "categories": [
+        "Fundamentals",
+        "Document Structure",
+        "Typography & Text",
+        "Media & Embeds",
+        "Forms & Controls",
+        "Modern Semantics & Layout",
+        "Accessibility & ARIA",
+        "Advanced & APIs",
+        "Capstone & Projects"
+      ]
+    },
+    "css": {
+      "total_lessons": 49,
+      "categories": [
+        "Selectors & Specificity",
+        "Box Model",
+        "Flexbox",
+        "CSS Grid",
+        "Positioning",
+        "Responsive & Media Queries",
+        "Transitions & Animations",
+        "Design Tokens"
+      ]
+    }
+  },
+  "playgrounds": [
+    "Box Model Interactive Visualizer",
+    "Flexbox Playground",
+    "CSS Grid Sandbox",
+    "CSS Positioning Lab"
+  ]
+}
