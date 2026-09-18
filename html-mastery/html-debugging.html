@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery — HTML Debugging and Validation Tools</title>
+    <meta name="description" content="Learn how to inspect, debug, and validate HTML using the W3C Validator, browser DevTools Elements panel, HTMLHint, and common DOM fixing techniques.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Progress Indicator -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="introduction.html">HTML Mastery</a>
+            </div>
+
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search HTML topics..."
+                    aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="#practice-editor" class="button primary-button">Practice</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-button github-link"
+                    aria-label="GitHub Repository">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+                <button id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <nav id="table-of-contents" aria-label="Table of contents">
+                <ul id="toc-list">
+                    <!-- Dynamic ToC generated by script.js -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area" id="main-content">
+            <section id="html-debugging" data-title="48. HTML Debugging and Validation">
+                <h1>48. HTML Debugging and Validation Tools</h1>
+
+                <div class="explanation">
+                    <p>Unlike programming languages (like JavaScript or Python) that throw fatal syntax errors and halt execution when a syntax mistake is encountered, web browsers are designed to be extremely forgiving with HTML. When a browser receives invalid HTML (such as an unclosed tag or illegal nesting), it silently attempts to fix the markup by guessing the developer's intent and auto-closing elements in the DOM tree.</p>
+                    <p>While this prevents the webpage from crashing, this "error-recovery" behavior frequently produces unexpected layout glitches, broken CSS styling, broken JavaScript query selectors, and accessibility failures. Mastering HTML debugging tools ensures your code is strictly compliant, fast, and accessible.</p>
+                </div>
+
+                <h2>Key Debugging & Validation Tools</h2>
+                <div class="explanation">
+                    <ul>
+                        <li><strong>W3C Nu HTML Validator (validator.w3.org)</strong>: The authoritative official validator that tests your HTML markup against current WHATWG specifications.</li>
+                        <li><strong>Browser DevTools Elements Inspector</strong>: Press <kbd>F12</kbd> or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> to inspect the live rendered DOM. Notice how the browser's parsed tree can differ from your raw source file!</li>
+                        <li><strong>HTMLHint / ESLint HTML Plugin</strong>: Static linting tools that catch unclosed tags, duplicate IDs, missing alt attributes, and non-standard attributes in real-time inside your code editor.</li>
+                        <li><strong>Lighthouse / Accessibility Audits</strong>: Built-in DevTools suite to analyze markup structure, color contrast, SEO meta tags, and ARIA tree health.</li>
+                    </ul>
+                </div>
+
+                <h2>Syntax</h2>
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">HTML (Raw Source vs DOM Result)</span>
+                        <button class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-html">&lt;!-- ❌ BAD: Placing a block &lt;div&gt; inside a &lt;p&gt; --&gt;
+&lt;p&gt;Start of paragraph &lt;div&gt;Embedded block&lt;/div&gt; End of paragraph&lt;/p&gt;
+
+&lt;!-- 🛠️ HOW THE BROWSER PARSES IT (The browser splits your paragraph!): --&gt;
+&lt;p&gt;Start of paragraph &lt;/p&gt;
+&lt;div&gt;Embedded block&lt;/div&gt;
+End of paragraph
+&lt;p&gt;&lt;/p&gt;
+
+&lt;!-- ❌ BAD: Unclosed inline tag bleeding into whole document --&gt;
+&lt;h3&gt;&lt;a href="/home"&gt;Welcome Home&lt;/h3&gt;
+&lt;p&gt;Now this entire paragraph becomes clickable unexpectedly!&lt;/p&gt;</code></pre>
+                </div>
+
+                <h2>Code Example (Clean, Valid Markup)</h2>
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">HTML</span>
+                        <button class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;W3C Valid Page Template&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Valid HTML5 Document&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Accessible Article&lt;/h2&gt;
+            &lt;p&gt;Every tag is correctly closed, and every image has alternative text.&lt;/p&gt;
+            &lt;img src="diagram.png" alt="Architecture flow chart" width="400" height="250"&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <h2>Explanation of the Code</h2>
+                <ul class="code-explanation-list">
+                    <li>The <code>&lt;!DOCTYPE html&gt;</code> declaration prevents the browser from dropping into Quirks Mode.</li>
+                    <li>The <code>lang="en"</code> attribute satisfies W3C accessibility criteria for speech synthesizers.</li>
+                    <li>Every container element (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>) has explicit opening and closing tags.</li>
+                    <li>The <code>&lt;img&gt;</code> element includes an informative <code>alt</code> attribute plus explicit <code>width</code> and <code>height</code> attributes to prevent Cumulative Layout Shift (CLS).</li>
+                </ul>
+
+                <h2>Common Mistakes</h2>
+                <div class="card bad-card">
+                    <div class="card-icon">❌</div>
+                    <div class="card-content">
+                        <strong>Duplicate id Attributes</strong>
+                        <p>An <code>id</code> must be unique across the entire document. Duplicate IDs break <code>document.getElementById()</code> calls in JavaScript and cause anchor link jump failures.</p>
+                    </div>
+                </div>
+
+                <div class="card bad-card">
+                    <div class="card-icon">❌</div>
+                    <div class="card-content">
+                        <strong>Using Deprecated Legacy Presentational Tags</strong>
+                        <p>Avoid obsolete HTML tags like <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>, <code>&lt;marquee&gt;</code>, and <code>&lt;big&gt;</code>. Use modern semantic HTML with CSS styling instead.</p>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise</h2>
+                <div class="card practice-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-content">
+                        <strong>Task:</strong>
+                        <p>Inspect and fix the buggy HTML snippet in the sandbox below:
+                            1. Fix the unclosed <code>&lt;a&gt;</code> tag leaking across multiple sections.
+                            2. Remove duplicate <code>id="main-btn"</code> attributes.
+                            3. Fix the invalid nesting where a <code>&lt;div&gt;</code> is placed inside a <code>&lt;p&gt;</code>.
+                            4. Add missing <code>alt</code> and <code>type</code> attributes.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Mini Challenge</h2>
+                <div class="card tip-card">
+                    <div class="card-icon">🏆</div>
+                    <div class="card-content">
+                        <strong>Mini Challenge:</strong>
+                        <p>Open browser DevTools on any live website (<kbd>F12</kbd>), navigate to the Elements tab, double-click an element tag to edit it in real-time, and observe how the DOM immediately updates on screen.</p>
+                    </div>
+                </div>
+
+                <div class="card best-practice-card">
+                    <div class="card-icon">⭐</div>
+                    <div class="card-content">
+                        <strong>Key Takeaways</strong>
+                        <p>Always validate your pages with the W3C Validator before publishing. Never rely on the browser's silent auto-recovery to fix syntax mistakes.</p>
+                    </div>
+                </div>
+
+                <!-- Knowledge Check Quiz -->
+                <div class="quiz-container">
+                    <div class="quiz-title"><span>🧠</span> Knowledge Check</div>
+                    <div class="quiz-question">What happens when a browser encounters invalid HTML syntax, such as an unclosed tag or illegal nesting?</div>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q-debug" value="crash">
+                            The browser crashes and shows a fatal syntax error screen.
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q-debug" value="autorecover">
+                            The browser silently applies error-recovery algorithms to reconstruct a valid DOM tree.
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q-debug" value="ignore">
+                            The browser deletes the entire section of HTML completely.
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q-debug"></div>
+                </div>
+
+                <!-- Live Practice Editor -->
+                <div class="live-editor-section" id="practice-editor">
+                    <h2 class="live-editor-title">💻 Try it Yourself (Fix the Bugs)</h2>
+                    <div class="live-editor-container">
+                        <div class="live-editor-pane">
+                            <div class="live-editor-header">
+                                <span>index.html</span>
+                                <div class="editor-btn-group">
+                                    <button type="button" class="run-code-btn btn-reset" id="btn-reset-editor">Reset</button>
+                                    <button type="button" class="run-code-btn" id="btn-run-code">Run Code ▶</button>
+                                </div>
+                            </div>
+                            <textarea class="live-editor-textarea" id="html-code-input" aria-label="HTML debugging code editor" placeholder="Fix the HTML code here..." title="HTML Code Input" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; line-height: 1.6; }
+    .card { border: 1px solid #cbd5e1; padding: 1rem; border-radius: 6px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Debug this buggy markup: --&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;&lt;a href="#"&gt;Card Title&lt;/a&gt;&lt;/h3&gt;
+    &lt;p&gt;This is a clean, properly closed paragraph.&lt;/p&gt;
+    &lt;button type="button" id="btn-action"&gt;Click Me&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                        <div class="live-editor-pane">
+                            <div class="live-editor-header preview-header">
+                                <span>Live Output</span>
+                            </div>
+                            <iframe class="live-editor-iframe" id="html-preview-frame" sandbox="allow-scripts allow-modals" title="Live Preview Output"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="pagination-container">
+                <a href="security-basics.html" class="button button-secondary">&larr; Previous Topic</a>
+                <a href="professional-html-checklist.html" class="button primary-button">Next Topic &rarr;</a>
+            </div>
+
+        </main>
+    </div>
+
+    <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="editor.js?v=4"></script>
+    <script src="hints.js?v=4"></script>
+    <script src="exercise.js?v=5"></script>
+    <script src="quiz-engine.js?v=1"></script>
+    <script src="quiz-data.js?v=1"></script>
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=3"></script>
+    <script>
+        // Inline quiz validation for this page
+        document.querySelectorAll('input[name="q-debug"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const feedback = document.getElementById('feedback-q-debug');
+                if (e.target.value === 'autorecover') {
+                    feedback.className = 'quiz-feedback correct';
+                    feedback.innerHTML = '<strong>Correct!</strong> Browsers perform silent error recovery to fix broken HTML, which can cause subtle layout bugs and DOM tree mismatches.';
+                } else {
+                    feedback.className = 'quiz-feedback incorrect';
+                    feedback.innerHTML = '<strong>Incorrect.</strong> Browsers are forgiving and do not crash on HTML syntax errors, but rather guess how to fix the tree.';
+                }
+            });
+        });
+    </script>
+    <script src="ai-assistant.js?v=1"></script>
+    <script src="ai-ui.js?v=1"></script>
+</body>
+
+</html>

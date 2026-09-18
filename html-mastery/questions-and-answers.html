@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery — Beginner to Advanced</title>
+    <meta name="description" content="Learn HTML from absolute beginner level to advanced web development concepts.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Progress Indicator -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#">HTML Mastery</a>
+            </div>
+
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search HTML topics..."
+                    aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="#practice-project" class="button primary-button">Practice</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-button github-link"
+                    aria-label="GitHub Repository">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+                <button id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <nav id="table-of-contents" aria-label="Table of contents">
+                <ul id="toc-list">
+                    <!-- JavaScript will generate this list based on sections in the main content -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content-area" id="main-content">
+            <section id="questions-and-answers">
+                <h1>52. Questions and Answers</h1>
+
+                <div class="explanation">
+                    <p>Test your knowledge with these common HTML interview questions.</p>
+                </div>
+
+                <div class="faq-container">
+                    <details class="faq-item">
+                        <summary>What does HTML stand for?</summary>
+                        <p><strong>HyperText Markup Language.</strong></p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is the difference between a tag and an element?</summary>
+                        <p>A tag is markup such as <code>&lt;p&gt;</code>. An element includes the opening tag, content
+                            and closing tag, such as <code>&lt;p&gt;Hello&lt;/p&gt;</code>.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is an attribute?</summary>
+                        <p>An attribute provides additional information or configuration for an element, such as
+                            <code>href</code>, <code>src</code>, <code>alt</code>, or <code>class</code>.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is the purpose of DOCTYPE?</summary>
+                        <p>It tells the browser to use modern HTML parsing behavior.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is the difference between head and body?</summary>
+                        <p>The head contains metadata and resources. The body contains the document's visible content.
+                        </p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Why is alt important?</summary>
+                        <p>It provides a text alternative for images and improves accessibility.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is the difference between ul and ol?</summary>
+                        <p><code>ul</code> creates an unordered list while <code>ol</code> creates an ordered list.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Why is semantic HTML important?</summary>
+                        <p>It communicates the meaning and structure of content to browsers, assistive technologies,
+                            search engines and developers.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>When should you use a button instead of a link?</summary>
+                        <p>Use a button for an action and a link for navigation.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is the difference between id and class?</summary>
+                        <p>An id normally identifies one unique element, while a class can be reused across multiple
+                            elements.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Why should labels be connected to inputs?</summary>
+                        <p>They improve usability and accessibility, especially for screen-reader users.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is GET?</summary>
+                        <p>GET is commonly used to retrieve, search or filter resources, with parameters often
+                            represented in the URL.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is POST?</summary>
+                        <p>POST is commonly used to submit data in the request body, often for operations that create or
+                            change server-side data.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is ARIA?</summary>
+                        <p>ARIA provides accessibility roles, states and properties for cases where native HTML does not
+                            sufficiently express the required semantics or interaction.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is lazy loading?</summary>
+                        <p>Lazy loading allows suitable non-critical resources to be loaded later, often when they
+                            approach the viewport.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What is the DOM?</summary>
+                        <p>The DOM is the browser's object representation/tree of the HTML document.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What does defer do?</summary>
+                        <p>It allows a script to download during HTML parsing and execute after parsing, while
+                            preserving order among deferred scripts.</p>
+                    </details>
+                </div>
+            </section>
+            <div class="pagination-container" style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <a href="practice-answer.html" class="button" style="border: 1px solid var(--border-color); color: var(--text-primary);">&larr; Previous Topic</a>
+                <a href="css.html" class="button primary-button">Continue to CSS Mastery &rarr;</a>
+            </div>
+            </div>
+
+        </main>
+    </div>
+
+    <button id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="editor.js?v=4"></script>
+    <script src="hints.js?v=4"></script>
+    <script src="exercise.js?v=5"></script>
+    <script src="quiz-engine.js?v=1"></script>
+    <script src="quiz-data.js?v=1"></script>
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=3"></script>
+    <script src="ai-assistant.js?v=1"></script>
+    <script src="ai-ui.js?v=1"></script>
+</body>
+
+</html>

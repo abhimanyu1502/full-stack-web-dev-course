@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — HTML Mastery</title>
+    <meta name="description" content="Your personal learning dashboard. Track progress, streaks, XP, and continue your HTML & CSS journey.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo"><a href="dashboard.html">HTML Mastery</a></div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="search-input" placeholder="Search HTML & CSS topics..." aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+            <div class="header-actions">
+                <button id="focus-mode-btn" class="icon-button" aria-label="Toggle Focus Mode" title="Focus Mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
+                </button>
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <a href="introduction.html" class="button primary-button" style="white-space:nowrap;">Start Learning</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="db-main" id="main-content">
+
+        <!-- HERO -->
+        <section class="db-hero" id="db-hero">
+            <div class="db-hero-inner">
+                <div class="db-hero-text">
+                    <h1 id="db-greeting">Welcome back</h1>
+                    <p id="db-sub" class="db-sub">Ready to keep building? Your learning journey continues here.</p>
+                </div>
+                <div class="db-hero-stats">
+                    <div class="db-stat-pill streak-pill">
+                        <span class="dp-icon">&#x1F525;</span>
+                        <div class="dp-text">
+                            <span class="dp-val" id="hero-streak">0</span>
+                            <span class="dp-label">day streak</span>
+                        </div>
+                    </div>
+                    <div class="db-stat-pill xp-pill-hero">
+                        <span class="dp-icon">&#x2B50;</span>
+                        <div class="dp-text">
+                            <span class="dp-val" id="hero-xp">0</span>
+                            <span class="dp-label" id="hero-level">XP &middot; Lv.1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="db-level-bar-wrap">
+                <div class="db-level-bar-labels">
+                    <span id="hero-level-title">&#x1F423; Novice Learner</span>
+                    <span id="hero-level-xp-text">0 / 250 XP to next level</span>
+                </div>
+                <div class="db-level-track">
+                    <div class="db-level-fill" id="hero-level-fill" style="width:0%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTION ROW -->
+        <section class="db-action-row" id="db-action-row">
+            <div class="db-card db-continue-card" id="db-continue-card">
+                <div class="db-card-label">&#x25B6; Continue Learning</div>
+                <div class="db-continue-inner">
+                    <div>
+                        <div class="db-continue-lesson" id="db-continue-lesson">Introduction to HTML</div>
+                        <div class="db-continue-track" id="db-continue-track">HTML Track</div>
+                    </div>
+                    <a href="introduction.html" id="db-continue-btn" class="button primary-button db-continue-btn">Resume &rarr;</a>
+                </div>
+            </div>
+
+            <div class="db-card db-goal-card" id="db-goal-card">
+                <div class="db-card-label">&#x1F3AF; Today's Goal</div>
+                <div class="db-goal-inner" id="db-goal-display">
+                    <div class="db-goal-text" id="db-goal-text">Complete 1 lesson today</div>
+                    <div class="db-goal-actions">
+                        <button class="db-goal-done-btn" id="db-goal-done-btn">&#x2713; Done</button>
+                        <button class="db-goal-edit-btn" id="db-goal-edit-btn">&#x270F;&#xFE0F;</button>
+                    </div>
+                </div>
+                <div class="db-goal-edit-form hidden" id="db-goal-edit-form">
+                    <input type="text" id="db-goal-input" class="db-goal-input" maxlength="80" placeholder="e.g. Complete 2 exercises">
+                    <button class="button primary-button" id="db-goal-save-btn" style="padding:0.4rem 0.9rem;font-size:0.82rem;">Save</button>
+                </div>
+                <div class="db-goal-done-state hidden" id="db-goal-done-state">
+                    <span>&#x2705; Goal complete! Great work today.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="db-card db-progress-section" id="db-progress-section">
+            <div class="db-card-label">&#x1F4CA; Curriculum Progress</div>
+            <div class="db-progress-grid">
+                <div class="db-prog-item">
+                    <div class="db-prog-labels">
+                        <span class="db-prog-name">HTML</span>
+                        <span class="db-prog-pct" id="html-pct">0%</span>
+                    </div>
+                    <div class="db-prog-track"><div class="db-prog-fill db-html-fill" id="html-fill" style="width:0%"></div></div>
+                    <div class="db-prog-detail" id="html-detail">0 of 52 lessons completed</div>
+                </div>
+                <div class="db-prog-item">
+                    <div class="db-prog-labels">
+                        <span class="db-prog-name">CSS</span>
+                        <span class="db-prog-pct" id="css-pct">0%</span>
+                    </div>
+                    <div class="db-prog-track"><div class="db-prog-fill db-css-fill" id="css-fill" style="width:0%"></div></div>
+                    <div class="db-prog-detail" id="css-detail">0 of 33 lessons completed</div>
+                </div>
+                <div class="db-prog-item">
+                    <div class="db-prog-labels">
+                        <span class="db-prog-name">Overall</span>
+                        <span class="db-prog-pct" id="overall-pct">0%</span>
+                    </div>
+                    <div class="db-prog-track"><div class="db-prog-fill db-overall-fill" id="overall-fill" style="width:0%"></div></div>
+                    <div class="db-prog-detail" id="overall-detail">0 total lessons completed</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WIDGET GRID -->
+        <section class="db-widget-grid" id="db-widget-grid">
+
+            <!-- Challenge of the Day -->
+            <div class="db-card db-challenge-card db-widget" id="db-challenge-card">
+                <div class="db-card-label">&#x26A1; Challenge of the Day</div>
+                <div class="db-challenge-date" id="db-challenge-date"></div>
+                <div class="db-challenge-q" id="db-challenge-q">Loading today's challenge...</div>
+                <div class="db-challenge-meta" id="db-challenge-meta"></div>
+                <div class="db-challenge-actions">
+                    <a href="introduction.html" id="db-challenge-btn" class="button primary-button" style="font-size:0.85rem;">Start Challenge &rarr;</a>
+                    <button class="db-challenge-skip" id="db-challenge-skip">Try a different one</button>
+                </div>
+            </div>
+
+            <!-- Recommended Next -->
+            <div class="db-card db-next-card db-widget" id="db-next-card">
+                <div class="db-card-label">&#x1F9ED; Recommended Next</div>
+                <div class="db-next-track-badge" id="db-next-track">HTML</div>
+                <div class="db-next-title" id="db-next-title">Introduction to HTML</div>
+                <div class="db-next-desc" id="db-next-desc">Start with the fundamentals of web structure.</div>
+                <a href="introduction.html" id="db-next-btn" class="button primary-button" style="margin-top:auto;font-size:0.85rem;">Start Lesson &rarr;</a>
+            </div>
+
+            <!-- Recently Completed -->
+            <div class="db-card db-recent-card db-widget" id="db-recent-card">
+                <div class="db-card-label">&#x2705; Recently Completed</div>
+                <ul class="db-recent-list" id="db-recent-list">
+                    <li class="db-recent-empty">No lessons completed yet. <a href="introduction.html">Start here &rarr;</a></li>
+                </ul>
+            </div>
+
+            <!-- Bookmarks -->
+            <div class="db-card db-bookmarks-card db-widget" id="db-bookmarks-card">
+                <div class="db-card-label">&#x1F516; Bookmarks</div>
+                <div class="db-bookmarks-list" id="db-bookmarks-list">
+                    <p class="db-empty-state">No bookmarks yet. Click <strong>&#x1F516;</strong> on any lesson to save it here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAVED CODE -->
+        <section class="db-card db-savedcode-section db-widget" id="db-savedcode-section">
+            <button class="db-savedcode-toggle" id="db-savedcode-toggle" aria-expanded="false">
+                <span>&#x1F4BE; Saved Code Snippets</span>
+                <span class="db-savedcode-count" id="db-savedcode-count">0 saved</span>
+                <svg class="db-toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="db-savedcode-body hidden" id="db-savedcode-body">
+                <div class="db-savedcode-list" id="db-savedcode-list">
+                    <p class="db-empty-state">No saved code yet. Write code in any lesson exercise and click "Save".</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Focus Mode Banner -->
+        <div class="db-focus-hint hidden" id="db-focus-hint">
+            <span>&#x1F3AF; Focus Mode active &mdash; distractions hidden. <button id="db-exit-focus" class="db-exit-focus-btn">Exit Focus Mode</button></span>
+        </div>
+
+    </main>
+
+    <button id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <div id="subtle-toast-container" class="subtle-toast-container"></div>
+
+    <script src="quiz-data.js?v=1"></script>
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=3"></script>
+    <script src="dashboard.js?v=1"></script>
+</body>
+</html>

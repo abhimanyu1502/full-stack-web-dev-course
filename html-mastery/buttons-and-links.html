@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery — Buttons and Advanced Hyperlinks</title>
+    <meta name="description" content="Learn the key differences between buttons and links, hyperlink protocols (mailto, tel, download), security attributes (rel=noopener), and button types.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Progress Indicator -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="introduction.html">HTML Mastery</a>
+            </div>
+
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search HTML topics..."
+                    aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+
+            <div class="header-actions">
+                <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="#practice-editor" class="button primary-button">Practice</a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-button github-link"
+                    aria-label="GitHub Repository">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
+                </a>
+                <button type="button" id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <nav id="table-of-contents" aria-label="Table of contents">
+                <ul id="toc-list">
+                    <!-- Dynamic ToC generated by script.js -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area" id="main-content">
+            <section id="buttons-and-links" data-title="9. Buttons and Hyperlinks">
+                <h1>9. Buttons and Hyperlinks</h1>
+
+                <div class="explanation">
+                    <p>One of the most important decisions in frontend web development is choosing between an <strong>anchor link</strong> (<code>&lt;a&gt;</code>) and a <strong>button</strong> (<code>&lt;button&gt;</code>). While both can be styled identically with CSS, they have radically different semantic purposes and accessibility behaviors.</p>
+                    <p><strong>Rule of thumb:</strong> Use <code>&lt;a&gt;</code> when navigating to a new page, document, or section. Use <code>&lt;button&gt;</code> when performing an action (submitting data, opening a modal, toggling a menu, or deleting an item).</p>
+                </div>
+
+                <h2>Key Differences</h2>
+                <div class="concept-diagram">
+                    <div class="diagram-block html-block diagram-block-compact">
+                        <strong>&lt;a href="..."&gt;</strong>
+                        <span>Navigation &amp; Locations</span>
+                        <p class="diagram-block-desc">Activated by <code>Enter</code> key. Can be bookmarked, opened in new tabs, and indexed by search engines.</p>
+                    </div>
+                    <div class="diagram-equals">vs</div>
+                    <div class="diagram-block js-block diagram-block-compact">
+                        <strong>&lt;button type="..."&gt;</strong>
+                        <span>In-Page Actions &amp; Triggers</span>
+                        <p class="diagram-block-desc">Activated by both <code>Space</code> and <code>Enter</code> keys. Triggers JavaScript functions and form submissions.</p>
+                    </div>
+                </div>
+
+                <h2>Special Hyperlink Protocols &amp; Attributes</h2>
+                <div class="explanation">
+                    <ul>
+                        <li><code>mailto:email@example.com</code>: Opens the user's default email client.</li>
+                        <li><code>tel:+1234567890</code>: Prompts smartphones and dialers to initiate a call.</li>
+                        <li><code>target="_blank" rel="noopener noreferrer"</code>: Opens a link in a new tab securely without leaking the <code>window.opener</code> object (preventing reverse tab-nabbing attacks).</li>
+                        <li><code>download="filename.pdf"</code>: Forces the browser to download the linked file instead of navigating to it.</li>
+                    </ul>
+                </div>
+
+                <h2>Syntax</h2>
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">HTML</span>
+                        <button type="button" class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-html">&lt;!-- Navigation Link --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;External Site&lt;/a&gt;
+
+&lt;!-- Contact Protocol Links --&gt;
+&lt;a href="mailto:support@example.com"&gt;Email Us&lt;/a&gt;
+&lt;a href="tel:+18005550199"&gt;Call Toll-Free&lt;/a&gt;
+&lt;a href="/assets/report.pdf" download="Annual-Report.pdf"&gt;Download PDF&lt;/a&gt;
+
+&lt;!-- Interactive Buttons --&gt;
+&lt;button type="button" onclick="alert('Clicked!')"&gt;Open Modal&lt;/button&gt;
+&lt;button type="submit"&gt;Submit Application&lt;/button&gt;
+&lt;button type="reset"&gt;Clear Form&lt;/button&gt;</code></pre>
+                </div>
+
+                <h2>Code Example</h2>
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">HTML</span>
+                        <button type="button" class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-html">&lt;div class="user-card"&gt;
+    &lt;h3&gt;Jane Doe — Web Architect&lt;/h3&gt;
+    &lt;p&gt;Contact Information &amp; Documents:&lt;/p&gt;
+
+    &lt;!-- Links for navigation and communication --&gt;
+    &lt;p&gt;
+        &lt;a href="mailto:jane@example.com"&gt;📧 Send Email&lt;/a&gt; |
+        &lt;a href="tel:+15550100"&gt;📞 (555) 0100&lt;/a&gt; |
+        &lt;a href="/files/resume.pdf" download="Jane-Doe-Resume.pdf"&gt;📄 Download Resume&lt;/a&gt;
+    &lt;/p&gt;
+
+    &lt;!-- Buttons for actions --&gt;
+    &lt;button type="button" class="btn" onclick="console.log('Followed')"&gt;+ Follow&lt;/button&gt;
+    &lt;button type="button" class="btn-danger" disabled&gt;Block User&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <h2>Explanation of the Code</h2>
+                <ul class="code-explanation-list">
+                    <li><code>mailto:</code> and <code>tel:</code> protocols automatically trigger the corresponding native apps on desktop and mobile devices.</li>
+                    <li><code>download="Jane-Doe-Resume.pdf"</code> instructs the browser to immediately prompt a file download with the specified filename.</li>
+                    <li><code>type="button"</code> prevents default form submission behavior when the button is nested inside a <code>&lt;form&gt;</code>.</li>
+                    <li>The <code>disabled</code> boolean attribute renders the button inactive and informs assistive tech that the control cannot be pressed.</li>
+                </ul>
+
+                <h2>Common Mistakes</h2>
+                <div class="card bad-card">
+                    <div class="card-icon">❌</div>
+                    <div class="card-content">
+                        <strong>Using &lt;a href="#"&gt; or &lt;a href="javascript:void(0)"&gt; for actions</strong>
+                        <p>Anchors are meant for navigation. Screen readers announce links as "Link," leading users to expect a page transition. Furthermore, keyboard users cannot trigger links with the <code>Space</code> key (only <code>Enter</code>). Always use <code>&lt;button type="button"&gt;</code> for JavaScript actions.</p>
+                    </div>
+                </div>
+
+                <div class="card bad-card">
+                    <div class="card-icon">❌</div>
+                    <div class="card-content">
+                        <strong>Omitting rel="noopener" on target="_blank" links</strong>
+                        <p>Opening external URLs in a new tab without <code>rel="noopener"</code> exposes your website to reverse tab-nabbing security exploits where malicious third-party pages manipulate your original tab via <code>window.opener</code>.</p>
+                    </div>
+                </div>
+
+                <h2>Practice Exercise</h2>
+                <div class="card practice-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-content">
+                        <strong>Task:</strong>
+                        <p>Create a support contact section featuring:
+                            1. A link opening your GitHub repo in a new tab with <code>target="_blank"</code> and <code>rel="noopener noreferrer"</code>.
+                            2. A click-to-call link using the <code>tel:</code> protocol.
+                            3. An email link using the <code>mailto:</code> protocol with a subject parameter.
+                            4. An actionable <code>&lt;button type="button"&gt;</code> labeled "Toggle Help Widget".
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Mini Challenge</h2>
+                <div class="card tip-card">
+                    <div class="card-icon">🏆</div>
+                    <div class="card-content">
+                        <strong>Mini Challenge:</strong>
+                        <p>Construct a link that simultaneously specifies a target file URL, a custom download filename with the <code>download</code> attribute, and a title tooltip for accessibility.</p>
+                    </div>
+                </div>
+
+                <div class="card best-practice-card">
+                    <div class="card-icon">⭐</div>
+                    <div class="card-content">
+                        <strong>Key Takeaways</strong>
+                        <p>Use <code>&lt;a&gt;</code> to go places; use <code>&lt;button&gt;</code> to do things. Always specify <code>type="button"</code> on non-submitting buttons to prevent accidental form submissions.</p>
+                    </div>
+                </div>
+
+                <!-- Knowledge Check Quiz -->
+                <div class="quiz-container">
+                    <div class="quiz-title"><span>🧠</span> Knowledge Check</div>
+                    <div class="quiz-question">Which element should you choose when building a popup modal trigger that does not navigate to a new URL?</div>
+                    <div class="quiz-options">
+                        <label class="quiz-option">
+                            <input type="radio" name="q-button" value="a">
+                            <code>&lt;a href="#"&gt;</code>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q-button" value="button">
+                            <code>&lt;button type="button"&gt;</code>
+                        </label>
+                        <label class="quiz-option">
+                            <input type="radio" name="q-button" value="div">
+                            <code>&lt;div onclick="..."&gt;</code>
+                        </label>
+                    </div>
+                    <div class="quiz-feedback" id="feedback-q-button"></div>
+                </div>
+
+                <!-- Live Practice Editor -->
+                <div class="live-editor-section" id="practice-editor">
+                    <h2 class="live-editor-title">💻 Try it Yourself</h2>
+                    <div class="live-editor-container">
+                        <div class="live-editor-pane">
+                            <div class="live-editor-header">
+                                <span>index.html</span>
+                                <div class="editor-btn-group">
+                                    <button type="button" class="run-code-btn btn-reset" id="btn-reset-editor">Reset</button>
+                                    <button type="button" class="run-code-btn" id="btn-run-code">Run Code ▶</button>
+                                </div>
+                            </div>
+                            <textarea class="live-editor-textarea" id="html-code-input" aria-label="HTML code editor" placeholder="Write your HTML here..." title="HTML Code Input" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; line-height: 1.6; }
+    .btn { background: #2563eb; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+    .btn:hover { background: #1d4ed8; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;Buttons &amp; Links Demo&lt;/h3&gt;
+  &lt;p&gt;&lt;a href="mailto:hello@example.com"&gt;✉️ Contact Support&lt;/a&gt;&lt;/p&gt;
+  &lt;button type="button" class="btn" onclick="alert('Action completed!')"&gt;Run Action&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+                        </div>
+                        <div class="live-editor-pane">
+                            <div class="live-editor-header preview-header">
+                                <span>Live Output</span>
+                            </div>
+                            <iframe class="live-editor-iframe" id="html-preview-frame" sandbox="allow-scripts allow-modals" title="Live Preview Output"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="pagination-container">
+                <a href="links.html" class="button button-secondary">&larr; Previous Topic</a>
+                <a href="images.html" class="button primary-button">Next Topic &rarr;</a>
+            </div>
+
+        </main>
+    </div>
+
+    <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="editor.js?v=4"></script>
+    <script src="hints.js?v=4"></script>
+    <script src="exercise.js?v=5"></script>
+    <script src="quiz-engine.js?v=1"></script>
+    <script src="quiz-data.js?v=1"></script>
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=3"></script>
+    <script>
+        // Inline quiz validation for this page
+        document.querySelectorAll('input[name="q-button"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const feedback = document.getElementById('feedback-q-button');
+                if (e.target.value === 'button') {
+                    feedback.className = 'quiz-feedback correct';
+                    feedback.innerHTML = '<strong>Correct!</strong> <code>&lt;button type="button"&gt;</code> is the semantic and accessible standard for triggering in-page actions and JavaScript behavior.';
+                } else {
+                    feedback.className = 'quiz-feedback incorrect';
+                    feedback.innerHTML = '<strong>Incorrect.</strong> Links are for navigation, and generic <code>&lt;div&gt;</code> elements are inaccessible without extensive ARIA and keyboard handling.';
+                }
+            });
+        });
+    </script>
+    <script src="ai-assistant.js?v=1"></script>
+    <script src="ai-ui.js?v=1"></script>
+</body>
+
+</html>
