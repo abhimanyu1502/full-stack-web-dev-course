@@ -710,8 +710,7 @@ textarea:focus-visible {
     height: 100%;
     background-color: var(--accent-color);
     width: 0%;
-    /* Only animate transform/opacity for GPU-composited animation */
-    transition: width 0.1s ease-out;
+    transition: width 0.05s linear;
     will-change: width;
 }
 
@@ -4586,10 +4585,9 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Momentum scrolling for containers that overflow */
+/* Momentum scrolling for scrollable containers that overflow */
 .sidebar,
 .search-results,
-.content-area,
 .interactive-editor-container,
 .preview-container {
     overscroll-behavior: contain;
@@ -4606,14 +4604,8 @@ button, a, input, select, textarea {
     touch-action: manipulation;
 }
 
-/* 3. Content-Visibility: defer layout+paint of off-screen sections */
-/* More accurate intrinsic heights reduce layout shifts when scrolling in */
+/* 3. Content-Visibility: optimize self-contained interactive cards */
 @supports (content-visibility: auto) {
-    /* Main curriculum sections — typically 600-900px tall */
-    .content-area > section {
-        content-visibility: auto;
-        contain-intrinsic-size: auto 1px 700px;
-    }
     /* Exercise cards — typically ~500px */
     .exercise-system-root {
         content-visibility: auto;
@@ -4629,12 +4621,6 @@ button, a, input, select, textarea {
         content-visibility: auto;
         contain-intrinsic-size: auto 1px 400px;
     }
-}
-
-/* 4. CSS Containment for major layout sections */
-/* Prevents style/layout changes in one area from triggering global reflow */
-.content-area {
-    contain: layout style;
 }
 
 /* 5. GPU Layer Hints for animated elements */
@@ -4695,20 +4681,9 @@ button, a, input, select, textarea {
     }
 }
 
-/* 9. is-scrolling: JS adds this class to <html> during active scroll
-   Suppresses expensive hover/transition repaints on all interactive elements.
-   This is the most impactful scroll-jank fix for complex layouts. */
-html.is-scrolling *,
-html.is-scrolling *::before,
-html.is-scrolling *::after {
-    /* Disable all transitions while scrolling — re-enabled 150ms after scroll stops */
-    transition-duration: 0.001ms !important;
-    /* Suppress hover box-shadow repaints during scroll */
-    pointer-events: none;
-}
-/* Allow pointer events on the header so it remains interactive */
-html.is-scrolling .site-header,
-html.is-scrolling .site-header * {
+/* 9. Content Interactivity: Ensure content is 100% responsive while scrolling */
+.content-area,
+.content-area * {
     pointer-events: auto;
 }
 
@@ -4779,7 +4754,7 @@ pre code {
     overflow-wrap: normal;
 }
 
-/* ── 4. Header — prevent overflow at 320px ──────────────────────────────── */
+/* ── 4. Header — prevent overflow at all screen sizes ─────────────────── */
 .header-container {
     min-width: 0; /* allow flex children to shrink */
 }
@@ -4787,8 +4762,28 @@ pre code {
     white-space: nowrap;
     min-width: 0;
 }
-.header-actions {
-    flex-shrink: 0;
+@media (max-width: 768px) {
+    .header-actions {
+        flex-shrink: 1;
+        gap: 0.35rem;
+    }
+    .header-actions .primary-button,
+    .header-actions .github-link {
+        display: none !important;
+    }
+    .dash-trigger-btn {
+        padding: 0.35rem 0.55rem !important;
+        font-size: 0.75rem !important;
+        white-space: nowrap;
+    }
+}
+@media (max-width: 480px) {
+    .dash-trigger-btn .xp-pill {
+        display: none;
+    }
+    .logo a {
+        font-size: 1rem;
+    }
 }
 
 /* ── 5. Sidebar — ARIA / focus trap support ─────────────────────────────── */
@@ -4827,7 +4822,6 @@ pre code {
 }
 @media (max-width: 768px) {
     .sidebar-close-btn { display: flex; }
-    .sidebar { position: relative; } /* re-position-context for close btn */
 }
 
 /* ── 6. Quiz engine — accessible option labels ──────────────────────────── */

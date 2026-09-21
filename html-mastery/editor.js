@@ -431,7 +431,7 @@ class InteractiveCodeEditor {
             if (lineNumbersElem) {
                 lineNumbersElem.scrollTop = textarea.scrollTop;
             }
-        });
+        }, { passive: true });
 
         // Initial line numbers
         syncLines();

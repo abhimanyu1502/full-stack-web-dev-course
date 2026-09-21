@@ -312,16 +312,11 @@ function initMainApp() {
         });
     }
 
-    // 5. High-Performance Throttled Scroll Engine (40fps+ on low-end devices)
-    // Strategy: batch all DOM reads, then all DOM writes inside a single rAF callback.
-    // During active scroll: disable expensive backdrop-filter on header (saves ~8ms/frame on GPU).
-    // After 150ms of scroll idle: restore visual quality.
+    // 5. Scroll Progress Bar & Back to Top (Optimized 60fps)
     const progressBar = document.getElementById('progress-bar');
     const backToTopBtn = document.getElementById('back-to-top');
-    const siteHeader = document.querySelector('.site-header');
     
     let isScrollTicking = false;
-    let scrollEndTimer = null;
     // Cache scrollHeight to avoid forced reflow on every frame
     let cachedScrollHeight = 0;
     const updateScrollHeightCache = () => {
@@ -332,27 +327,10 @@ function initMainApp() {
     window.addEventListener('resize', updateScrollHeightCache, { passive: true });
 
     window.addEventListener('scroll', () => {
-        // Mark document as actively scrolling (used by CSS for optimized hover/transition rules)
-        if (!document.documentElement.classList.contains('is-scrolling')) {
-            document.documentElement.classList.add('is-scrolling');
-            // Disable backdrop-filter on header during scroll to save GPU compositing cost
-            if (siteHeader) siteHeader.style.backdropFilter = 'none';
-            if (siteHeader) siteHeader.style.webkitBackdropFilter = 'none';
-        }
-
-        // Debounce: restore visual quality 150ms after scroll ends
-        clearTimeout(scrollEndTimer);
-        scrollEndTimer = setTimeout(() => {
-            document.documentElement.classList.remove('is-scrolling');
-            // Restore blur after scroll stops
-            if (siteHeader) siteHeader.style.backdropFilter = '';
-            if (siteHeader) siteHeader.style.webkitBackdropFilter = '';
-        }, 150);
-
         if (!isScrollTicking) {
             window.requestAnimationFrame(() => {
-                // DOM READ — batch all reads together, no interleaving with writes
-                const winScroll = document.documentElement.scrollTop || document.body.scrollTop || 0;
+                // DOM READ — batch all reads together
+                const winScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
                 const showBackToTop = winScroll > 450;
                 const scrolledPct = cachedScrollHeight > 0
                     ? Math.min(100, Math.max(0, (winScroll / cachedScrollHeight) * 100))
