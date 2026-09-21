@@ -2,12 +2,13 @@
 
 An interactive, production-grade web development learning platform with 52 HTML modules, 49 CSS topics, visual layout playgrounds, sandboxed code editor, gamification engine, and a native Node.js + SQLite cloud backend.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://abhim-html-mastery-v1.surge.sh/dashboard.html)
+[![GitHub Pages Mirror](https://img.shields.io/badge/Mirror-GitHub%20Pages-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
 [![Documentation](https://img.shields.io/badge/Documentation-Complete-blue?style=for-the-badge&logo=readme&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme)
 [![Node.js CI](https://img.shields.io/badge/Node.js-CI%20Passing-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](html-mastery/LICENSE)
 
-[Live Demo](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/playgrounds.html)
+[Live Demo (Surge)](https://abhim-html-mastery-v1.surge.sh/dashboard.html) | [GitHub Pages Mirror](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)
 
 ---
 
