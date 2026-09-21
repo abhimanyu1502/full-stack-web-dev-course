@@ -136,6 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span style="display: inline-block; padding: 3px 12px; background: ${difficultyColor}; color: white; border-radius: 20px; font-size: 0.78rem; font-weight: bold;">🟢 ${lesson.difficulty}</span>
             </div>
 
+            <!-- Tag Placement Indicator: Head vs Body -->
+            <div class="tag-placement-callout placement-head-box">
+                <div class="placement-badge">🎨 &lt;head&gt; or &lt;body&gt;</div>
+                <div class="placement-content">
+                    <strong>Tag Placement:</strong> External stylesheets are linked via <code>&lt;link rel="stylesheet" href="..."&gt;</code> inside the <code>&lt;head&gt;</code> tag, or embedded via internal <code>&lt;style&gt;</code> tags inside <code>&lt;head&gt;</code>. Inline styles are applied directly to HTML tags in the <code>&lt;body&gt;</code> tag using the <code>style="..."</code> attribute.
+                </div>
+            </div>
+
             <section class="lesson-content">
 
                 <div class="css-lesson-block">

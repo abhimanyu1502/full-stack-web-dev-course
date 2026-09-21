@@ -101,6 +101,14 @@
                         element. This means the component's CSS and JavaScript won't clash with the rest of the page.
                     </p>
                 </div>
+                <!-- Tag Placement Indicator: Head vs Body -->
+                <div class="tag-placement-callout placement-body-box">
+                    <div class="placement-badge">👁️ &lt;body&gt; Used under <body> tag</div>
+                    <div class="placement-content">
+                        <strong>Tag Placement:</strong> Shadow roots are attached to DOM elements inside the <code>&lt;body&gt;</code> tag via <code>element.attachShadow({ mode: "open" })</code> to encapsulate styles and markup.
+                    </div>
+                </div>
+
 
                 <h2>Concept Diagram</h2>
                 <div class="code-block-wrapper">

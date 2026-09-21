@@ -816,6 +816,97 @@ section {
     margin-bottom: var(--space-6);
 }
 
+/* ==========================================================================
+   Tag Placement Callout (Head vs Body Indicator)
+   ========================================================================== */
+.tag-placement-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin: var(--space-4) 0 var(--space-6) 0;
+    padding: 0.85rem 1.15rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xs);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tag-placement-callout:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.tag-placement-callout .placement-badge {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.tag-placement-callout.placement-head-box {
+    border-left: 4px solid #8b5cf6;
+}
+.tag-placement-callout.placement-head-box .placement-badge {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.35);
+}
+
+.tag-placement-callout.placement-body-box {
+    border-left: 4px solid #10b981;
+}
+.tag-placement-callout.placement-body-box .placement-badge {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.tag-placement-callout.placement-both-box {
+    border-left: 4px solid #0ea5e9;
+}
+.tag-placement-callout.placement-both-box .placement-badge {
+    background: rgba(14, 165, 233, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(14, 165, 233, 0.35);
+}
+
+.tag-placement-callout .placement-content {
+    flex: 1;
+    min-width: 0;
+    color: var(--text-secondary);
+}
+
+.tag-placement-callout .placement-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.tag-placement-callout .placement-content code {
+    font-size: 0.85em;
+    background: var(--bg-secondary);
+    color: var(--accent-color);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 600px) {
+    .tag-placement-callout {
+        flex-direction: column;
+        gap: var(--space-2);
+        padding: 0.75rem 0.85rem;
+    }
+}
+
 /* Concept Diagram */
 .concept-diagram {
     display: flex;

@@ -100,6 +100,14 @@
                     <p>How does a browser turn an HTML text file into the beautiful website you see on screen? This is
                         called the Critical Rendering Path.</p>
                 </div>
+                <!-- Tag Placement Indicator: Head vs Body -->
+                <div class="tag-placement-callout placement-both-box">
+                    <div class="placement-badge">🌐 &lt;head&gt; &amp; &lt;body&gt; Pipeline: <head> then <body></div>
+                    <div class="placement-content">
+                        <strong>Tag Placement:</strong> The browser parser first evaluates the <code>&lt;head&gt;</code> tag to assemble the CSSOM (from stylesheets) and page title, and then streams the <code>&lt;body&gt;</code> tag to construct the visible layout tree and paint layers.
+                    </div>
+                </div>
+
 
                 <h2>Concept Diagram</h2>
                 <div class="code-block-wrapper">
