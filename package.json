@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node html-mastery/server/index.js",
     "dev": "node --watch html-mastery/server/index.js",
-    "test": "node html-mastery/tests/regression-suite.test.js"
+    "test": "npm test --prefix html-mastery"
   },
   "author": "Abhimanyu Tiwari",
   "license": "MIT",

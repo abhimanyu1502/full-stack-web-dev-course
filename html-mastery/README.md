@@ -10,6 +10,13 @@ An interactive, production-grade web development learning platform with 52 HTML 
 
 [Live Demo (Surge)](https://abhim-html-mastery-v1.surge.sh/dashboard.html) | [GitHub Pages Mirror](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)
 
+> 🚀 **WORKING LIVE PREVIEW (SURGE.SH)**: [https://abhim-html-mastery-v1.surge.sh](https://abhim-html-mastery-v1.surge.sh)  
+> 📊 **Interactive Learning Dashboard**: [https://abhim-html-mastery-v1.surge.sh/dashboard.html](https://abhim-html-mastery-v1.surge.sh/dashboard.html)  
+> 🎮 **CSS Layout Playgrounds**: [https://abhim-html-mastery-v1.surge.sh/playgrounds.html](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)  
+> 📖 **First Lesson (Introduction to HTML)**: [https://abhim-html-mastery-v1.surge.sh/introduction.html](https://abhim-html-mastery-v1.surge.sh/introduction.html)  
+> 🎨 **CSS Mastery Track**: [https://abhim-html-mastery-v1.surge.sh/css.html](https://abhim-html-mastery-v1.surge.sh/css.html)  
+> 🌐 **GitHub Pages Mirror**: [https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
+
 ---
 
 ## 🎯 Problem

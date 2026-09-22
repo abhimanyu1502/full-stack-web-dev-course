@@ -1,4 +1,0 @@
-# Optional Python & Data Science Utilities for HTML & CSS Mastery Platform
-requests>=2.31.0
-pytest>=8.0.0
-beautifulsoup4>=4.12.0

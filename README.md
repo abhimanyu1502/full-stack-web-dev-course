@@ -10,6 +10,13 @@ An interactive, production-grade web development learning platform with 52 HTML 
 
 [Live Demo (Surge)](https://abhim-html-mastery-v1.surge.sh/dashboard.html) | [GitHub Pages Mirror](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)
 
+> 🚀 **WORKING LIVE PREVIEW (SURGE.SH)**: [https://abhim-html-mastery-v1.surge.sh](https://abhim-html-mastery-v1.surge.sh)  
+> 📊 **Interactive Learning Dashboard**: [https://abhim-html-mastery-v1.surge.sh/dashboard.html](https://abhim-html-mastery-v1.surge.sh/dashboard.html)  
+> 🎮 **CSS Layout Playgrounds**: [https://abhim-html-mastery-v1.surge.sh/playgrounds.html](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)  
+> 📖 **First Lesson (Introduction to HTML)**: [https://abhim-html-mastery-v1.surge.sh/introduction.html](https://abhim-html-mastery-v1.surge.sh/introduction.html)  
+> 🎨 **CSS Mastery Track**: [https://abhim-html-mastery-v1.surge.sh/css.html](https://abhim-html-mastery-v1.surge.sh/css.html)  
+> 🌐 **GitHub Pages Mirror**: [https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
+
 ---
 
 ## 🎯 Problem
@@ -87,7 +94,7 @@ graph TD
 
 ## 📊 Results
 
-- **Automated Regression Suite**: 150 / 150 checks passing (100% pass rate)
+- **Automated Regression Suite**: 151 / 151 checks passing (100% pass rate)
 - **Curriculum Coverage**: 52 HTML topics + 49 CSS lessons fully verified
 - **External Dependencies**: 0 (Runs entirely on standard Node.js runtime)
 - **Server Cold Boot Time**: < 30ms with instant SQLite schema initialization
@@ -107,7 +114,7 @@ graph TD
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/abhimanyu1502/full-stack-web-dev-course.git
-   cd full-stack-web-dev-course/html-mastery
+   cd full-stack-web-dev-course
    ```
 
 2. **Start the platform server:**
@@ -121,33 +128,63 @@ graph TD
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```text
 full-stack-web-dev-course/
-├── README.md                    # Showcase documentation & live links
-├── index.html                   # Root entry redirect for GitHub Pages
-├── .gitignore                   # Production git exclusion rules
-└── html-mastery/
-    ├── .github/workflows/ci.yml # GitHub Actions automated CI workflow
-    ├── server/
-    │   ├── index.js             # HTTP static server & REST API router
-    │   ├── database.js          # SQLite connection, schema & operations
-    │   ├── ai-proxy.js          # AI tutor endpoint & pedagogical heuristics
-    │   └── data/                # SQLite database storage (git-ignored)
-    ├── tests/
-    │   └── regression-suite.test.js # 150-assertion automated test suite
-    ├── dashboard.html           # Gamified learning dashboard
-    ├── dashboard.css            # Dashboard styles & theme variables
-    ├── dashboard.js             # Daily goals, streaks, and progress tracking
-    ├── playgrounds.html         # Interactive CSS layout visualizers
-    ├── playgrounds.js           # Box Model, Flexbox, Grid, Position logic
-    ├── cloud-sync.js            # Frontend client for SQLite sync & leaderboard
-    ├── progress.js              # XP, streak, bookmark, and progress engine
-    ├── editor.js                # Sandboxed in-browser code editor
-    ├── styles.css               # Core design tokens & responsive utilities
-    ├── package.json             # NPM scripts & project metadata
-    └── LICENSE                  # MIT Open Source License
+│
+├── README.md                    # Primary repository showcase & live preview links
+├── index.html                   # Root entry point with redirect for GitHub Pages
+├── package.json                 # Unified workspace scripts runner
+├── LICENSE                      # MIT Open Source License
+├── .gitignore                   # Workspace git exclusion rules
+│
+├── html-mastery/                # 🌐 HTML & CSS MASTERY FULLSTACK PLATFORM (LIVE)
+│   ├── server/                  # Native Node.js HTTP server & REST API
+│   │   ├── index.js             # Server entry point & API routes
+│   │   ├── database.js          # SQLite connection, schema & database operations
+│   │   ├── ai-proxy.js          # AI tutor endpoint & pedagogical heuristics
+│   │   └── data/                # SQLite storage (learning_platform.db)
+│   ├── tests/                   # Automated platform test suites
+│   │   ├── regression-suite.test.js # 151-check comprehensive regression suite
+│   │   └── test-html-editor-no-css.js # Zero-CSS HTML editor test suite
+│   ├── dashboard.html           # Gamified learning dashboard with XP & streaks
+│   ├── dashboard.css            # Learning dashboard styles & design tokens
+│   ├── dashboard.js             # Progress calculation, goals, and streak logic
+│   ├── playgrounds.html         # Interactive CSS layout visualizers (Box, Flex, Grid, Position)
+│   ├── playgrounds.js           # Real-time CSS layout playground engines
+│   ├── cloud-sync.js            # Frontend client for SQLite sync & community leaderboard
+│   ├── progress.js              # XP tracking, bookmarking, and local/cloud sync
+│   ├── editor.js                # Sandboxed in-browser code editor (pure HTML mode)
+│   ├── exercise.js              # Reusable exercise system with challenge validation
+│   ├── hints.js                 # 4-tier progressive hint engine
+│   ├── quiz-engine.js           # Lightweight checkpoint quiz runner
+│   ├── quiz-data.js             # Checkpoint question sets
+│   ├── styles.css               # Core design tokens & responsive utilities
+│   ├── package.json             # Course-specific dependencies & test scripts
+│   ├── CNAME                    # Custom domain mapping for Surge.sh hosting
+│   ├── 200.html                 # Single-page-app routing fallback for Surge
+│   └── README.md                # Platform documentation & live links
+│
+└── project/                     # 🐍 PYTHON BACKEND, DATA MODELS & ANALYTICS SERVICE
+    ├── .github/workflows/ci.yml # GitHub Actions workflow for Python test execution
+    ├── assets/                  # Diagrams & static assets
+    ├── data/                    # Dataset cache files
+    ├── notebooks/               # Jupyter notebooks
+    │   └── course_analytics.ipynb # Exploratory data analysis & curriculum metrics
+    ├── src/                     # Core Python modules
+    │   ├── models/models.py     # UserProfile & LessonProgress dataclasses
+    │   ├── preprocessing/curriculum_loader.py # Content parsing & word/line counts
+    │   ├── services/api_client.py # HTTP client for backend REST API
+    │   └── utils/helpers.py     # XP level formulas & SHA-256 fingerprinting
+    ├── tests/                   # Pytest test suite
+    │   └── test_platform.py     # Unit tests for models & utilities
+    ├── docs/                    # Architecture documentation & guides
+    ├── .env.example             # Environment variable configuration template
+    ├── .gitignore               # Python-specific ignore rules
+    ├── LICENSE                  # MIT Open Source License
+    ├── requirements.txt         # Python dependencies (pytest, requests, pandas)
+    └── README.md                # Python service documentation
 ```
 
 ---
