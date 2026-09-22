@@ -24,5 +24,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Run Regression Suite
+    - name: Run Platform Regression Suite
       run: npm test
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Run Python Backend Unit Tests
+      run: python -m unittest discover -s project/tests

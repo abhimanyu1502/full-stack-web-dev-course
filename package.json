@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node html-mastery/server/index.js",
     "dev": "node --watch html-mastery/server/index.js",
-    "test": "npm test --prefix html-mastery"
+    "test": "npm test --prefix html-mastery",
+    "test:py": "python -m unittest discover -s project/tests",
+    "test:all": "npm test && npm run test:py"
   },
   "author": "Abhimanyu Tiwari",
   "license": "MIT",

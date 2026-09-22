@@ -59,7 +59,11 @@ pip install -r requirements.txt
 
 ### 3. Run Unit Tests
 ```bash
-python -m pytest tests/
+# Standard library (zero-dependency)
+python -m unittest discover -s tests
+
+# Or using pytest
+pytest tests/
 ```
 
 ### 4. Run Analytics Notebook
