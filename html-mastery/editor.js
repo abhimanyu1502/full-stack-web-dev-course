@@ -5,25 +5,30 @@
  */
 
 class InteractiveCodeEditor {
-    constructor(options = {}) {
-        this.container = typeof options.container === 'string' 
-            ? document.querySelector(options.container) 
-            : options.container;
+    constructor(options = {}, extraOptions = {}) {
+        let opts = options;
+        if (options instanceof HTMLElement || typeof options === 'string') {
+            opts = Object.assign({}, extraOptions, { container: options });
+        }
+        this.container = typeof opts.container === 'string' 
+            ? document.querySelector(opts.container) 
+            : opts.container;
             
         if (!this.container) {
             console.error('InteractiveCodeEditor: Container not found');
             return;
         }
 
-        this.id = options.id || 'editor_' + Math.random().toString(36).substr(2, 9);
-        this.initialHTML = options.html !== undefined ? options.html : '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Document</title>\n</head>\n<body>\n  <h1>Hello World</h1>\n  <p>Start editing this code!</p>\n</body>\n</html>';
-        this.initialCSS = options.css !== undefined ? options.css : '';
-        this.showCSS = options.showCSS !== undefined ? options.showCSS : true;
+        this.id = opts.id || 'editor_' + Math.random().toString(36).substr(2, 9);
+        this.initialHTML = opts.html !== undefined ? opts.html : '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Document</title>\n</head>\n<body>\n  <h1>Hello World</h1>\n  <p>Start editing this code!</p>\n</body>\n</html>';
+        this.initialCSS = opts.css !== undefined ? opts.css : '';
+        this.showCSS = opts.showCSS !== undefined ? opts.showCSS : (opts.hasCssPane !== undefined ? opts.hasCssPane : true);
         this.storageKey = `saved_code_${this.id}`;
-        this.autoRun = options.autoRun !== undefined ? options.autoRun : true;
+        this.autoRun = opts.autoRun !== undefined ? opts.autoRun : true;
 
-        this.onCheck = typeof options.onCheck === 'function' ? options.onCheck : null;
-        this.hints = Array.isArray(options.hints) ? options.hints : [];
+        this.onCheck = typeof opts.onCheck === 'function' ? opts.onCheck : null;
+        this.onChange = typeof opts.onChange === 'function' ? opts.onChange : null;
+        this.hints = Array.isArray(opts.hints) ? opts.hints : [];
         this.currentHintIndex = 0;
         this.solutionHTML = options.solutionHTML || '';
         this.solutionCSS = options.solutionCSS || '';
@@ -420,6 +425,11 @@ class InteractiveCodeEditor {
         textarea.addEventListener('input', () => {
             syncLines();
             this.saveCodeLocally();
+            if (typeof this.onChange === 'function') {
+                const h = this.textareaHTML ? this.textareaHTML.value : '';
+                const c = this.textareaCSS ? this.textareaCSS.value : '';
+                this.onChange(h, c);
+            }
             if (this.autoRun) {
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(() => this.executeCode(), 400);
@@ -613,6 +623,27 @@ class InteractiveCodeEditor {
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;');
+    }
+
+    getHTML() {
+        return this.textareaHTML ? this.textareaHTML.value : '';
+    }
+
+    getCSS() {
+        return (this.showCSS && this.textareaCSS) ? this.textareaCSS.value : '';
+    }
+
+    setCode(html, css) {
+        if (this.textareaHTML && html !== undefined) {
+            this.textareaHTML.value = html;
+            this.updateLineNumbers(this.textareaHTML, this.linesHTML);
+        }
+        if (this.textareaCSS && css !== undefined) {
+            this.textareaCSS.value = css;
+            this.updateLineNumbers(this.textareaCSS, this.linesCSS);
+        }
+        this.saveCodeLocally();
+        this.executeCode();
     }
 }
 

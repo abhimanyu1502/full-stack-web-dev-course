@@ -220,18 +220,79 @@ class ProjectRunner {
         const editorContainer = document.getElementById('project-editor-container');
         if (!editorContainer) return;
 
-        if (window.InteractiveCodeEditor) {
-            this.editorInstance = new window.InteractiveCodeEditor(editorContainer, {
-                html: this.userHtml,
-                css: this.userCss,
-                hasCssPane: true,
-                onChange: (html, css) => {
-                    this.userHtml = html;
-                    this.userCss = css;
-                    this._saveCode();
-                }
-            });
+        editorContainer.innerHTML = '';
+        const milestone = this.project.milestones.find(m => m.step === this.currentStep) || this.project.milestones[0];
+
+        try {
+            if (window.InteractiveCodeEditor) {
+                this.editorInstance = new window.InteractiveCodeEditor(editorContainer, {
+                    id: `proj_${this.project.id}`,
+                    html: this.userHtml,
+                    css: this.userCss,
+                    hasCssPane: true,
+                    showCSS: true,
+                    concept: this.project.title,
+                    hints: milestone.hints || [],
+                    onCheck: () => {
+                        this.verifyCurrentStep();
+                    },
+                    onChange: (html, css) => {
+                        this.userHtml = html;
+                        this.userCss = css;
+                        this._saveCode();
+                    }
+                });
+                return;
+            }
+        } catch (err) {
+            console.error('Error mounting InteractiveCodeEditor:', err);
         }
+
+        this._mountFallbackEditor(editorContainer);
+    }
+
+    _mountFallbackEditor(container) {
+        container.innerHTML = `
+            <div class="project-fallback-editor" style="margin-top:1rem; padding:1.25rem; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <h4 style="margin:0;">💻 Interactive Workspace</h4>
+                    <button type="button" class="button primary-button" id="btn_run_fallback" style="padding:0.4rem 0.9rem; font-size:0.85rem;">▶ Run & Preview</button>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+                    <div>
+                        <label style="display:block; font-weight:600; font-size:0.82rem; margin-bottom:0.35rem; color:var(--text-secondary);">HTML (index.html)</label>
+                        <textarea id="fallback_html" style="width:100%; height:240px; font-family:var(--font-mono, monospace); font-size:0.88rem; padding:0.75rem; background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:8px; resize:vertical;" spellcheck="false"></textarea>
+                    </div>
+                    <div>
+                        <label style="display:block; font-weight:600; font-size:0.82rem; margin-bottom:0.35rem; color:var(--text-secondary);">CSS (style.css)</label>
+                        <textarea id="fallback_css" style="width:100%; height:240px; font-family:var(--font-mono, monospace); font-size:0.88rem; padding:0.75rem; background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color); border-radius:8px; resize:vertical;" spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div style="margin-top:1rem;">
+                    <label style="display:block; font-weight:600; font-size:0.82rem; margin-bottom:0.35rem; color:var(--text-secondary);">Live Output Preview</label>
+                    <iframe id="fallback_iframe" style="width:100%; height:300px; border:1px solid var(--border-color); border-radius:8px; background:#ffffff;" sandbox="allow-scripts allow-modals"></iframe>
+                </div>
+            </div>
+        `;
+        const htmlTa = container.querySelector('#fallback_html');
+        const cssTa = container.querySelector('#fallback_css');
+        const iframe = container.querySelector('#fallback_iframe');
+        const runBtn = container.querySelector('#btn_run_fallback');
+
+        htmlTa.value = this.userHtml;
+        cssTa.value = this.userCss;
+
+        const updatePreview = () => {
+            this.userHtml = htmlTa.value;
+            this.userCss = cssTa.value;
+            this._saveCode();
+            iframe.srcdoc = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>${this.userCss}</style></head><body>${this.userHtml}</body></html>`;
+        };
+
+        htmlTa.addEventListener('input', updatePreview);
+        cssTa.addEventListener('input', updatePreview);
+        if (runBtn) runBtn.addEventListener('click', updatePreview);
+        updatePreview();
     }
 
     attachEventListeners() {
@@ -240,6 +301,12 @@ class ProjectRunner {
             btn.addEventListener('click', (e) => {
                 const stepNum = parseInt(e.currentTarget.getAttribute('data-step'), 10);
                 if (stepNum && (this.completedSteps.has(stepNum) || stepNum === this.completedSteps.size + 1)) {
+                    // Sync code before stepping
+                    if (this.editorInstance && typeof this.editorInstance.getHTML === 'function') {
+                        this.userHtml = this.editorInstance.getHTML();
+                        this.userCss = this.editorInstance.getCSS();
+                        this._saveCode();
+                    }
                     this.currentStep = stepNum;
                     this.render();
                 }
@@ -533,18 +600,48 @@ ${this.userHtml}
         const feedbackEl = this.container.querySelector('#step-feedback');
         if (!milestone || !feedbackEl) return;
 
+        // Sync latest code from active editor
+        if (this.editorInstance) {
+            if (typeof this.editorInstance.getHTML === 'function') {
+                this.userHtml = this.editorInstance.getHTML();
+                this.userCss  = this.editorInstance.getCSS();
+            } else if (this.editorInstance.textareaHTML) {
+                this.userHtml = this.editorInstance.textareaHTML.value;
+                this.userCss  = this.editorInstance.textareaCSS ? this.editorInstance.textareaCSS.value : '';
+            }
+        } else {
+            const htmlTa = this.container.querySelector('#fallback_html');
+            const cssTa = this.container.querySelector('#fallback_css');
+            if (htmlTa) this.userHtml = htmlTa.value;
+            if (cssTa)  this.userCss  = cssTa.value;
+        }
+        this._saveCode();
+
         const isValid = milestone.validation(this.userHtml, this.userCss);
 
         if (isValid) {
             this.completedSteps.add(this.currentStep);
             feedbackEl.className = 'step-feedback feedback-success';
-            feedbackEl.innerHTML = `✅ <strong>Step ${this.currentStep} Verified!</strong> Great job following the milestone requirements.`;
+            feedbackEl.innerHTML = `
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+                    <div>
+                        <span>🎉</span> <strong>Step ${this.currentStep} Verified!</strong> Milestone requirements passed.
+                    </div>
+                    <span style="font-size:0.85rem; font-weight:600; opacity:0.95;">+50 XP • Advancing...</span>
+                </div>
+            `;
             feedbackEl.classList.remove('hidden');
+
+            if (window.progressSystem && window.progressSystem.addXP) {
+                window.progressSystem.addXP(50);
+            }
 
             setTimeout(() => {
                 if (this.currentStep < 5) {
                     this.currentStep += 1;
                     this.render();
+                    const targetCard = this.container.querySelector('.step-details-card');
+                    if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {
                     if (window.progressSystem) {
                         window.progressSystem.completeProject(this.project.id, 300);
@@ -554,9 +651,25 @@ ${this.userHtml}
             }, 1200);
         } else {
             feedbackEl.className = 'step-feedback feedback-error';
-            feedbackEl.innerHTML = `❌ <strong>Verification Incomplete:</strong> Your current code does not satisfy the requirements for Step ${this.currentStep}. Click "Need Hint?" for guidance.`;
+            const hintPrompt = (milestone.hints && milestone.hints.length > 0)
+                ? `<div style="margin-top:0.4rem; font-size:0.85rem; opacity:0.95;">💡 <strong>Quick Hint:</strong> ${this._escapeHTML(milestone.hints[0])}</div>`
+                : '';
+            feedbackEl.innerHTML = `
+                <div>
+                    <div><span>❌</span> <strong>Verification Incomplete for Step ${this.currentStep}:</strong></div>
+                    <div style="margin-top:0.3rem; font-size:0.88rem; color:var(--text-secondary);">${this._escapeHTML(milestone.instructions)}</div>
+                    ${hintPrompt}
+                </div>
+            `;
             feedbackEl.classList.remove('hidden');
         }
+    }
+
+    _escapeHTML(str) {
+        return (str || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
     }
 }
 
