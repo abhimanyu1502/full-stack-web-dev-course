@@ -11,7 +11,7 @@
 (function () {
     'use strict';
 
-    const API_BASE = (function () {
+    let API_BASE = (function () {
         if (window.API_BASE) return window.API_BASE;
         const stored = localStorage.getItem('api_endpoint');
         if (stored) return stored.replace(/\/$/, '');
@@ -341,6 +341,13 @@
                     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:1rem; border-radius:10px; margin-bottom:1rem;">
                         <div style="font-weight:600; font-size:0.92rem; margin-bottom:0.25rem;">Backend Server Status</div>
                         <div id="cloud-server-desc" style="font-size:0.85rem; color:#34d399;">Checking connection...</div>
+                        <div style="margin-top:0.65rem; padding-top:0.65rem; border-top:1px solid rgba(255,255,255,0.08);">
+                            <label for="cloud-custom-api-input" style="font-size:0.75rem; color:var(--text-secondary,#94a3b8); display:block; margin-bottom:0.25rem;">Backend API URL (Render / Custom Server):</label>
+                            <div style="display:flex; gap:0.4rem;">
+                                <input type="url" id="cloud-custom-api-input" placeholder="https://your-backend.onrender.com" style="flex:1; padding:0.35rem 0.6rem; font-size:0.78rem; border-radius:6px; border:1px solid rgba(255,255,255,0.18); background:rgba(0,0,0,0.3); color:#fff;" />
+                                <button type="button" id="cloud-save-api-btn" style="padding:0.35rem 0.75rem; font-size:0.78rem; border-radius:6px; background:#6366f1; color:#fff; font-weight:600; border:none; cursor:pointer;">Connect</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="cloud-actions-row">
@@ -427,6 +434,40 @@
         modalEl.querySelector('#cloud-btn-demo').addEventListener('click', handleDemoLogin);
         modalEl.querySelector('#cloud-btn-logout').addEventListener('click', handleLogout);
 
+        // Custom API URL handler
+        const apiInput = modalEl.querySelector('#cloud-custom-api-input');
+        const saveApiBtn = modalEl.querySelector('#cloud-save-api-btn');
+        if (apiInput && saveApiBtn) {
+            saveApiBtn.addEventListener('click', async () => {
+                const val = apiInput.value.trim().replace(/\/$/, '');
+                if (!val) {
+                    localStorage.removeItem('api_endpoint');
+                    API_BASE = window.location.origin.includes('http') ? window.location.origin : 'http://localhost:5000';
+                    await checkBackend();
+                    refreshModalState();
+                    return;
+                }
+                saveApiBtn.textContent = 'Testing…';
+                try {
+                    const res = await fetch(`${val}/api/health`);
+                    if (res.ok) {
+                        localStorage.setItem('api_endpoint', val);
+                        API_BASE = val;
+                        await checkBackend();
+                        refreshModalState();
+                        saveApiBtn.textContent = '✅ Connected';
+                        setTimeout(() => { saveApiBtn.textContent = 'Connect'; }, 2000);
+                    } else {
+                        alert('Server returned status ' + res.status);
+                        saveApiBtn.textContent = 'Connect';
+                    }
+                } catch (e) {
+                    alert('Could not connect to: ' + val + '\nNote: Free Render web services take ~50 seconds to wake up if sleeping.');
+                    saveApiBtn.textContent = 'Connect';
+                }
+            });
+        }
+
         return modalEl;
     }
 
@@ -446,8 +487,13 @@
             if (isServerAvailable) {
                 desc.innerHTML = `<span style="color:#34d399;">● Connected</span> — SQLite REST API active at <code>${API_BASE}</code>`;
             } else {
-                desc.innerHTML = `<span style="color:#f87171;">● Offline</span> — Start backend via <code>npm start</code> or run on local port 5000.`;
+                desc.innerHTML = `<span style="color:#f87171;">● Offline</span> — Start backend via <code>npm start</code> or connect a Render backend below.`;
             }
+        }
+
+        const apiInput = document.getElementById('cloud-custom-api-input');
+        if (apiInput && localStorage.getItem('api_endpoint')) {
+            apiInput.value = localStorage.getItem('api_endpoint');
         }
 
         const guestView = document.getElementById('cloud-auth-view-guest');

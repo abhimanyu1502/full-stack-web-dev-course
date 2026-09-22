@@ -307,7 +307,12 @@
 
         <!-- Offline Notice (shown when server unreachable) -->
         <div class="offline-notice" id="offline-notice" style="display:none;">
-            ⚠ The local server is not reachable. Start it with <code>node server/index.js</code>, then try again. Progress is still saved locally.
+            <div>⚠ <strong>Backend server not connected.</strong></div>
+            <div style="font-size:0.78rem; margin:0.35rem 0;">Running locally? Run <code>node server/index.js</code>. Running on Surge? Enter your Render backend URL below:</div>
+            <div style="display:flex; gap:0.4rem; margin-top:0.4rem;">
+                <input type="url" id="custom-api-input" placeholder="https://your-app.onrender.com" style="flex:1; padding:0.4rem 0.6rem; font-size:0.78rem; border-radius:6px; border:1px solid rgba(245,158,11,0.4); background:rgba(0,0,0,0.4); color:#fff;">
+                <button type="button" id="save-api-btn" style="padding:0.4rem 0.75rem; font-size:0.78rem; border-radius:6px; background:#f59e0b; color:#111; font-weight:600; border:none; cursor:pointer;">Connect</button>
+            </div>
         </div>
 
         <!-- Tab Switch -->
@@ -410,6 +415,39 @@
                 }
             }
             return '';
+        }
+
+        // ── Custom API Endpoint Connector ────────────────────────────────────
+        const saveApiBtn = document.getElementById('save-api-btn');
+        const customApiInput = document.getElementById('custom-api-input');
+        if (customApiInput && localStorage.getItem('api_endpoint')) {
+            customApiInput.value = localStorage.getItem('api_endpoint');
+        }
+        if (saveApiBtn && customApiInput) {
+            saveApiBtn.addEventListener('click', async () => {
+                const val = customApiInput.value.trim().replace(/\/$/, '');
+                if (!val) {
+                    localStorage.removeItem('api_endpoint');
+                    alert('Backend endpoint reset to default.');
+                    return;
+                }
+                saveApiBtn.textContent = 'Testing…';
+                try {
+                    const res = await fetch(`${val}/api/health`);
+                    if (res.ok) {
+                        localStorage.setItem('api_endpoint', val);
+                        saveApiBtn.textContent = '✅ Connected!';
+                        saveApiBtn.style.background = '#10b981';
+                        setTimeout(() => { offlineNotice.style.display = 'none'; }, 1200);
+                    } else {
+                        alert('Server responded with status ' + res.status);
+                        saveApiBtn.textContent = 'Connect';
+                    }
+                } catch (e) {
+                    alert('Could not reach server at that URL. Note: Free Render services take ~50s to wake up if sleeping.');
+                    saveApiBtn.textContent = 'Connect';
+                }
+            });
         }
 
         // ── Auth API helpers ──────────────────────────────────────────────────
