@@ -5151,3 +5151,343 @@ button:not(.db-savedcode-toggle):not(.sidebar-close-btn) {
     outline: 2px solid var(--accent-color);
     outline-offset: 1px;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ── 23. Project Hub — Export Bar & GitHub Commit ────────────────────────
+   ═══════════════════════════════════════════════════════════════════════════ */
+.project-export-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    background: var(--bg-code, #f8fafc);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1rem;
+}
+[data-theme="dark"] .project-export-bar {
+    background: #1a1e2e;
+    border-color: #2a2e45;
+}
+.export-bar-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+.export-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Export .html button */
+.btn-export-code {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    background: var(--accent-color, #3b82f6);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    text-decoration: none;
+}
+.btn-export-code:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* GitHub commit button */
+.btn-github-commit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    background: #24292f;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.btn-github-commit:hover { opacity: 0.85; transform: translateY(-1px); }
+[data-theme="dark"] .btn-github-commit { background: #374151; }
+
+/* Cloud submit button */
+.btn-cloud-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    background: linear-gradient(135deg, #6c63ff, #a78bfa);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.btn-cloud-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-cloud-submit:disabled { opacity: 0.55; cursor: wait; }
+
+/* Completion export bar */
+.completion-export-bar {
+    background: rgba(108, 99, 255, 0.07);
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    border-radius: 10px;
+    padding: 0.85rem 1.1rem;
+    margin: 1rem 0;
+}
+.completion-export-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ── 24. GitHub PAT Modal ─────────────────────────────────────────────────
+   ═══════════════════════════════════════════════════════════════════════════ */
+.github-pat-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeInModal 0.2s ease;
+}
+.github-pat-modal.hidden { display: none; }
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.pat-modal-card {
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 18px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+[data-theme="dark"] .pat-modal-card {
+    background: #1a1e2e;
+    border-color: #2a2e45;
+    color: #f0f2ff;
+}
+
+.pat-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.pat-modal-close:hover { color: var(--text-primary); background: var(--bg-code, #f1f5f9); }
+
+.pat-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.pat-modal-icon { font-size: 1.75rem; }
+.pat-modal-header h3 { font-size: 1.2rem; font-weight: 700; }
+
+.pat-modal-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.55;
+}
+.pat-modal-desc code {
+    background: var(--bg-code, #f1f5f9);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.82rem;
+}
+
+.pat-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.85rem;
+}
+.pat-field-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary, #555);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.pat-token-link {
+    font-size: 0.75rem;
+    color: var(--accent-color, #3b82f6);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+}
+.pat-token-link:hover { text-decoration: underline; }
+
+.pat-field-group input {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    background: var(--bg-input, #f8fafc);
+    border: 1.5px solid var(--border-color, #e2e8f0);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+[data-theme="dark"] .pat-field-group input {
+    background: #252a3a;
+    border-color: #2a2e45;
+    color: #f0f2ff;
+}
+.pat-field-group input:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 3px rgba(108,99,255,0.18);
+}
+
+.pat-remember-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.pat-feedback {
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    margin-bottom: 0.85rem;
+    line-height: 1.45;
+}
+.pat-feedback.hidden { display: none; }
+.pat-feedback.pat-feedback-info    { background: rgba(59,130,246,0.1);  border: 1px solid rgba(59,130,246,0.3);  color: #60a5fa; }
+.pat-feedback.pat-feedback-success { background: rgba(34,197,94,0.1);   border: 1px solid rgba(34,197,94,0.3);   color: #4ade80; }
+.pat-feedback.pat-feedback-error   { background: rgba(239,68,68,0.1);   border: 1px solid rgba(239,68,68,0.3);   color: #f87171; }
+.pat-feedback a { color: inherit; }
+
+.pat-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    justify-content: flex-end;
+}
+.btn-pat-cancel {
+    padding: 0.55rem 1.1rem;
+    background: transparent;
+    border: 1.5px solid var(--border-color, #e2e8f0);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: border-color 0.2s;
+}
+.btn-pat-cancel:hover { border-color: var(--text-secondary); }
+.btn-pat-commit {
+    padding: 0.55rem 1.25rem;
+    background: #24292f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.btn-pat-commit:hover:not(:disabled) { opacity: 0.85; }
+.btn-pat-commit:disabled { opacity: 0.55; cursor: wait; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ── 25. User Session Badge in Site Header ───────────────────────────────
+   ═══════════════════════════════════════════════════════════════════════════ */
+.user-session-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.user-badge-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+    background: var(--bg-code, #f1f5f9);
+    border: 1px solid var(--border-color, #e2e8f0);
+    transition: background 0.2s;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+.user-badge-link:hover { background: var(--bg-sidebar, #eef2f8); }
+[data-theme="dark"] .user-badge-link {
+    background: #1e2235;
+    border-color: #2a2e45;
+}
+[data-theme="dark"] .user-badge-link:hover { background: #252a3a; }
+.user-badge-avatar { font-size: 1rem; line-height: 1; }
+.user-badge-name { max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.user-badge-logout {
+    background: transparent;
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.2s, background 0.2s;
+    padding: 0;
+}
+.user-badge-logout:hover { color: var(--error-color, #ef4444); background: rgba(239,68,68,0.08); }
+
+/* ── Sidebar nav my-progress link ── */
+.sidebar nav li a[href="my-progress.html"] { }
+

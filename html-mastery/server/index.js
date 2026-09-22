@@ -290,7 +290,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 function startServer(port) {
-    server.listen(port, () => {
+    server.listen(port, '0.0.0.0', () => {
         PORT = port;
         console.log(`
 ╔══════════════════════════════════════════════════════════════════╗

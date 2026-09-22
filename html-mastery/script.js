@@ -310,6 +310,30 @@ function initMainApp() {
             tocList.appendChild(li);
             navLinks.push(a);
         });
+
+        // ── Utility nav items at bottom of sidebar ────────────────────────────
+        const utilItems = [
+            { href: 'projects.html',   label: '🚀 Project Hub' },
+            { href: 'my-progress.html', label: '📊 My Progress' },
+            { href: 'login.html',       label: '🔑 Sign In' }
+        ];
+        utilItems.forEach(item => {
+            const li = document.createElement('li');
+            li.style.marginTop = item.href === 'projects.html' ? '0.5rem' : '0';
+            const a = document.createElement('a');
+            a.href = item.href;
+            a.textContent = item.label;
+            if (window.location.pathname.includes(item.href.replace('.html', ''))) {
+                a.classList.add('active');
+            }
+            // Hide Sign In if already logged in
+            if (item.href === 'login.html' && localStorage.getItem('auth_token')) {
+                a.textContent = '📊 My Account';
+                a.href = 'my-progress.html';
+            }
+            li.appendChild(a);
+            tocList.appendChild(li);
+        });
     }
 
     // 5. Scroll Progress Bar & Back to Top (Optimized 60fps)
@@ -1669,4 +1693,16 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initPageEnhancements);
 } else {
     initPageEnhancements();
+}
+
+// ── Service Worker Registration ──────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => {
+                // Check for updates every 60 minutes
+                setInterval(() => reg.update(), 60 * 60 * 1000);
+            })
+            .catch(err => console.warn('[SW] Registration failed:', err.message));
+    });
 }

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: html-mastery-fullstack
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: node html-mastery/server/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.0.0
+      - key: PORT
+        value: 5000

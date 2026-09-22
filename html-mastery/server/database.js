@@ -8,8 +8,10 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 
-// Ensure data directory exists
-const DATA_DIR = path.join(__dirname, 'data');
+// Support Railway persistent volume via DATABASE_DIR env var
+// Railway: mount a volume at /data and set DATABASE_DIR=/data
+// Local:   defaults to ./server/data/
+const DATA_DIR = process.env.DATABASE_DIR || path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
 }

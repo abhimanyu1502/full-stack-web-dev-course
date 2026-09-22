@@ -1,0 +1,7 @@
+.git
+.agents
+.gemini
+node_modules
+npm-debug.log
+.DS_Store
+Thumbs.db

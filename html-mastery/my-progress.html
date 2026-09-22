@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Progress — HTML & CSS Mastery</title>
+    <meta name="description" content="View your personal learning progress, XP, level, streak, completed lessons, quiz scores, and projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Progress Page Styles ── */
+        .progress-page-hero {
+            background: linear-gradient(135deg, #1a1040 0%, #2d1b69 50%, #1a1040 100%);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(108,99,255,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-avatar-ring {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .hero-avatar {
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, #6c63ff, #a78bfa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 4px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 30px rgba(108,99,255,0.5);
+        }
+        .hero-level-badge {
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            background: #f59e0b;
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 20px;
+            border: 2px solid #fff;
+        }
+        .hero-info { flex: 1; min-width: 180px; }
+        .hero-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .hero-title {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            margin-bottom: 0.75rem;
+        }
+        /* XP Bar */
+        .xp-bar-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .xp-bar-label {
+            font-size: 0.78rem;
+            opacity: 0.7;
+            display: flex;
+            justify-content: space-between;
+        }
+        .xp-bar-track {
+            height: 8px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 260px;
+            max-width: 100%;
+        }
+        .xp-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a78bfa, #6c63ff);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        /* Stat chips in hero */
+        .hero-stats-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+        .hero-stat-chip {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+            padding: 0.5rem 0.85rem;
+            text-align: center;
+        }
+        .hero-stat-chip .chip-val {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        .hero-stat-chip .chip-lbl {
+            display: block;
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Track Sections ── */
+        .progress-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+        }
+        .progress-section-title .count-badge {
+            background: var(--accent-primary, #6c63ff);
+            color: #fff;
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* ── Lesson Progress Grid ── */
+        .lesson-progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .lesson-prog-card {
+            background: var(--bg-lesson, #f9fafb);
+            border: 1.5px solid var(--border, #e5e7eb);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.85rem;
+            transition: transform 0.15s, border-color 0.2s;
+        }
+        .lesson-prog-card:hover { transform: translateY(-1px); }
+        .lesson-prog-card.done {
+            border-color: #22c55e;
+            background: rgba(34,197,94,0.07);
+        }
+        [data-theme="dark"] .lesson-prog-card {
+            background: #1a1e2e;
+            border-color: #2a2e45;
+        }
+        [data-theme="dark"] .lesson-prog-card.done {
+            background: rgba(34,197,94,0.1);
+        }
+        .prog-card-icon { font-size: 1.2rem; flex-shrink: 0; }
+        .prog-card-name { flex: 1; line-height: 1.3; color: var(--text-primary); }
+        .prog-card-check { color: #22c55e; font-size: 1rem; flex-shrink: 0; }
+        .prog-card-lock { color: var(--text-muted, #aaa); font-size: 0.85rem; flex-shrink: 0; }
+
+        /* ── Quiz Scores ── */
+        .quiz-scores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .quiz-score-card {
+            background: var(--bg-lesson, #f9fafb);
+            border: 1.5px solid var(--border, #e5e7eb);
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        [data-theme="dark"] .quiz-score-card {
+            background: #1a1e2e;
+            border-color: #2a2e45;
+        }
+        .quiz-score-label { font-size: 0.82rem; color: var(--text-secondary, #555); font-weight: 600; }
+        .quiz-score-bar-wrap { height: 6px; background: var(--border, #e5e7eb); border-radius: 4px; overflow: hidden; }
+        .quiz-score-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+        .quiz-score-value { font-size: 1.1rem; font-weight: 800; color: var(--text-primary); }
+
+        /* ── Projects Grid ── */
+        .completed-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .proj-complete-card {
+            background: linear-gradient(135deg, rgba(108,99,255,0.08) 0%, rgba(167,139,250,0.08) 100%);
+            border: 1.5px solid rgba(108,99,255,0.2);
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .proj-complete-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .proj-complete-info { flex: 1; }
+        .proj-complete-title { font-size: 0.88rem; font-weight: 600; color: var(--text-primary); }
+        .proj-complete-badge { font-size: 0.72rem; color: #22c55e; font-weight: 600; }
+
+        /* ── Cloud Sync Banner ── */
+        .cloud-sync-banner {
+            background: linear-gradient(135deg, rgba(108,99,255,0.1) 0%, rgba(99,200,255,0.08) 100%);
+            border: 1px solid rgba(108,99,255,0.2);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .cloud-sync-text { font-size: 0.875rem; color: var(--text-secondary); }
+        .cloud-sync-text strong { color: var(--text-primary); }
+        .btn-cloud-sync-now {
+            padding: 0.5rem 1rem;
+            background: var(--accent-primary, #6c63ff);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: opacity 0.2s;
+        }
+        .btn-cloud-sync-now:hover { opacity: 0.88; }
+
+        /* ── Empty State ── */
+        .empty-state-block {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted, #aaa);
+            font-size: 0.875rem;
+        }
+        .empty-state-block .empty-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .lesson-progress-grid { grid-template-columns: 1fr 1fr; }
+            .xp-bar-track { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="introduction.html">HTML &amp; CSS Mastery</a>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <aside class="sidebar" id="sidebar">
+            <nav id="table-of-contents" aria-label="Table of contents">
+                <ul id="toc-list">
+                    <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                    <li><a href="introduction.html">📚 HTML Curriculum</a></li>
+                    <li><a href="css.html">🎨 CSS Curriculum</a></li>
+                    <li><a href="projects.html">🚀 Project Hub</a></li>
+                    <li><a href="my-progress.html" class="active">📊 My Progress</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content-area" id="main-content">
+            <!-- Hero / Stats Banner -->
+            <section>
+                <div class="progress-page-hero" id="hero-section">
+                    <div class="hero-avatar-ring">
+                        <div class="hero-avatar" id="hero-avatar">💻</div>
+                        <span class="hero-level-badge" id="hero-level-badge">Lv 1</span>
+                    </div>
+                    <div class="hero-info">
+                        <div class="hero-name" id="hero-name">Loading…</div>
+                        <div class="hero-title" id="hero-bio">Aspiring Full Stack Web Developer</div>
+                        <div class="xp-bar-wrap">
+                            <div class="xp-bar-label">
+                                <span>XP Progress</span>
+                                <span id="xp-label">0 / 650 XP</span>
+                            </div>
+                            <div class="xp-bar-track">
+                                <div class="xp-bar-fill" id="xp-bar-fill" style="width:0%"></div>
+                            </div>
+                        </div>
+                        <div class="hero-stats-row" id="hero-stats-row">
+                            <div class="hero-stat-chip">
+                                <span class="chip-val" id="stat-xp">0</span>
+                                <span class="chip-lbl">Total XP</span>
+                            </div>
+                            <div class="hero-stat-chip">
+                                <span class="chip-val" id="stat-streak">0🔥</span>
+                                <span class="chip-lbl">Day Streak</span>
+                            </div>
+                            <div class="hero-stat-chip">
+                                <span class="chip-val" id="stat-lessons">0</span>
+                                <span class="chip-lbl">Lessons Done</span>
+                            </div>
+                            <div class="hero-stat-chip">
+                                <span class="chip-val" id="stat-projects">0</span>
+                                <span class="chip-lbl">Projects Done</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Sync Banner -->
+                <div class="cloud-sync-banner" id="cloud-sync-banner" style="display:none;">
+                    <div class="cloud-sync-text">
+                        <strong>☁ Cloud Sync Active</strong> — Your progress is synced to the server. Last sync: <span id="last-sync-time">—</span>
+                    </div>
+                    <button type="button" class="btn-cloud-sync-now" id="btn-sync-now">Sync Now</button>
+                </div>
+
+                <!-- Not logged in notice -->
+                <div class="cloud-sync-banner" id="login-prompt-banner" style="display:none; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.06);">
+                    <div class="cloud-sync-text">
+                        <strong>💡 Create a free account</strong> to save your progress in the cloud and sync across devices.
+                    </div>
+                    <a href="login.html" class="btn-cloud-sync-now">Sign In / Register</a>
+                </div>
+            </section>
+
+            <!-- HTML Lessons Progress -->
+            <section>
+                <div class="progress-section-title">
+                    📚 HTML Lessons
+                    <span class="count-badge" id="html-progress-badge">0 / 0</span>
+                </div>
+                <div class="lesson-progress-grid" id="html-lessons-grid">
+                    <div class="empty-state-block"><span class="empty-icon">📖</span>Loading lessons…</div>
+                </div>
+            </section>
+
+            <!-- CSS Lessons Progress -->
+            <section>
+                <div class="progress-section-title">
+                    🎨 CSS Lessons
+                    <span class="count-badge" id="css-progress-badge">0 / 0</span>
+                </div>
+                <div class="lesson-progress-grid" id="css-lessons-grid">
+                    <div class="empty-state-block"><span class="empty-icon">🎨</span>Loading CSS lessons…</div>
+                </div>
+            </section>
+
+            <!-- Quiz Scores -->
+            <section>
+                <div class="progress-section-title">
+                    🧠 Quiz Scores
+                    <span class="count-badge" id="quiz-progress-badge">0 taken</span>
+                </div>
+                <div class="quiz-scores-grid" id="quiz-scores-grid">
+                    <div class="empty-state-block"><span class="empty-icon">📝</span>No quiz scores yet. Complete quizzes in lessons to see your scores here.</div>
+                </div>
+            </section>
+
+            <!-- Completed Projects -->
+            <section>
+                <div class="progress-section-title">
+                    🚀 Completed Projects
+                    <span class="count-badge" id="projects-progress-badge">0 done</span>
+                </div>
+                <div class="completed-projects-grid" id="completed-projects-grid">
+                    <div class="empty-state-block"><span class="empty-icon">🚧</span>No projects completed yet. Head to the <a href="projects.html">Project Hub</a> to get started!</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="progress.js?v=1"></script>
+    <script src="script.js?v=4"></script>
+    <script src="auth.js?v=1"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progSystem = window.progressSystem;
+            const authMgr    = window.AuthManager;
+
+            // ── Hero Section ──────────────────────────────────────────────────
+            function populateHero(profile) {
+                const avatar = profile?.profile?.avatar || profile?.avatar || '💻';
+                const name   = profile?.profile?.display_name || profile?.username || profile?.displayName || 'Learner';
+                const xp     = profile?.profile?.xp ?? profile?.xp ?? (progSystem?.data?.xp || 0);
+                const level  = profile?.profile?.level ?? profile?.level ?? (progSystem?.data?.level || 1);
+                const streak = profile?.profile?.streak_count ?? profile?.streak ?? (progSystem?.data?.streak?.count || 1);
+                const bio    = profile?.profile?.bio || 'Aspiring Full Stack Web Developer';
+
+                document.getElementById('hero-avatar').textContent       = avatar;
+                document.getElementById('hero-level-badge').textContent  = `Lv ${level}`;
+                document.getElementById('hero-name').textContent          = name;
+                document.getElementById('hero-bio').textContent           = bio;
+
+                const xpInLevel   = xp % 650;
+                const xpForLevel  = 650;
+                const pct         = Math.min(100, Math.round((xpInLevel / xpForLevel) * 100));
+                document.getElementById('xp-bar-fill').style.width = pct + '%';
+                document.getElementById('xp-label').textContent    = `${xpInLevel} / ${xpForLevel} XP`;
+
+                document.getElementById('stat-xp').textContent      = xp.toLocaleString();
+                document.getElementById('stat-streak').textContent  = streak + '🔥';
+
+                const htmlDone = progSystem?.data?.completedLessons?.filter(id => !id.startsWith('css_')).length || 0;
+                const cssDone  = progSystem?.data?.completedLessons?.filter(id =>  id.startsWith('css_')).length || 0;
+                const projDone = progSystem?.data?.completedProjects?.length || 0;
+                document.getElementById('stat-lessons').textContent  = htmlDone + cssDone;
+                document.getElementById('stat-projects').textContent = projDone;
+            }
+
+            // ── Auth-aware initialization ─────────────────────────────────────
+            const isLoggedIn = authMgr?.isLoggedIn();
+
+            if (isLoggedIn) {
+                document.getElementById('cloud-sync-banner').style.display = 'flex';
+                authMgr.fetchProfile().then(profile => {
+                    if (profile) populateHero(profile);
+                });
+                document.getElementById('btn-sync-now')?.addEventListener('click', async () => {
+                    const btn = document.getElementById('btn-sync-now');
+                    btn.textContent = 'Syncing…';
+                    try {
+                        if (window.cloudSync?.syncNow) await window.cloudSync.syncNow();
+                        document.getElementById('last-sync-time').textContent = new Date().toLocaleTimeString();
+                    } catch (_) {}
+                    btn.textContent = 'Sync Now';
+                });
+            } else {
+                document.getElementById('login-prompt-banner').style.display = 'flex';
+                // Use local progress
+                const localUser = { username: 'Guest', profile: { xp: progSystem?.data?.xp || 0, level: progSystem?.data?.level || 1, streak_count: progSystem?.data?.streak?.count || 1, avatar: '💻' } };
+                populateHero(localUser);
+            }
+
+            // ── HTML Lessons ──────────────────────────────────────────────────
+            function renderLessons(containerId, badgeId, topics, completedIds, trackPrefix) {
+                const grid  = document.getElementById(containerId);
+                const badge = document.getElementById(badgeId);
+                if (!topics || !grid) return;
+
+                const filtered = Object.entries(topics);
+                const done = filtered.filter(([id]) => completedIds.includes(id));
+                badge.textContent = `${done.length} / ${filtered.length}`;
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = `<div class="empty-state-block"><span class="empty-icon">📖</span>No lessons found.</div>`;
+                    return;
+                }
+
+                grid.innerHTML = filtered.map(([id, topic]) => {
+                    const isDone = completedIds.includes(id);
+                    return `
+                        <div class="lesson-prog-card ${isDone ? 'done' : ''}">
+                            <span class="prog-card-icon">${isDone ? '✅' : '○'}</span>
+                            <span class="prog-card-name">${topic.title || id}</span>
+                            ${isDone ? '<span class="prog-card-check">✓</span>' : ''}
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const completedLessons = progSystem?.data?.completedLessons || [];
+
+            if (window.HTML_TOPICS_LIST) {
+                renderLessons('html-lessons-grid', 'html-progress-badge', window.HTML_TOPICS_LIST, completedLessons, '');
+            } else {
+                // Build from script.js topic catalog
+                const topics = window.TOPICS_CATALOG || {};
+                renderLessons('html-lessons-grid', 'html-progress-badge', topics, completedLessons, '');
+            }
+
+            if (window.CSS_TOPICS_CATALOG) {
+                renderLessons('css-lessons-grid', 'css-progress-badge', window.CSS_TOPICS_CATALOG, completedLessons, 'css_');
+            }
+
+            // ── Quiz Scores ───────────────────────────────────────────────────
+            function renderQuizScores() {
+                const quizScores = progSystem?.data?.quizScores || {};
+                const grid  = document.getElementById('quiz-scores-grid');
+                const badge = document.getElementById('quiz-progress-badge');
+                const entries = Object.entries(quizScores);
+                badge.textContent = `${entries.length} taken`;
+
+                if (entries.length === 0) {
+                    grid.innerHTML = `<div class="empty-state-block"><span class="empty-icon">📝</span>No quiz scores yet. Complete quizzes in lessons!</div>`;
+                    return;
+                }
+
+                grid.innerHTML = entries.map(([id, data]) => {
+                    const score = typeof data === 'object' ? (data.score || 0) : data;
+                    const pct   = Math.min(100, Math.round(score));
+                    const color = pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
+                    return `
+                        <div class="quiz-score-card">
+                            <div class="quiz-score-label">${id.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</div>
+                            <div class="quiz-score-bar-wrap">
+                                <div class="quiz-score-bar-fill" style="width:${pct}%; background:${color}"></div>
+                            </div>
+                            <div class="quiz-score-value" style="color:${color}">${pct}%</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            renderQuizScores();
+
+            // ── Completed Projects ────────────────────────────────────────────
+            function renderCompletedProjects() {
+                const completed = progSystem?.data?.completedProjects || [];
+                const grid  = document.getElementById('completed-projects-grid');
+                const badge = document.getElementById('projects-progress-badge');
+                badge.textContent = `${completed.length} done`;
+
+                if (completed.length === 0) {
+                    grid.innerHTML = `<div class="empty-state-block"><span class="empty-icon">🚧</span>No projects done yet. Head to the <a href="projects.html">Project Hub</a>!</div>`;
+                    return;
+                }
+
+                // Look up project data
+                const allProjects = [
+                    ...(window.projectsData?.html || []),
+                    ...(window.projectsData?.css  || [])
+                ];
+
+                grid.innerHTML = completed.map(id => {
+                    const proj = allProjects.find(p => p.id === id);
+                    const icon  = proj?.icon  || '🚀';
+                    const title = proj?.title || id;
+                    return `
+                        <div class="proj-complete-card">
+                            <span class="proj-complete-icon">${icon}</span>
+                            <div class="proj-complete-info">
+                                <div class="proj-complete-title">${title}</div>
+                                <div class="proj-complete-badge">✓ Completed</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Load projects data then render
+            if (window.projectsData) {
+                renderCompletedProjects();
+            } else {
+                // Create a quick script tag to load projects-data.js
+                const s = document.createElement('script');
+                s.src = 'projects-data.js?v=1';
+                s.onload = renderCompletedProjects;
+                document.body.appendChild(s);
+            }
+        });
+    </script>
+</body>
+</html>

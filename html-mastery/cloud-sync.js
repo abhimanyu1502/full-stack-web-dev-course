@@ -11,7 +11,17 @@
 (function () {
     'use strict';
 
-    const API_BASE = window.location.origin.includes('http') ? window.location.origin : 'http://localhost:5000';
+    const API_BASE = (function () {
+        if (window.API_BASE) return window.API_BASE;
+        const stored = localStorage.getItem('api_endpoint');
+        if (stored) return stored.replace(/\/$/, '');
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            if (window.location.port !== '5000' && window.location.port !== '') {
+                return `http://${window.location.hostname}:5000`;
+            }
+        }
+        return window.location.origin.includes('http') ? window.location.origin : 'http://localhost:5000';
+    })();
     let isServerAvailable = false;
     let currentUser = null;
     let syncToken = localStorage.getItem('html_mastery_auth_token') || null;

@@ -8,8 +8,13 @@
  */
 
 class AIAssistantClient {
-    constructor(endpoint = '/api/ai') {
-        this.endpoint = endpoint;
+    constructor(endpoint) {
+        const apiBase = (window.API_BASE || localStorage.getItem('api_endpoint') || (
+            (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000' && window.location.port !== ''
+                ? `http://${window.location.hostname}:5000`
+                : ''
+        )).replace(/\/$/, '');
+        this.endpoint = endpoint || `${apiBase}/api/ai`;
     }
 
     /**
