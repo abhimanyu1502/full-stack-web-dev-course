@@ -1687,6 +1687,132 @@ function initPageEnhancements() {
             }
         });
     }
+
+    // Mount Primary Top Navigation and Header Action Buttons across all pages
+    initGlobalNavbar();
+}
+
+function initGlobalNavbar() {
+    const header = document.querySelector('.site-header .header-container');
+    if (!header) return;
+
+    const currentPath = window.location.pathname.split('/').pop() || 'dashboard.html';
+    const isDashboard = currentPath.includes('dashboard') || currentPath === '' || currentPath === 'index.html';
+    const isHtml = currentPath === 'introduction.html' || (!currentPath.includes('css') && !currentPath.includes('project') && !currentPath.includes('playground') && !currentPath.includes('progress') && !currentPath.includes('login') && !isDashboard);
+    const isCss = currentPath.includes('css');
+    const isProjects = currentPath.includes('project') && !currentPath.includes('practice-project');
+    const isPlaygrounds = currentPath.includes('playground');
+    const isProgress = currentPath.includes('progress');
+    const isMore = currentPath.includes('practice') || currentPath.includes('checklist') || currentPath.includes('questions-and-answers');
+
+    // 1. Inject Top Navigation Bar if not already present
+    if (!document.getElementById('site-primary-nav')) {
+        const nav = document.createElement('nav');
+        nav.className = 'site-nav';
+        nav.id = 'site-primary-nav';
+        nav.setAttribute('aria-label', 'Primary Navigation');
+        nav.innerHTML = `
+            <a href="dashboard.html" class="nav-item ${isDashboard ? 'active' : ''}">
+                <span>🏠</span> Dashboard
+            </a>
+            <a href="introduction.html" class="nav-item ${isHtml ? 'active' : ''}">
+                <span>📚</span> HTML
+            </a>
+            <a href="css.html" class="nav-item ${isCss ? 'active' : ''}">
+                <span>🎨</span> CSS
+            </a>
+            <a href="projects.html" class="nav-item ${isProjects ? 'active' : ''}">
+                <span>🚀</span> Projects
+            </a>
+            <a href="playgrounds.html" class="nav-item ${isPlaygrounds ? 'active' : ''}">
+                <span>🎮</span> Playgrounds
+            </a>
+            <a href="my-progress.html" class="nav-item ${isProgress ? 'active' : ''}">
+                <span>📊</span> Progress
+            </a>
+            <div class="nav-dropdown-wrapper">
+                <button type="button" class="nav-item nav-dropdown-btn ${isMore ? 'active' : ''}" aria-haspopup="true" aria-expanded="false">
+                    <span>⚡</span> More <span style="font-size:0.7em; margin-left:2px;">▾</span>
+                </button>
+                <div class="nav-dropdown-menu">
+                    <a href="practice-project.html" class="dropdown-link ${currentPath.includes('practice-project') ? 'active' : ''}">📝 Practice Project</a>
+                    <a href="practice-answer.html" class="dropdown-link ${currentPath.includes('practice-answer') ? 'active' : ''}">✅ Practice Solution</a>
+                    <a href="professional-html-checklist.html" class="dropdown-link ${currentPath.includes('checklist') ? 'active' : ''}">📋 HTML Checklist</a>
+                    <a href="questions-and-answers.html" class="dropdown-link ${currentPath.includes('questions-and-answers') ? 'active' : ''}">❓ Interview Q&A</a>
+                </div>
+            </div>
+        `;
+
+        const logo = header.querySelector('.logo');
+        if (logo && logo.nextSibling) {
+            header.insertBefore(nav, logo.nextSibling);
+        } else {
+            header.appendChild(nav);
+        }
+    }
+
+    // 2. Inject Header Actions: Cloud Sync & Sign In
+    const headerActions = header.querySelector('.header-actions');
+    if (headerActions) {
+        // Cloud Sync & Leaderboard button
+        if (!document.getElementById('header-cloud-btn')) {
+            const cloudBtn = document.createElement('button');
+            cloudBtn.type = 'button';
+            cloudBtn.id = 'header-cloud-btn';
+            cloudBtn.className = 'header-sync-btn';
+            cloudBtn.title = 'Open SQLite Cloud Sync & Community Leaderboard';
+            cloudBtn.innerHTML = `<span>☁️</span> <span>Cloud & Leaderboard</span>`;
+            cloudBtn.addEventListener('click', () => {
+                if (window.CloudSync && window.CloudSync.openModal) {
+                    window.CloudSync.openModal();
+                } else {
+                    const s = document.createElement('script');
+                    s.src = 'cloud-sync.js?v=2';
+                    s.onload = () => {
+                        if (window.CloudSync && window.CloudSync.openModal) window.CloudSync.openModal();
+                    };
+                    document.body.appendChild(s);
+                }
+            });
+            headerActions.insertBefore(cloudBtn, headerActions.firstChild);
+        }
+
+        // Sign In / Profile button
+        if (!document.getElementById('nav-signin-btn') && !document.getElementById('user-session-badge')) {
+            const isLoggedIn = localStorage.getItem('auth_token');
+            if (!isLoggedIn) {
+                const signInBtn = document.createElement('a');
+                signInBtn.href = `login.html?next=${encodeURIComponent(currentPath)}`;
+                signInBtn.id = 'nav-signin-btn';
+                signInBtn.className = 'nav-signin-btn';
+                signInBtn.innerHTML = `<span>🔑</span> Sign In`;
+                headerActions.appendChild(signInBtn);
+            }
+        }
+    }
+
+    // 3. Inject Mobile Sidebar Quick Navigation Links
+    const tocList = document.getElementById('toc-list');
+    if (tocList && !document.getElementById('sidebar-quick-nav')) {
+        const quickNav = document.createElement('div');
+        quickNav.className = 'sidebar-quick-nav';
+        quickNav.id = 'sidebar-quick-nav';
+        quickNav.innerHTML = `
+            <div class="sidebar-quick-title">Navigation Hub</div>
+            <ul class="sidebar-quick-links">
+                <li><a href="dashboard.html" class="${isDashboard ? 'active' : ''}"><span>🏠</span> Dashboard</a></li>
+                <li><a href="introduction.html" class="${isHtml ? 'active' : ''}"><span>📚</span> HTML Curriculum (52)</a></li>
+                <li><a href="css.html" class="${isCss ? 'active' : ''}"><span>🎨</span> CSS Curriculum (49)</a></li>
+                <li><a href="projects.html" class="${isProjects ? 'active' : ''}"><span>🚀</span> Project Hub</a></li>
+                <li><a href="playgrounds.html" class="${isPlaygrounds ? 'active' : ''}"><span>🎮</span> Visual Playgrounds</a></li>
+                <li><a href="my-progress.html" class="${isProgress ? 'active' : ''}"><span>📊</span> My Progress & Sync</a></li>
+                <li><a href="practice-project.html" class="${currentPath.includes('practice-project') ? 'active' : ''}"><span>📝</span> Practice Project</a></li>
+                <li><a href="professional-html-checklist.html" class="${currentPath.includes('checklist') ? 'active' : ''}"><span>📋</span> HTML Checklist</a></li>
+                <li><a href="questions-and-answers.html" class="${currentPath.includes('questions-and-answers') ? 'active' : ''}"><span>❓</span> Interview Q&A</a></li>
+            </ul>
+        `;
+        tocList.parentNode.insertBefore(quickNav, tocList);
+    }
 }
 
 if (document.readyState === 'loading') {

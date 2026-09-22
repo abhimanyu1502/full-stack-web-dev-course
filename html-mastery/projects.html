@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 
 <body>
@@ -77,6 +77,7 @@
                 <div class="projects-track-tabs">
                     <button type="button" class="tab-btn active" id="tab_html_projects">HTML Projects (6)</button>
                     <button type="button" class="tab-btn" id="tab_css_projects">CSS Projects (7)</button>
+                    <button type="button" class="tab-btn" id="tab_community_showcase">🌟 Community Showcase</button>
                 </div>
 
                 <!-- Projects Cards Selector Grid -->
@@ -98,6 +99,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const htmlTab = document.getElementById('tab_html_projects');
             const cssTab = document.getElementById('tab_css_projects');
+            const showcaseTab = document.getElementById('tab_community_showcase');
             const grid = document.getElementById('projects-selector-grid');
             const workspace = document.getElementById('active-project-workspace');
 
@@ -136,6 +138,74 @@
                 });
             }
 
+            async function renderCommunityShowcase() {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);"><span>⏳</span> Loading real-time community submissions from SQLite database...</div>';
+                workspace.innerHTML = '';
+                const apiBase = (window.API_BASE || localStorage.getItem('api_endpoint') || (
+                    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000' && window.location.port !== ''
+                        ? `http://${window.location.hostname}:5000`
+                        : ''
+                )).replace(/\/$/, '');
+
+                try {
+                    const res = await fetch(`${apiBase}/api/projects/submissions`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        const subs = data.submissions || [];
+                        if (subs.length === 0) {
+                            grid.innerHTML = `
+                                <div style="grid-column: 1/-1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-secondary); border-radius: 12px; border: 1px dashed var(--border-color);">
+                                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀</div>
+                                    <h3>No Community Submissions Yet</h3>
+                                    <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 1rem;">
+                                        Be the first learner to complete a project and click <strong>"Submit to Gallery"</strong> in the sandbox editor to show off your work here!
+                                    </p>
+                                </div>
+                            `;
+                            return;
+                        }
+
+                        grid.innerHTML = subs.map(s => `
+                            <div class="project-card-tile" style="border-top: 3px solid var(--accent-color);">
+                                <div class="card-tile-header">
+                                    <span class="tile-icon">🌟</span>
+                                    <span class="difficulty-badge" style="background: rgba(16,185,129,0.15); color: #10b981;">Shared</span>
+                                </div>
+                                <h3>${s.title || 'Community Project'}</h3>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">By <strong>@${s.username || 'learner'}</strong> • ${new Date(s.submitted_at || Date.now()).toLocaleDateString()}</p>
+                                <div class="card-tile-footer" style="margin-top: 0.75rem;">
+                                    <span class="tile-status">Code Saved</span>
+                                    <button type="button" class="btn-start-project btn-inspect-sub" data-sub-id="${s.id}">Inspect & Run →</button>
+                                </div>
+                            </div>
+                        `).join('');
+
+                        grid.querySelectorAll('.btn-inspect-sub').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const sid = btn.getAttribute('data-sub-id');
+                                const found = subs.find(item => item.id == sid);
+                                if (found) {
+                                    loadProject(found.project_id || 'portfolio');
+                                    setTimeout(() => {
+                                        if (activeRunner) {
+                                            activeRunner.userHtml = found.html_code;
+                                            activeRunner.userCss = found.css_code || '';
+                                            activeRunner.render();
+                                            workspace.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }, 200);
+                                }
+                            });
+                        });
+                    } else {
+                        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">Could not fetch submissions. Make sure your backend server is running.</div>';
+                    }
+                } catch (err) {
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">Offline mode: Connect your Render backend URL to view live community submissions.</div>';
+                }
+            }
+
             function loadProject(projId) {
                 const all = [...(window.projectsData.html || []), ...(window.projectsData.css || [])];
                 const target = all.find(p => p.id === projId);
@@ -148,14 +218,25 @@
             htmlTab.addEventListener('click', () => {
                 htmlTab.classList.add('active');
                 cssTab.classList.remove('active');
+                if (showcaseTab) showcaseTab.classList.remove('active');
                 renderGrid('html');
             });
 
             cssTab.addEventListener('click', () => {
                 cssTab.classList.add('active');
                 htmlTab.classList.remove('active');
+                if (showcaseTab) showcaseTab.classList.remove('active');
                 renderGrid('css');
             });
+
+            if (showcaseTab) {
+                showcaseTab.addEventListener('click', () => {
+                    showcaseTab.classList.add('active');
+                    htmlTab.classList.remove('active');
+                    cssTab.classList.remove('active');
+                    renderCommunityShowcase();
+                });
+            }
 
             // Initial render & auto-load first project
             renderGrid('html');
@@ -164,6 +245,7 @@
             }
         });
     </script>
+    <script src="cloud-sync.js?v=2"></script>
     <script src="ai-assistant.js?v=1"></script>
     <script src="ai-ui.js?v=1"></script>
     <script src="auth.js?v=1"></script>
