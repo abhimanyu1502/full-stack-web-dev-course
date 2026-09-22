@@ -1051,7 +1051,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Create a main heading with your name and a paragraph introducing yourself.",
             starterHTML: `<!-- Welcome to HTML! Practice below -->\n`,
-            starterCSS: `h1 {\n    color: #2563eb;\n}`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_h1',
@@ -1078,7 +1078,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Write a complete modern HTML5 boilerplate document with doctype, html, head, title, and body tags.",
             starterHTML: ``,
-            starterCSS: `body {\n    font-family: system-ui, sans-serif;\n}`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_doctype',
@@ -1109,8 +1109,8 @@ function getHtmlChallenge(pageId) {
             title: "Elements and Nesting",
             difficulty: "Easy",
             instructions: "Create an outer container (such as a section or article) with nested heading, paragraph, and strong elements.",
-            starterHTML: `<section class="card">\n    <!-- Nest your heading and styled paragraph here -->\n</section>`,
-            starterCSS: `.card {\n    padding: 1rem;\n    border: 1px solid #cbd5e1;\n    border-radius: 8px;\n}`,
+            starterHTML: `<section>\n    <!-- Nest your heading and styled paragraph here -->\n</section>`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_section',
@@ -1129,7 +1129,7 @@ function getHtmlChallenge(pageId) {
                 "Use `<section>` as the parent, `<p>` as child, and `<strong>` nested inside the `<p>`.",
                 "Example:\n```html\n<section>\n  <h2>Nested</h2>\n  <p>Text with <strong>bold</strong> focus.</p>\n</section>\n```"
             ],
-            solutionHTML: `<section class="card">\n  <h2>Mastering Nesting</h2>\n  <p>Always close tags in the <strong>reverse order</strong> that they were opened.</p>\n</section>`,
+            solutionHTML: `<section>\n  <h2>Mastering Nesting</h2>\n  <p>Always close tags in the <strong>reverse order</strong> that they were opened.</p>\n</section>`,
             solutionExplanation: "Tags must strictly nest without overlapping tag boundaries to maintain valid DOM trees."
         },
         'attributes': {
@@ -1137,7 +1137,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Create an image tag with src and alt attributes, and an anchor tag with href and title attributes.",
             starterHTML: `<!-- Add your image and link with required attributes -->\n`,
-            starterCSS: `img {\n    max-width: 250px;\n    border-radius: 6px;\n    display: block;\n    margin-bottom: 10px;\n}`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_img_alt',
@@ -1164,7 +1164,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Structure a document with an <h1> main title, an <h2> section, and an <h3> subsection.",
             starterHTML: `<!-- Structure your headings below -->\n`,
-            starterCSS: `h1 { color: #1e3a8a; }\nh2 { color: #2563eb; }\nh3 { color: #475569; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_h1',
@@ -1191,7 +1191,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Write two distinct paragraphs separated by a horizontal rule (<hr>) and include a line break (<br>).",
             starterHTML: `<!-- Write paragraphs with <hr> and <br> -->\n`,
-            starterCSS: `p { line-height: 1.6; }\nhr { border: none; border-top: 2px solid #e2e8f0; margin: 15px 0; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'two_p',
@@ -1218,7 +1218,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Write a sentence using <strong> for importance, <em> for emphasis, and <mark> for highlights.",
             starterHTML: `<!-- Add formatted text using <strong>, <em>, and <mark> -->\n<p></p>`,
-            starterCSS: `mark { background: #fef08a; padding: 2px 4px; border-radius: 3px; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_strong',
@@ -1250,7 +1250,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Create a link opening an external website in a new tab securely with target=\"_blank\" and rel=\"noopener noreferrer\".",
             starterHTML: `<!-- Build a secure external hyperlink -->\n`,
-            starterCSS: `a { color: #2563eb; text-decoration: none; font-weight: 600; }\na:hover { text-decoration: underline; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_target_blank',
@@ -1276,8 +1276,8 @@ function getHtmlChallenge(pageId) {
             title: "Buttons vs Links",
             difficulty: "Medium",
             instructions: "Create both a navigation link <a> that links to an ID or URL, and an action <button type=\"button\">.",
-            starterHTML: `<div class="action-group">\n    <!-- Add <a> and <button> here -->\n</div>`,
-            starterCSS: `.action-group { display: flex; gap: 10px; align-items: center; }\n.btn { padding: 8px 16px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer; }`,
+            starterHTML: `<div>\n    <!-- Add <a> and <button> here -->\n</div>`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_a_tag',
@@ -1296,7 +1296,7 @@ function getHtmlChallenge(pageId) {
                 "The tags are `<button type=\"button\">` and `<a href=\"...\">`.",
                 "Example:\n```html\n<a href=\"#pricing\" class=\"nav-link\">View Pricing</a>\n<button type=\"button\" class=\"btn\">Buy Now</button>\n```"
             ],
-            solutionHTML: `<a href="#pricing" class="nav-link">View Pricing</a>\n<button type=\"button\" class=\"btn\">Download Report</button>`,
+            solutionHTML: `<a href="#pricing">View Pricing</a>\n<button type=\"button\">Download Report</button>`,
             solutionExplanation: "Never use <div> with click handlers when a native <button> provides built-in keyboard accessibility and focus management."
         },
         'images': {
@@ -1304,7 +1304,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Add an image with src, descriptive alt text, width, and height attributes.",
             starterHTML: `<!-- Add an accessible responsive <img> -->\n`,
-            starterCSS: `img {\n    border-radius: 8px;\n    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);\n}`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_img_alt',
@@ -1331,7 +1331,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Easy",
             instructions: "Create an unordered list (<ul>) with 3 items, and an ordered list (<ol>) with 3 numbered steps.",
             starterHTML: `<!-- Create an unordered and an ordered list below -->\n`,
-            starterCSS: `ul, ol { padding-left: 20px; line-height: 1.8; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_ul_3_li',
@@ -1364,7 +1364,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Medium",
             instructions: "Use a block-level <div> card container and an inline <span> badge with custom styling.",
             starterHTML: `<!-- Build a div card with an embedded span badge -->\n`,
-            starterCSS: `.profile-card {\n    border: 1px solid #e2e8f0;\n    padding: 1rem;\n    border-radius: 8px;\n}\n.badge {\n    background: #e0e7ff;\n    color: #3730a3;\n    padding: 2px 8px;\n    border-radius: 12px;\n    font-size: 0.75rem;\n    font-weight: bold;\n}`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_div_card',
@@ -1391,7 +1391,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Medium",
             instructions: "Construct a semantic document layout featuring <header>, <nav>, <main>, <article>, and <footer> tags.",
             starterHTML: `<!-- Assemble a full semantic webpage skeleton -->\n`,
-            starterCSS: `header, nav, main, article, footer { padding: 10px; margin: 5px 0; border: 1px dashed #94a3b8; }\nheader { background: #f8fafc; }\nfooter { background: #f1f5f9; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_header_nav',
@@ -1418,7 +1418,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Medium",
             instructions: "Create a data table using <table>, <caption>, <thead>, <tbody>, <tr>, <th scope=\"col\">, and <td>.",
             starterHTML: `<!-- Build a styled data table with headers and caption -->\n`,
-            starterCSS: `table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }\nth, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }\nth { background: #f1f5f9; font-weight: 600; }\ncaption { font-weight: bold; margin-bottom: 8px; caption-side: top; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_caption',
@@ -1450,7 +1450,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Medium",
             instructions: "Build a registration form with <label for=\"...\">, linked <input id=\"...\"> fields for email & password, and a submit button.",
             starterHTML: `<!-- Build a form with linked labels, inputs, and submit button -->\n`,
-            starterCSS: `form { display: flex; flex-direction: column; gap: 12px; max-width: 320px; }\nlabel { font-weight: 600; font-size: 0.9rem; }\ninput { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; }\nbutton { padding: 10px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_form_tag',
@@ -1481,8 +1481,8 @@ function getHtmlChallenge(pageId) {
             title: "Modern HTML5 Input Types",
             difficulty: "Medium",
             instructions: "Create a form showcasing number, date, range, and color inputs with labels.",
-            starterHTML: `<!-- Add specialized HTML5 input types -->\n<form class="inputs-form">\n</form>`,
-            starterCSS: `.inputs-form { display: flex; flex-direction: column; gap: 10px; max-width: 350px; }\ninput { padding: 6px; }`,
+            starterHTML: `<!-- Add specialized HTML5 input types -->\n<form>\n</form>`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_number_date',
@@ -1501,7 +1501,7 @@ function getHtmlChallenge(pageId) {
                 "Ensure each input has a corresponding label.",
                 "Example:\n```html\n<input type=\"color\" id=\"theme\">\n<input type=\"range\" id=\"vol\" min=\"0\" max=\"100\">\n```"
             ],
-            solutionHTML: `<form class="inputs-form">\n  <label for="qty">Quantity (1-10):</label>\n  <input type="number" id="qty" min="1" max="10" value="1">\n\n  <label for="dob">Booking Date:</label>\n  <input type="date" id="dob">\n\n  <label for="volume">Volume Slider:</label>\n  <input type="range" id="volume" min="0" max="100" value="75">\n\n  <label for="brand-color">Brand Color:</label>\n  <input type="color" id="brand-color" value="#2563eb">\n</form>`,
+            solutionHTML: `<form>\n  <label for="qty">Quantity (1-10):</label>\n  <input type="number" id="qty" min="1" max="10" value="1">\n\n  <label for="dob">Booking Date:</label>\n  <input type="date" id="dob">\n\n  <label for="volume">Volume Slider:</label>\n  <input type="range" id="volume" min="0" max="100" value="75">\n\n  <label for="brand-color">Brand Color:</label>\n  <input type="color" id="brand-color" value="#2563eb">\n</form>`,
             solutionExplanation: "Using specialized input types gives mobile users tailored keypads (e.g. numeric dials) and improves validation reliability."
         },
         'aria': {
@@ -1509,7 +1509,7 @@ function getHtmlChallenge(pageId) {
             difficulty: "Medium",
             instructions: "Create an accessible icon link to https://x.com with aria-label=\"Follow us on X\" and an embedded <svg> with aria-hidden=\"true\".",
             starterHTML: `<!-- Build an accessible SVG icon link with ARIA -->\n<a href="https://x.com">\n  <!-- Add your SVG with aria-hidden="true" -->\n</a>`,
-            starterCSS: `.icon-x {\n    width: 24px;\n    height: 24px;\n    fill: currentColor;\n}`,
+            starterCSS: ``,
             validationRules: [
                 {
                     id: 'has_aria_label',
@@ -1526,9 +1526,9 @@ function getHtmlChallenge(pageId) {
                 "Screen readers cannot understand raw SVG vectors or path coordinates unless given an accessible label.",
                 "Add `aria-label` to the parent anchor `<a>` so screen readers announce the destination.",
                 "Add `aria-hidden=\"true\"` to the `<svg>` child element to hide decorative graphic paths from the screen reader.",
-                "Syntax template:\n```html\n<a href=\"https://x.com\" aria-label=\"Follow us on X\">\n  <svg class=\"icon-x\" aria-hidden=\"true\" viewBox=\"0 0 24 24\">\n    <path d=\"...\"/>\n  </svg>\n</a>\n```"
+                "Syntax template:\n```html\n<a href=\"https://x.com\" aria-label=\"Follow us on X\">\n  <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\">\n    <path d=\"...\"/>\n  </svg>\n</a>\n```"
             ],
-            solutionHTML: `<!-- The screen reader will now correctly announce: "Link, Follow us on X" -->\n<a href="https://x.com" aria-label="Follow us on X">\n  <!-- Place your fixed SVG or icon span here -->\n  <svg class="icon-x" aria-hidden="true" viewBox="0 0 24 24">\n    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>\n  </svg>\n</a>`,
+            solutionHTML: `<!-- The screen reader will now correctly announce: "Link, Follow us on X" -->\n<a href="https://x.com" aria-label="Follow us on X">\n  <!-- Place your fixed SVG or icon span here -->\n  <svg aria-hidden="true" viewBox="0 0 24 24">\n    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>\n  </svg>\n</a>`,
             solutionExplanation: "The `aria-label` attribute provides the link with an accessible name ('Follow us on X') for screen readers, while `aria-hidden=\"true\"` on the `<svg>` prevents assistive technology from trying to announce raw graphic paths."
         }
     };
@@ -1554,8 +1554,8 @@ function getHtmlChallenge(pageId) {
         title: `${cleanTitle} Practice Challenge`,
         difficulty: difficulty,
         instructions: `Practice applying ${cleanTitle} markup and concepts in the live code sandbox below.`,
-        starterHTML: `<!-- ${cleanTitle} Sandbox -->\n<div class="practice-box">\n  <h2>${cleanTitle}</h2>\n  <p>Write your markup here...</p>\n</div>`,
-        starterCSS: `.practice-box {\n    padding: 1.25rem;\n    border: 1px solid #cbd5e1;\n    border-radius: 8px;\n    background: #ffffff;\n}\nh2 {\n    color: #2563eb;\n    margin-top: 0;\n}`,
+        starterHTML: `<!-- ${cleanTitle} Sandbox -->\n<div>\n  <h2>${cleanTitle}</h2>\n  <p>Write your markup here...</p>\n</div>`,
+        starterCSS: ``,
         validationRules: [
             {
                 id: 'rule_valid_markup',
@@ -1568,11 +1568,11 @@ function getHtmlChallenge(pageId) {
         ],
         hints: [
             `Think about the core purpose of ${cleanTitle} in modern semantic web development.`,
-            `Identify the specific HTML tags, attributes, or CSS properties introduced in this lesson.`,
+            `Identify the specific HTML tags or attributes introduced in this lesson.`,
             `Check the code examples in the lesson above to verify tag names and attribute syntax.`,
             `Draft your markup in the HTML editor pane, observing the live preview to verify formatting.`
         ],
-        solutionHTML: `<!-- ${cleanTitle} Solution -->\n<div class="practice-box">\n  <h2>${cleanTitle} Implemented</h2>\n  <p>Standard compliant HTML5 markup demonstrated.</p>\n</div>`,
+        solutionHTML: `<!-- ${cleanTitle} Solution -->\n<div>\n  <h2>${cleanTitle} Implemented</h2>\n  <p>Standard compliant HTML5 markup demonstrated.</p>\n</div>`,
         solutionExplanation: `Applying semantic HTML tags and best practices ensures optimal accessibility, SEO ranking, and maintainability.`
     };
 }
@@ -1608,12 +1608,12 @@ function renderLiveEditor() {
                 difficulty: challengeData.difficulty || 'Easy',
                 instructions: challengeData.instructions,
                 starterHTML: challengeData.starterHTML,
-                starterCSS: challengeData.starterCSS || '',
-                showCSS: true,
+                starterCSS: '',
+                showCSS: false,
                 validationRules: challengeData.validationRules || [],
                 hints: challengeData.hints,
                 solutionHTML: challengeData.solutionHTML,
-                solutionCSS: challengeData.solutionCSS || '',
+                solutionCSS: '',
                 solutionExplanation: challengeData.solutionExplanation
             });
         } else {

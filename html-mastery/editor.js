@@ -16,7 +16,7 @@ class InteractiveCodeEditor {
         }
 
         this.id = options.id || 'editor_' + Math.random().toString(36).substr(2, 9);
-        this.initialHTML = options.html !== undefined ? options.html : '<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body { font-family: sans-serif; padding: 1rem; }\n  </style>\n</head>\n<body>\n  <h1>Hello World</h1>\n  <p>Start editing this code!</p>\n</body>\n</html>';
+        this.initialHTML = options.html !== undefined ? options.html : '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Document</title>\n</head>\n<body>\n  <h1>Hello World</h1>\n  <p>Start editing this code!</p>\n</body>\n</html>';
         this.initialCSS = options.css !== undefined ? options.css : '';
         this.showCSS = options.showCSS !== undefined ? options.showCSS : true;
         this.storageKey = `saved_code_${this.id}`;
@@ -171,9 +171,9 @@ class InteractiveCodeEditor {
         this.btnReset.addEventListener('click', () => {
             if (confirm('Reset editor back to initial code?')) {
                 this.textareaHTML.value = this.initialHTML;
-                if (this.textareaCSS) this.textareaCSS.value = this.initialCSS;
+                if (this.showCSS && this.textareaCSS) this.textareaCSS.value = this.initialCSS;
                 this.updateLineNumbers(this.textareaHTML, this.linesHTML);
-                if (this.textareaCSS) this.updateLineNumbers(this.textareaCSS, this.linesCSS);
+                if (this.showCSS && this.textareaCSS) this.updateLineNumbers(this.textareaCSS, this.linesCSS);
                 this.saveCodeLocally();
                 this.executeCode();
             }
@@ -183,9 +183,9 @@ class InteractiveCodeEditor {
         // Copy button
         this.btnCopy.addEventListener('click', () => {
             const html = this.textareaHTML.value;
-            const css = this.textareaCSS ? this.textareaCSS.value : '';
+            const css = (this.showCSS && this.textareaCSS) ? this.textareaCSS.value : '';
             let fullText = html;
-            if (css.trim()) {
+            if (this.showCSS && css.trim()) {
                 fullText = `<!-- HTML -->\n${html}\n\n/* CSS */\n${css}`;
             }
 
@@ -449,7 +449,7 @@ class InteractiveCodeEditor {
 
     executeCode() {
         const htmlCode = this.textareaHTML ? this.textareaHTML.value : '';
-        const cssCode = this.textareaCSS ? this.textareaCSS.value : '';
+        const cssCode = (this.showCSS && this.textareaCSS) ? this.textareaCSS.value : '';
 
         const errors = this.validateSyntax(htmlCode, cssCode);
 
@@ -509,7 +509,7 @@ class InteractiveCodeEditor {
 
         // Render full document securely
         let combinedSource = htmlCode;
-        if (cssCode.trim()) {
+        if (this.showCSS && cssCode.trim()) {
             if (combinedSource.includes('</head>')) {
                 combinedSource = combinedSource.replace('</head>', `<style>\n${cssCode}\n</style></head>`);
             } else if (combinedSource.includes('<html>')) {
@@ -543,7 +543,7 @@ class InteractiveCodeEditor {
         }
 
         // CSSLint Validation
-        if (typeof CSSLint !== 'undefined' && css.trim()) {
+        if (this.showCSS && typeof CSSLint !== 'undefined' && css.trim()) {
             try {
                 const cssResults = CSSLint.verify(css);
                 cssResults.messages.filter(m => m.type === 'error' || (m.message && m.message.includes('Expected'))).forEach(err => {
@@ -561,7 +561,7 @@ class InteractiveCodeEditor {
         try {
             const data = {
                 html: this.textareaHTML ? this.textareaHTML.value : '',
-                css: this.textareaCSS ? this.textareaCSS.value : '',
+                css: (this.showCSS && this.textareaCSS) ? this.textareaCSS.value : '',
                 updatedAt: Date.now()
             };
             localStorage.setItem(this.storageKey, JSON.stringify(data));
@@ -585,7 +585,7 @@ class InteractiveCodeEditor {
                     this.textareaHTML.value = parsed.html;
                     this.updateLineNumbers(this.textareaHTML, this.linesHTML);
                 }
-                if (parsed.css !== undefined && this.textareaCSS) {
+                if (this.showCSS && parsed.css !== undefined && this.textareaCSS) {
                     this.textareaCSS.value = parsed.css;
                     this.updateLineNumbers(this.textareaCSS, this.linesCSS);
                 }

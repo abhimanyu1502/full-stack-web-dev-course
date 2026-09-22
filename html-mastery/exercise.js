@@ -30,7 +30,7 @@ class ExerciseSystem {
 
         this.starterHTML = options.starterHTML !== undefined ? options.starterHTML : (options.starterCode || '<h1>Hello World</h1>\n<p>Start coding...</p>');
         this.starterCSS = options.starterCSS !== undefined ? options.starterCSS : '';
-        this.showCSS = options.showCSS !== undefined ? options.showCSS : true;
+        this.showCSS = options.showCSS !== undefined ? options.showCSS : false;
 
         this.validationRules = Array.isArray(options.validationRules) ? options.validationRules : [];
         this.customValidation = typeof options.validation === 'function' ? options.validation : null;
@@ -219,7 +219,7 @@ class ExerciseSystem {
 
     runValidation() {
         const htmlCode = this.editor && this.editor.textareaHTML ? this.editor.textareaHTML.value : '';
-        const cssCode = this.editor && this.editor.textareaCSS ? this.editor.textareaCSS.value : '';
+        const cssCode = (this.showCSS && this.editor && this.editor.textareaCSS) ? this.editor.textareaCSS.value : '';
         
         const checklistItems = this.container.querySelector(`#checklist_items_${this.id}`);
         const statusEl = this.container.querySelector(`#status_${this.id}`);
