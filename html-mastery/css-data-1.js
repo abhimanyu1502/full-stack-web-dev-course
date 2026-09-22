@@ -6,7 +6,7 @@ window.cssLessons.push(
     // ═══════════════════════════════════════
     {
         id: "what-is-css",
-        title: "What is CSS?",
+        title: "1. What is CSS?",
         category: "FOUNDATIONS",
         difficulty: "Beginner",
         explanation: "CSS stands for <strong>Cascading Style Sheets</strong>. It is the language used to describe how HTML elements should look on screen — controlling everything from colors and fonts to layout and animations.",
@@ -62,7 +62,7 @@ button {
     },
     {
         id: "css-syntax",
-        title: "CSS Syntax",
+        title: "2. CSS Syntax",
         category: "FOUNDATIONS",
         difficulty: "Beginner",
         explanation: "A CSS rule consists of three core parts: a <strong>Selector</strong> (which element to style), a <strong>Property</strong> (what aspect to change), and a <strong>Value</strong> (the new setting). Together, property + value form a <em>declaration</em>, wrapped in curly braces.",
@@ -117,7 +117,7 @@ h1 {
     },
     {
         id: "ways-to-add-css",
-        title: "Ways to Add CSS",
+        title: "3. Ways to Add CSS",
         category: "FOUNDATIONS",
         difficulty: "Beginner",
         explanation: "There are three ways to apply CSS to HTML: <strong>External</strong> (a separate <code>.css</code> file linked with <code>&lt;link&gt;</code>), <strong>Internal</strong> (a <code>&lt;style&gt;</code> tag inside <code>&lt;head&gt;</code>), and <strong>Inline</strong> (a <code>style=\"...\"</code> attribute directly on an HTML element).",
@@ -178,7 +178,7 @@ h1 {
     // ═══════════════════════════════════════
     {
         id: "element-selectors",
-        title: "Element Selectors",
+        title: "4. Element Selectors",
         category: "SELECTORS",
         difficulty: "Beginner",
         explanation: "An <strong>Element Selector</strong> (also called a type selector) targets all HTML elements that have a specific tag name, such as <code>p</code>, <code>h1</code>, <code>button</code>, or <code>a</code>.",
@@ -235,7 +235,7 @@ button {
     },
     {
         id: "class-selectors",
-        title: "Class Selectors",
+        title: "5. Class Selectors",
         category: "SELECTORS",
         difficulty: "Beginner",
         explanation: "A <strong>Class Selector</strong> targets elements that have a specific <code>class</code> attribute. In CSS, class selectors are written with a leading dot: <code>.classname</code>.",
@@ -299,7 +299,7 @@ button {
     },
     {
         id: "id-selectors",
-        title: "ID Selectors",
+        title: "6. ID Selectors",
         category: "SELECTORS",
         difficulty: "Beginner",
         explanation: "An <strong>ID Selector</strong> targets an element with a unique <code>id</code> attribute. In CSS, ID selectors are prefixed with a hash symbol: <code>#idname</code>.",
@@ -348,7 +348,7 @@ button {
     },
     {
         id: "grouping-selectors",
-        title: "Grouping Selectors",
+        title: "7. Grouping Selectors",
         category: "SELECTORS",
         difficulty: "Beginner",
         explanation: "A <strong>Grouping Selector</strong> allows you to apply the exact same CSS declarations to multiple selectors at once by separating them with a comma: <code>h1, h2, h3 { ... }</code>.",
@@ -393,7 +393,7 @@ h3 { font-size: 1.3rem; }`
     },
     {
         id: "combinators",
-        title: "CSS Combinators",
+        title: "8. CSS Combinators",
         category: "SELECTORS",
         difficulty: "Beginner",
         explanation: "A <strong>Combinator</strong> explains the relationship between two selectors. CSS supports 4 combinators: <strong>Descendant (space)</strong> (any nested child/grandchild), <strong>Child (<code>&gt;</code>)</strong> (direct children only), <strong>Adjacent Sibling (<code>+</code>)</strong> (immediately following sibling), and <strong>General Sibling (<code>~</code>)</strong> (any following sibling).",
@@ -460,7 +460,7 @@ h2 + p {
     },
     {
         id: "specificity",
-        title: "CSS Specificity & The Cascade",
+        title: "9. CSS Specificity & The Cascade",
         category: "SELECTORS",
         difficulty: "Intermediate",
         explanation: "<strong>Specificity</strong> is the algorithm browsers use to determine which CSS rule wins when multiple rules target the same element. It is calculated as a point system: <strong>Inline Styles (1000)</strong> &gt; <strong>IDs (100)</strong> &gt; <strong>Classes, Attributes, Pseudo-classes (10)</strong> &gt; <strong>Elements, Pseudo-elements (1)</strong>.",
@@ -522,7 +522,7 @@ div {
     },
     {
         id: "inheritance",
-        title: "CSS Inheritance",
+        title: "10. CSS Inheritance",
         category: "SELECTORS",
         difficulty: "Beginner",
         explanation: "<strong>Inheritance</strong> is the mechanism where child elements automatically inherit certain CSS property values from their parent container. Text properties (like <code>color</code>, <code>font-family</code>, <code>line-height</code>) are inherited by default. Box model properties (like <code>border</code>, <code>margin</code>, <code>padding</code>, <code>background</code>) are NOT inherited.",
@@ -587,7 +587,7 @@ button {
     // ═══════════════════════════════════════
     {
         id: "colors",
-        title: "Colors in CSS",
+        title: "11. Colors in CSS",
         category: "COLORS & UNITS",
         difficulty: "Beginner",
         explanation: "CSS provides multiple formats to define colors: <strong>Named Colors</strong> (<code>red</code>, <code>royalblue</code>), <strong>HEX codes</strong> (<code>#2563eb</code>), <strong>RGB / RGBA</strong> (<code>rgb(37, 99, 235)</code>), and <strong>HSL / HSLA</strong> (<code>hsl(221, 83%, 53%)</code>).",
@@ -648,7 +648,7 @@ color: hsla(221, 83%, 53%, 0.8);`,
     },
     {
         id: "css-units",
-        title: "CSS Units",
+        title: "12. CSS Units",
         category: "COLORS & UNITS",
         difficulty: "Beginner",
         explanation: "CSS units define size, length, and distances. They are divided into <strong>Absolute Units</strong> (<code>px</code>) which do not change, and <strong>Relative Units</strong> (<code>rem</code>, <code>em</code>, <code>%</code>, <code>vw</code>, <code>vh</code>) which scale dynamically based on font size or viewport dimensions.",
@@ -720,7 +720,7 @@ h2 {
     // ═══════════════════════════════════════
     {
         id: "font-properties",
-        title: "Font Properties",
+        title: "13. Font Properties",
         category: "TYPOGRAPHY",
         difficulty: "Beginner",
         explanation: "Font properties control the typeface family, weight, style, and size of text. The core font properties are: <code>font-family</code>, <code>font-size</code>, <code>font-weight</code>, <code>font-style</code>, and the <code>font</code> shorthand.",
@@ -775,7 +775,7 @@ font-style: italic; /* normal | italic */`,
     },
     {
         id: "text-properties",
-        title: "Text Properties",
+        title: "14. Text Properties",
         category: "TYPOGRAPHY",
         difficulty: "Beginner",
         explanation: "Text properties style the alignment, spacing, transformation, and decoration of text. Key properties include: <code>text-align</code>, <code>line-height</code>, <code>letter-spacing</code>, <code>text-transform</code>, and <code>text-decoration</code>.",
@@ -843,7 +843,7 @@ text-decoration: underline; /* none | underline | line-through */`,
     },
     {
         id: "web-fonts",
-        title: "Web Fonts (Google Fonts)",
+        title: "15. Web Fonts (Google Fonts)",
         category: "TYPOGRAPHY",
         difficulty: "Beginner",
         explanation: "<strong>Web Fonts</strong> allow you to load custom, beautiful typefaces (like Inter, Roboto, Poppins) from services like Google Fonts instead of being limited to standard pre-installed system fonts.",

@@ -6,7 +6,7 @@ window.cssLessons.push(
     // ═══════════════════════════════════════
     {
         id: "flexbox-introduction",
-        title: "Flexbox Introduction",
+        title: "29. Flexbox Introduction",
         category: "FLEXBOX",
         difficulty: "Beginner",
         explanation: "<strong>Flexbox (Flexible Box Layout)</strong> is a 1-dimensional layout model designed to distribute space along a single axis (row or column). Setting <code>display: flex</code> on a parent container turns all of its direct children into flexible flex items.",
@@ -62,7 +62,7 @@ window.cssLessons.push(
     },
     {
         id: "justify-content-align-items",
-        title: "justify-content & align-items",
+        title: "30. justify-content & align-items",
         category: "FLEXBOX",
         difficulty: "Beginner",
         explanation: "Flexbox alignment is governed by two axes: <strong>justify-content</strong> aligns items along the Main Axis (horizontal by default), while <strong>align-items</strong> aligns items along the Cross Axis (vertical by default).",
@@ -140,7 +140,7 @@ align-items: center;`,
     },
     {
         id: "flex-direction-wrap-gap",
-        title: "flex-direction, flex-wrap & gap",
+        title: "31. flex-direction, flex-wrap & gap",
         category: "FLEXBOX",
         difficulty: "Beginner",
         explanation: "<code>flex-direction</code> sets the direction of the main axis (<code>row</code> | <code>column</code> | <code>row-reverse</code> | <code>column-reverse</code>). <code>flex-wrap: wrap</code> allows items to wrap into multiple rows instead of shrinking. <code>gap</code> defines equal space between rows and columns.",
@@ -205,7 +205,7 @@ gap: 20px 10px;         /* Row-gap (20px) Column-gap (10px) */`,
     // ═══════════════════════════════════════
     {
         id: "grid-introduction",
-        title: "CSS Grid Introduction",
+        title: "32. CSS Grid Introduction",
         category: "CSS GRID",
         difficulty: "Intermediate",
         explanation: "<strong>CSS Grid Layout</strong> is a 2-dimensional layout system, handling rows and columns simultaneously. While Flexbox is 1D (content-first), Grid is 2D (layout-first, rigid columns and rows).",
@@ -264,7 +264,7 @@ gap: 20px 10px;         /* Row-gap (20px) Column-gap (10px) */`,
     },
     {
         id: "grid-template-columns",
-        title: "Grid Columns, Rows & minmax()",
+        title: "33. Grid Columns, Rows & minmax()",
         category: "CSS GRID",
         difficulty: "Intermediate",
         explanation: "<code>grid-template-columns</code> and <code>grid-template-rows</code> define the tracks of your grid. The powerhouse pattern <code>repeat(auto-fit, minmax(250px, 1fr))</code> creates fully responsive grids without requiring a single media query!",
@@ -321,7 +321,7 @@ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));`,
     },
     {
         id: "grid-placement",
-        title: "Grid Placement & Spanning",
+        title: "34. Grid Placement & Spanning",
         category: "CSS GRID",
         difficulty: "Intermediate",
         explanation: "Grid items can span multiple columns or rows using <code>grid-column</code> and <code>grid-row</code> (e.g. <code>grid-column: span 2</code> or <code>grid-column: 1 / -1</code> to span the entire width).",
@@ -401,7 +401,7 @@ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));`,
     // ═══════════════════════════════════════
     {
         id: "responsive-design",
-        title: "Responsive Web Design Principles",
+        title: "35. Responsive Web Design Principles",
         category: "RESPONSIVE CSS",
         difficulty: "Beginner",
         explanation: "<strong>Responsive Web Design (RWD)</strong> ensures websites render properly across all device screens — from mobile smartphones and tablets to desktop monitors. The 3 pillars of RWD are: <strong>Fluid Grid Layouts</strong>, <strong>Flexible Images (<code>max-width: 100%</code>)</strong>, and <strong>Media Queries</strong>.",
@@ -472,7 +472,7 @@ img {
     },
     {
         id: "media-queries",
-        title: "Media Queries",
+        title: "36. Media Queries",
         category: "RESPONSIVE CSS",
         difficulty: "Intermediate",
         explanation: "<strong>Media Queries</strong> allow you to apply CSS rules conditionally based on device characteristics, primarily screen width (<code>min-width</code> or <code>max-width</code>). In <strong>Mobile-First Design</strong>, you write mobile styles by default, then use <code>@media (min-width: 768px)</code> to enhance the layout for tablets and desktops.",

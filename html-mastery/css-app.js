@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Scroll main content to top
         window.scrollTo(0, 0);
 
+        // Update page title with numbered topic
+        document.title = `${lesson.title} — CSS Mastery`;
+
         const prevLesson = currentLessonIndex > 0 ? lessons[currentLessonIndex - 1] : null;
         const nextLesson = currentLessonIndex < lessons.length - 1 ? lessons[currentLessonIndex + 1] : null;
         const difficultyColor = lesson.difficulty === 'Beginner' ? '#16a34a' : '#d97706';
@@ -131,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let html = `
             <div class="lesson-header" style="margin-bottom: 2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border-color);">
-                <span style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing:1px;">CSS Mastery › ${lesson.category}</span>
+                <span style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.8rem; letter-spacing:1px;">CSS Mastery › ${lesson.category} • Lesson ${currentLessonIndex + 1} of ${lessons.length}</span>
                 <h1 style="margin-top: 0.4rem; margin-bottom:0.5rem;">${lesson.title}</h1>
                 <span style="display: inline-block; padding: 3px 12px; background: ${difficultyColor}; color: white; border-radius: 20px; font-size: 0.78rem; font-weight: bold;">🟢 ${lesson.difficulty}</span>
             </div>
