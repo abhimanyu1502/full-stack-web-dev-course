@@ -172,7 +172,7 @@ const quizzes = quizCtx.window.quizEngineData;
 assert(typeof quizzes === 'object' && Object.keys(quizzes).length >= 5, `Quiz engine data loaded with ${Object.keys(quizzes || {}).length} checkpoints`);
 
 // Verify JS Syntax for critical components
-['exercise.js', 'hints.js', 'editor.js', 'script.js', 'css-app.js', 'project-system.js', 'cloud-sync.js'].forEach(file => {
+['editor.js', 'script.js', 'css-app.js', 'project-system.js'].forEach(file => {
     try {
         const src = fs.readFileSync(file, 'utf8');
         new Function(src);
@@ -196,47 +196,29 @@ assert(cssContent.includes('@media (prefers-reduced-motion: reduce)'), 'Accessib
 assert(cssContent.includes('scroll-behavior: smooth;'), 'Smooth scrolling enabled');
 
 // ----------------------------------------------------
-// 6. DASHBOARD & CLOUD SYNC INTEGRATION
+// 6. DASHBOARD & LOCAL PROGRESS ARCHITECTURE
 // ----------------------------------------------------
-console.log('\n--- 6. Verifying Learning Dashboard & Cloud Sync ---');
+console.log('\n--- 6. Verifying Learning Dashboard & Static Architecture ---');
 const dashHtml = fs.readFileSync('dashboard.html', 'utf8');
 const dashJs = fs.readFileSync('dashboard.js', 'utf8');
 
 assert(dashHtml.includes('db-greeting') && dashHtml.includes('hero-streak') && dashHtml.includes('hero-xp'), 'Dashboard HTML contains hero stats and greeting elements');
 assert(dashHtml.includes('db-goal-text') && dashHtml.includes('db-challenge-card'), 'Dashboard HTML contains goal and daily challenge widgets');
-assert(dashHtml.includes('cloud-sync.js'), 'Dashboard HTML includes cloud-sync.js');
+assert(!dashHtml.includes('cloud-sync.js'), 'Dashboard HTML is clean with no cloud-sync server dependencies');
 assert(dashJs.includes('safeGet') && dashJs.includes('safeSet'), 'Dashboard JS uses safe storage wrappers');
 
 // ----------------------------------------------------
-// 7. FULLSTACK BACKEND & SQLITE DATABASE
+// 7. INTERACTIVE CODE EDITOR COMPATIBILITY
 // ----------------------------------------------------
-console.log('\n--- 7. Verifying Backend & SQLite Database ---');
+console.log('\n--- 7. Verifying Responsive Code Editor Component ---');
 try {
-    const db = require(path.resolve(__dirname, '../server/database.js'));
-    assert(!!db, 'Database module loaded');
-    assert(db.isAvailable(), 'Native SQLite engine is available and active');
-
-    const auth = db.loginUser('alex_frontend', 'demo1234');
-    assert(auth && auth.success && auth.userId, 'Demo user alex_frontend authenticated via SQLite');
-
-    const userProfile = db.getProfile(auth.userId);
-    assert(userProfile && userProfile.profile && userProfile.profile.display_name === 'Alex Rivera', 'User profile fetched from SQLite database');
-
-    const leaderboard = db.getLeaderboard(5);
-    assert(Array.isArray(leaderboard) && leaderboard.length >= 3, `Leaderboard returns top learners (Found ${leaderboard.length})`);
-
-    // Test progress sync in SQLite
-    const syncRes = db.syncProgressData(auth.userId, {
-        completedLessons: ['introduction', 'semantic-html'],
-        xp: 4500,
-        streak: 15
-    });
-    assert(syncRes && syncRes.success, 'Progress data successfully synced to SQLite');
-
-    const updatedProfile = db.getProfile(auth.userId);
-    assert(updatedProfile.profile.xp === 4500, 'User profile XP updated in SQLite database');
+    const editorContent = fs.readFileSync('editor.js', 'utf8');
+    assert(editorContent.includes('class InteractiveCodeEditor'), 'InteractiveCodeEditor class defined');
+    assert(editorContent.includes('editor-mobile-tabs'), 'Mobile tabs switcher included in editor');
+    assert(editorContent.includes('executeCode'), 'Live execution method defined');
+    assert(editorContent.includes('saveCodeLocally'), 'Local persistence defined');
 } catch (err) {
-    assert(false, 'SQLite Database tests', err.message);
+    assert(false, 'Interactive Code Editor tests', err.message);
 }
 
 // ----------------------------------------------------

@@ -352,21 +352,6 @@
                     </div>
                 </div>
 
-                <!-- Cloud Sync Banner -->
-                <div class="cloud-sync-banner hidden-banner" id="cloud-sync-banner">
-                    <div class="cloud-sync-text">
-                        <strong>☁ Cloud Sync Active</strong> — Your progress is synced to the server. Last sync: <span id="last-sync-time">—</span>
-                    </div>
-                    <button type="button" class="btn-cloud-sync-now" id="btn-sync-now">Sync Now</button>
-                </div>
-
-                <!-- Not logged in notice -->
-                <div class="cloud-sync-banner hidden-banner login-prompt-banner-style" id="login-prompt-banner">
-                    <div class="cloud-sync-text">
-                        <strong>💡 Create a free account</strong> to save your progress in the cloud and sync across devices.
-                    </div>
-                    <a href="login.html" class="btn-cloud-sync-now">Sign In / Register</a>
-                </div>
             </section>
 
             <!-- HTML Lessons Progress -->
@@ -416,22 +401,19 @@
     </div>
 
     <script src="progress.js?v=1"></script>
-    <script src="script.js?v=4"></script>
-    <script src="cloud-sync.js?v=2"></script>
-    <script src="auth.js?v=1"></script>
+    <script src="script.js?v=5"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const progSystem = window.progressSystem;
-            const authMgr    = window.AuthManager;
 
             // ── Hero Section ──────────────────────────────────────────────────
-            function populateHero(profile) {
-                const avatar = profile?.profile?.avatar || profile?.avatar || '💻';
-                const name   = profile?.profile?.display_name || profile?.username || profile?.displayName || 'Learner';
-                const xp     = profile?.profile?.xp ?? profile?.xp ?? (progSystem?.data?.xp || 0);
-                const level  = profile?.profile?.level ?? profile?.level ?? (progSystem?.data?.level || 1);
-                const streak = profile?.profile?.streak_count ?? profile?.streak ?? (progSystem?.data?.streak?.count || 1);
-                const bio    = profile?.profile?.bio || 'Aspiring Full Stack Web Developer';
+            function populateHero() {
+                const avatar = '💻';
+                const name   = 'Learner';
+                const xp     = progSystem?.data?.xp || 0;
+                const level  = progSystem?.data?.level || 1;
+                const streak = progSystem?.data?.streak?.count || 1;
+                const bio    = 'Aspiring Full Stack Web Developer';
 
                 document.getElementById('hero-avatar').textContent       = avatar;
                 document.getElementById('hero-level-badge').textContent  = `Lv ${level}`;
@@ -454,29 +436,7 @@
                 document.getElementById('stat-projects').textContent = projDone;
             }
 
-            // ── Auth-aware initialization ─────────────────────────────────────
-            const isLoggedIn = authMgr?.isLoggedIn();
-
-            if (isLoggedIn) {
-                document.getElementById('cloud-sync-banner').classList.remove('hidden-banner');
-                authMgr.fetchProfile().then(profile => {
-                    if (profile) populateHero(profile);
-                });
-                document.getElementById('btn-sync-now')?.addEventListener('click', async () => {
-                    const btn = document.getElementById('btn-sync-now');
-                    btn.textContent = 'Syncing…';
-                    try {
-                        if (window.cloudSync?.syncNow) await window.cloudSync.syncNow();
-                        document.getElementById('last-sync-time').textContent = new Date().toLocaleTimeString();
-                    } catch (_) {}
-                    btn.textContent = 'Sync Now';
-                });
-            } else {
-                document.getElementById('login-prompt-banner').classList.remove('hidden-banner');
-                // Use local progress
-                const localUser = { username: 'Guest', profile: { xp: progSystem?.data?.xp || 0, level: progSystem?.data?.level || 1, streak_count: progSystem?.data?.streak?.count || 1, avatar: '💻' } };
-                populateHero(localUser);
-            }
+            populateHero();
 
             // ── HTML Lessons ──────────────────────────────────────────────────
             function renderLessons(containerId, badgeId, topics, completedIds, trackPrefix) {

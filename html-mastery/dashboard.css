@@ -616,3 +616,44 @@ body.db-focus-mode .db-progress-section { opacity: 1; filter: none; }
 
 /* Recommended-next button pushed to bottom of flex card */
 .db-next-btn-el { margin-top: auto; }
+
+/* ═══════════════════════════════════════
+   CYBERPUNK DARK THEME ENHANCEMENTS
+   ═══════════════════════════════════════ */
+[data-theme="dark"] .db-hero {
+    background: linear-gradient(135deg, #0d1428 0%, #1a103c 60%, #0d1428 100%);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.12);
+}
+
+[data-theme="dark"] .db-hero-text h1 {
+    color: #f1f5f9;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+[data-theme="dark"] .db-card {
+    background: #0f1422;
+    border-color: #1e293b;
+}
+
+[data-theme="dark"] .db-card:hover {
+    border-color: rgba(0, 240, 255, 0.35);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.12);
+}
+
+[data-theme="dark"] .db-level-fill {
+    background: linear-gradient(90deg, #00f0ff, #a855f7);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+[data-theme="dark"] .db-stat-pill {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+[data-theme="dark"] .db-code-copy-btn:hover {
+    background: #00f0ff;
+    color: #060913;
+    border-color: #00f0ff;
+}
+

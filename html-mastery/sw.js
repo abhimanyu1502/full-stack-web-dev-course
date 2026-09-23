@@ -4,8 +4,8 @@
  * Strategy: Network-first for HTML, Cache-first for CSS/JS/fonts.
  */
 
-const CACHE_NAME    = 'htmlmastery-v3';
-const DYNAMIC_CACHE = 'htmlmastery-dynamic-v3';
+const CACHE_NAME    = 'htmlmastery-v5';
+const DYNAMIC_CACHE = 'htmlmastery-dynamic-v5';
 
 // Core assets to pre-cache on install
 const PRECACHE_ASSETS = [
@@ -15,7 +15,6 @@ const PRECACHE_ASSETS = [
     '/progress.js',
     '/projects-data.js',
     '/project-system.js',
-    '/auth.js',
     '/ai-assistant.js',
     '/ai-ui.js',
     '/playgrounds.js',
@@ -28,7 +27,6 @@ const PRECACHE_ASSETS = [
     '/introduction.html',
     '/projects.html',
     '/css.html',
-    '/login.html',
     '/my-progress.html',
     '/playgrounds.html'
 ];

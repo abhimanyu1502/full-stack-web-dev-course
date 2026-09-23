@@ -53,6 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             history.pushState(null, '', `?topic=${lesson.id}`);
             renderLesson(lesson.id);
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.classList.remove('open');
+                const backdrop = document.querySelector('.sidebar-backdrop');
+                if (backdrop) backdrop.classList.remove('active');
+                document.body.classList.remove('mobile-nav-open');
+                document.body.style.overflow = '';
+            }
         });
         
         li.appendChild(a);
@@ -222,21 +230,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Initialize Reusable Exercise System
-        if (typeof ExerciseSystem !== 'undefined') {
-            new ExerciseSystem({
+        // Initialize Reusable Code Sandbox
+        if (typeof InteractiveCodeEditor !== 'undefined' && lesson.exercise) {
+            new InteractiveCodeEditor({
                 container: '#lesson-exercise-container',
                 id: `css_${lesson.id}`,
                 title: `Practice: ${lesson.title}`,
-                instructions: lesson.exercise.instruction,
-                difficulty: lesson.difficulty || 'Easy',
-                starterHTML: lesson.exercise.starterHTML,
-                starterCSS: lesson.exercise.starterCSS,
-                showCSS: true,
-                hints: lesson.exercise.hints,
-                solutionHTML: lesson.exercise.solutionHTML,
-                solutionCSS: lesson.exercise.solutionCSS,
-                solutionExplanation: lesson.exercise.solutionExplanation
+                starterHTML: lesson.exercise.starterHTML || '<div>\n  <p>Hello CSS</p>\n</div>',
+                starterCSS: lesson.exercise.starterCSS || 'p {\n  color: #3b82f6;\n}',
+                showCSS: true
             });
         }
 

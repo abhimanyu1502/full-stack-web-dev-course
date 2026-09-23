@@ -293,11 +293,8 @@ function initMainApp() {
                 a.classList.add('active');
                 if (sidebar) {
                     setTimeout(() => {
-                        const sidebarRect = sidebar.getBoundingClientRect();
-                        const linkRect = a.getBoundingClientRect();
-                        if (linkRect.top < sidebarRect.top || linkRect.bottom > sidebarRect.bottom) {
-                            a.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
+                        const targetScroll = a.offsetTop - (sidebar.clientHeight / 2) + (a.clientHeight / 2);
+                        sidebar.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
                     }, 100);
                 }
             }
@@ -316,8 +313,7 @@ function initMainApp() {
         // ── Utility nav items at bottom of sidebar ────────────────────────────
         const utilItems = [
             { href: 'projects.html',   label: '🚀 Project Hub' },
-            { href: 'my-progress.html', label: '📊 My Progress' },
-            { href: 'login.html',       label: '🔑 Sign In' }
+            { href: 'my-progress.html', label: '📊 My Progress' }
         ];
         utilItems.forEach(item => {
             const li = document.createElement('li');
@@ -327,11 +323,6 @@ function initMainApp() {
             a.textContent = item.label;
             if (window.location.pathname.includes(item.href.replace('.html', ''))) {
                 a.classList.add('active');
-            }
-            // Hide Sign In if already logged in
-            if (item.href === 'login.html' && localStorage.getItem('auth_token')) {
-                a.textContent = '📊 My Account';
-                a.href = 'my-progress.html';
             }
             li.appendChild(a);
             tocList.appendChild(li);
@@ -1603,7 +1594,7 @@ function getHtmlChallenge(pageId) {
     };
 }
 
-// 3. Inject Reusable Live Code Editor Component & Progressive Hint System
+// 3. Inject Reusable Live Code Editor Component
 function renderLiveEditor() {
     let pageId = window.location.pathname.split('/').pop().replace('.html', '');
     if (!pageId || pageId === 'index') pageId = 'introduction';
@@ -1625,29 +1616,22 @@ function renderLiveEditor() {
 
     const challengeData = getHtmlChallenge(pageId);
 
-    const initExercise = () => {
-        if (typeof ExerciseSystem !== 'undefined') {
-            new ExerciseSystem({
+    const initEditor = () => {
+        if (typeof InteractiveCodeEditor !== 'undefined') {
+            new InteractiveCodeEditor({
                 container: section,
                 id: `html_${pageId}`,
-                title: challengeData.title,
-                difficulty: challengeData.difficulty || 'Easy',
-                instructions: challengeData.instructions,
-                starterHTML: challengeData.starterHTML,
+                title: challengeData.title || 'Interactive HTML Sandbox',
+                starterHTML: challengeData.starterHTML || '<h1>Hello World</h1>\n<p>Start practicing!</p>',
                 starterCSS: '',
-                showCSS: false,
-                validationRules: challengeData.validationRules || [],
-                hints: challengeData.hints,
-                solutionHTML: challengeData.solutionHTML,
-                solutionCSS: '',
-                solutionExplanation: challengeData.solutionExplanation
+                showCSS: false
             });
         } else {
-            setTimeout(initExercise, 40);
+            setTimeout(initEditor, 40);
         }
     };
 
-    initExercise();
+    initEditor();
 }
 
 // Call the render functions
