@@ -209,7 +209,7 @@ function initMainApp() {
             mobileMenuToggle.setAttribute('aria-label', 'Close navigation menu');
         }
         if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
-        document.body.style.overflow = 'hidden'; // prevent background scroll
+        document.body.classList.add('mobile-nav-open');
         // Focus first focusable element in sidebar
         const firstFocusable = sidebar.querySelector('a, button, [tabindex="0"]');
         if (firstFocusable) setTimeout(() => firstFocusable.focus(), 60);
@@ -223,6 +223,7 @@ function initMainApp() {
             mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
         }
         if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+        document.body.classList.remove('mobile-nav-open');
         document.body.style.overflow = '';
     }
 
@@ -234,6 +235,7 @@ function initMainApp() {
         // Backdrop click closes sidebar
         if (sidebarBackdrop) {
             sidebarBackdrop.addEventListener('click', closeSidebar);
+            sidebarBackdrop.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
         }
 
         // Escape key closes sidebar

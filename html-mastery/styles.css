@@ -724,16 +724,14 @@ textarea:focus-visible {
     position: sticky;
     top: 4rem;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     border-right: 1px solid var(--border-color);
     background-color: var(--sidebar-bg);
     padding: var(--space-4) var(--space-3);
-    transition: transform var(--transition-smooth), background-color var(--transition-base);
-    /* Promote sticky sidebar to its own GPU layer */
-    will-change: transform;
-    transform: translateZ(0);
-    /* Contain sidebar scrolling/layout from main content reflow */
-    contain: strict;
-    overscroll-behavior: contain;
+    transition: transform var(--transition-smooth), background-color var(--transition-base), left var(--transition-smooth);
+    will-change: transform, left;
+    overscroll-behavior-y: contain;
 }
 
 .sidebar ul {
@@ -1679,6 +1677,10 @@ pre code {
         box-shadow: var(--shadow-xl);
     }
 
+    .layout-container {
+        isolation: auto !important;
+    }
+
     .sidebar {
         position: fixed;
         top: 4rem;
@@ -1686,12 +1688,30 @@ pre code {
         width: 85%;
         max-width: 320px;
         height: calc(100vh - 4rem);
-        z-index: 45;
+        height: calc(100dvh - 4rem);
+        max-height: calc(100dvh - 4rem);
+        z-index: 100 !important;
         box-shadow: var(--shadow-xl);
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        overscroll-behavior-y: contain;
+        contain: none !important;
+        transform: none !important;
+        padding-bottom: 6rem !important;
     }
 
     .sidebar.open {
-        left: 0;
+        left: 0 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+    }
+
+    .sidebar #table-of-contents,
+    .sidebar #toc-list,
+    .sidebar #css-toc-list {
+        touch-action: pan-y !important;
     }
 
     .content-area {
@@ -4883,12 +4903,17 @@ pre code {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 44;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90 !important;
     -webkit-tap-highlight-color: transparent;
+    touch-action: none;
 }
 .sidebar-backdrop.active {
     display: block;
+}
+
+body.mobile-nav-open {
+    overflow: hidden;
 }
 
 /* Sidebar close button (mobile) */
