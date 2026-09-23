@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Progress — HTML & CSS Mastery</title>
+    <title>My Progress — HTML &amp; CSS Mastery</title>
     <meta name="description" content="View your personal learning progress, XP, level, streak, completed lessons, quiz scores, and projects.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,6 +110,7 @@
         .hero-stat-chip {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.15);
+            -webkit-backdrop-filter: blur(6px);
             backdrop-filter: blur(6px);
             border-radius: 10px;
             padding: 0.5rem 0.85rem;
@@ -282,7 +283,7 @@
                 <a href="introduction.html">HTML &amp; CSS Mastery</a>
             </div>
             <div class="header-actions">
-                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
                         <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
@@ -327,7 +328,7 @@
                                 <span id="xp-label">0 / 650 XP</span>
                             </div>
                             <div class="xp-bar-track">
-                                <div class="xp-bar-fill" id="xp-bar-fill" style="width:0%"></div>
+                                <div class="xp-bar-fill" id="xp-bar-fill"></div>
                             </div>
                         </div>
                         <div class="hero-stats-row" id="hero-stats-row">
@@ -352,7 +353,7 @@
                 </div>
 
                 <!-- Cloud Sync Banner -->
-                <div class="cloud-sync-banner" id="cloud-sync-banner" style="display:none;">
+                <div class="cloud-sync-banner hidden-banner" id="cloud-sync-banner">
                     <div class="cloud-sync-text">
                         <strong>☁ Cloud Sync Active</strong> — Your progress is synced to the server. Last sync: <span id="last-sync-time">—</span>
                     </div>
@@ -360,7 +361,7 @@
                 </div>
 
                 <!-- Not logged in notice -->
-                <div class="cloud-sync-banner" id="login-prompt-banner" style="display:none; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.06);">
+                <div class="cloud-sync-banner hidden-banner login-prompt-banner-style" id="login-prompt-banner">
                     <div class="cloud-sync-text">
                         <strong>💡 Create a free account</strong> to save your progress in the cloud and sync across devices.
                     </div>
@@ -457,7 +458,7 @@
             const isLoggedIn = authMgr?.isLoggedIn();
 
             if (isLoggedIn) {
-                document.getElementById('cloud-sync-banner').style.display = 'flex';
+                document.getElementById('cloud-sync-banner').classList.remove('hidden-banner');
                 authMgr.fetchProfile().then(profile => {
                     if (profile) populateHero(profile);
                 });
@@ -471,7 +472,7 @@
                     btn.textContent = 'Sync Now';
                 });
             } else {
-                document.getElementById('login-prompt-banner').style.display = 'flex';
+                document.getElementById('login-prompt-banner').classList.remove('hidden-banner');
                 // Use local progress
                 const localUser = { username: 'Guest', profile: { xp: progSystem?.data?.xp || 0, level: progSystem?.data?.level || 1, streak_count: progSystem?.data?.streak?.count || 1, avatar: '💻' } };
                 populateHero(localUser);

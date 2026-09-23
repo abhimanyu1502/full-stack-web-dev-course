@@ -279,23 +279,26 @@
     }
 
     function createPill() {
-        const headerRight = document.querySelector('.header-right') || document.querySelector('header .header-content') || document.body;
+        // Try to mount the pill inside the site header actions area.
+        // Prefer .header-actions (our layout), then legacy .header-right.
+        const headerSlot = document.querySelector('.header-actions')
+                        || document.querySelector('.header-right')
+                        || document.querySelector('header .header-content');
+
+        // If no header slot found, skip the pill entirely — do NOT create a
+        // floating fixed button in the corner of the page.
+        if (!headerSlot) return;
+
         const pill = document.createElement('button');
         pill.id = 'cloud-sync-status-pill';
         pill.className = 'cloud-sync-pill';
         pill.setAttribute('aria-label', 'Cloud synchronization status and account');
+        pill.setAttribute('type', 'button');
         pill.innerHTML = `<span class="cloud-sync-dot"></span><span class="cloud-sync-label">Connecting...</span>`;
         pill.addEventListener('click', openSyncModal);
 
-        if (headerRight.classList && headerRight.classList.contains('header-right')) {
-            headerRight.insertBefore(pill, headerRight.firstChild);
-        } else {
-            pill.style.position = 'fixed';
-            pill.style.bottom = '1rem';
-            pill.style.left = '1rem';
-            pill.style.zIndex = '9999';
-            document.body.appendChild(pill);
-        }
+        // Insert before the first child so it appears on the left of the action row
+        headerSlot.insertBefore(pill, headerSlot.firstChild);
     }
 
     function updatePillUI(state, text) {

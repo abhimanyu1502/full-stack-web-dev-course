@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In — HTML & CSS Mastery</title>
+    <title>Sign In — HTML &amp; CSS Mastery</title>
     <meta name="description" content="Sign in or create a free account to track your learning progress, earn XP, and sync your achievements across devices.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -306,12 +306,12 @@
         </div>
 
         <!-- Offline Notice (shown when server unreachable) -->
-        <div class="offline-notice" id="offline-notice" style="display:none;">
+        <div class="offline-notice hidden-banner" id="offline-notice">
             <div>⚠ <strong>Backend server not connected.</strong></div>
-            <div style="font-size:0.78rem; margin:0.35rem 0;">Running locally? Run <code>node server/index.js</code>. Running on Surge? Enter your Render backend URL below:</div>
-            <div style="display:flex; gap:0.4rem; margin-top:0.4rem;">
-                <input type="url" id="custom-api-input" placeholder="https://your-app.onrender.com" style="flex:1; padding:0.4rem 0.6rem; font-size:0.78rem; border-radius:6px; border:1px solid rgba(245,158,11,0.4); background:rgba(0,0,0,0.4); color:#fff;">
-                <button type="button" id="save-api-btn" style="padding:0.4rem 0.75rem; font-size:0.78rem; border-radius:6px; background:#f59e0b; color:#111; font-weight:600; border:none; cursor:pointer;">Connect</button>
+            <div class="offline-notice-note">Running locally? Run <code>node server/index.js</code>. Running on Surge? Enter your Render backend URL below:</div>
+            <div class="offline-notice-row">
+                <input type="url" id="custom-api-input" class="offline-notice-input" placeholder="https://your-app.onrender.com">
+                <button type="button" id="save-api-btn" class="offline-api-btn">Connect</button>
             </div>
         </div>
 
@@ -438,7 +438,7 @@
                         localStorage.setItem('api_endpoint', val);
                         saveApiBtn.textContent = '✅ Connected!';
                         saveApiBtn.style.background = '#10b981';
-                        setTimeout(() => { offlineNotice.style.display = 'none'; }, 1200);
+                        setTimeout(() => { offlineNotice.classList.add('hidden-banner'); }, 1200);
                     } else {
                         alert('Server responded with status ' + res.status);
                         saveApiBtn.textContent = 'Connect';
@@ -492,7 +492,7 @@
                     btn.textContent = 'Sign In →';
                 }
             } catch (err) {
-                offlineNotice.style.display = 'block';
+                offlineNotice.classList.remove('hidden-banner');
                 showFeedback('login-feedback', 'error', 'Server unreachable. Make sure node server/index.js is running.');
                 btn.disabled = false;
                 btn.textContent = 'Sign In →';
@@ -532,7 +532,7 @@
                     btn.textContent = 'Create Free Account →';
                 }
             } catch (err) {
-                offlineNotice.style.display = 'block';
+                offlineNotice.classList.remove('hidden-banner');
                 showFeedback('register-feedback', 'error', 'Server unreachable. Make sure node server/index.js is running.');
                 btn.disabled = false;
                 btn.textContent = 'Create Free Account →';

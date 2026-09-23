@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3">
-    <link rel="stylesheet" href="dashboard.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="dashboard.css?v=4">
 </head>
 <body>
     <div id="progress-container"><div id="progress-bar"></div></div>
@@ -23,14 +23,14 @@
                 <div id="search-results" class="search-results hidden"></div>
             </div>
             <div class="header-actions">
-                <button id="focus-mode-btn" class="icon-button" aria-label="Toggle Focus Mode" title="Focus Mode">
+                <button type="button" id="focus-mode-btn" class="icon-button" aria-label="Toggle Focus Mode" title="Focus Mode">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
                 </button>
-                <button id="theme-toggle" class="icon-button" aria-label="Toggle theme">
+                <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle theme">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
-                <a href="introduction.html" class="button primary-button" style="white-space:nowrap;">Start Learning</a>
+                <a href="introduction.html" class="button primary-button db-start-btn">Start Learning</a>
             </div>
         </div>
     </header>
@@ -67,7 +67,7 @@
                     <span id="hero-level-xp-text">0 / 250 XP to next level</span>
                 </div>
                 <div class="db-level-track">
-                    <div class="db-level-fill" id="hero-level-fill" style="width:0%"></div>
+                    <div class="db-level-fill" id="hero-level-fill"></div>
                 </div>
             </div>
         </section>
@@ -90,13 +90,13 @@
                 <div class="db-goal-inner" id="db-goal-display">
                     <div class="db-goal-text" id="db-goal-text">Complete 1 lesson today</div>
                     <div class="db-goal-actions">
-                        <button class="db-goal-done-btn" id="db-goal-done-btn">&#x2713; Done</button>
-                        <button class="db-goal-edit-btn" id="db-goal-edit-btn">&#x270F;&#xFE0F;</button>
+                        <button type="button" class="db-goal-done-btn" id="db-goal-done-btn">&#x2713; Done</button>
+                        <button type="button" class="db-goal-edit-btn" id="db-goal-edit-btn">&#x270F;&#xFE0F;</button>
                     </div>
                 </div>
                 <div class="db-goal-edit-form hidden" id="db-goal-edit-form">
                     <input type="text" id="db-goal-input" class="db-goal-input" maxlength="80" placeholder="e.g. Complete 2 exercises">
-                    <button class="button primary-button" id="db-goal-save-btn" style="padding:0.4rem 0.9rem;font-size:0.82rem;">Save</button>
+                    <button type="button" class="button primary-button db-goal-save-btn-el" id="db-goal-save-btn">Save</button>
                 </div>
                 <div class="db-goal-done-state hidden" id="db-goal-done-state">
                     <span>&#x2705; Goal complete! Great work today.</span>
@@ -113,7 +113,7 @@
                         <span class="db-prog-name">HTML</span>
                         <span class="db-prog-pct" id="html-pct">0%</span>
                     </div>
-                    <div class="db-prog-track"><div class="db-prog-fill db-html-fill" id="html-fill" style="width:0%"></div></div>
+                    <div class="db-prog-track"><div class="db-prog-fill db-html-fill" id="html-fill"></div></div>
                     <div class="db-prog-detail" id="html-detail">0 of 52 lessons completed</div>
                 </div>
                 <div class="db-prog-item">
@@ -121,7 +121,7 @@
                         <span class="db-prog-name">CSS</span>
                         <span class="db-prog-pct" id="css-pct">0%</span>
                     </div>
-                    <div class="db-prog-track"><div class="db-prog-fill db-css-fill" id="css-fill" style="width:0%"></div></div>
+                    <div class="db-prog-track"><div class="db-prog-fill db-css-fill" id="css-fill"></div></div>
                     <div class="db-prog-detail" id="css-detail">0 of 33 lessons completed</div>
                 </div>
                 <div class="db-prog-item">
@@ -129,7 +129,7 @@
                         <span class="db-prog-name">Overall</span>
                         <span class="db-prog-pct" id="overall-pct">0%</span>
                     </div>
-                    <div class="db-prog-track"><div class="db-prog-fill db-overall-fill" id="overall-fill" style="width:0%"></div></div>
+                    <div class="db-prog-track"><div class="db-prog-fill db-overall-fill" id="overall-fill"></div></div>
                     <div class="db-prog-detail" id="overall-detail">0 total lessons completed</div>
                 </div>
             </div>
@@ -145,8 +145,8 @@
                 <div class="db-challenge-q" id="db-challenge-q">Loading today's challenge...</div>
                 <div class="db-challenge-meta" id="db-challenge-meta"></div>
                 <div class="db-challenge-actions">
-                    <a href="introduction.html" id="db-challenge-btn" class="button primary-button" style="font-size:0.85rem;">Start Challenge &rarr;</a>
-                    <button class="db-challenge-skip" id="db-challenge-skip">Try a different one</button>
+                    <a href="introduction.html" id="db-challenge-btn" class="button primary-button db-widget-btn">Start Challenge &rarr;</a>
+                    <button type="button" class="db-challenge-skip" id="db-challenge-skip">Try a different one</button>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
                 <div class="db-next-track-badge" id="db-next-track">HTML</div>
                 <div class="db-next-title" id="db-next-title">Introduction to HTML</div>
                 <div class="db-next-desc" id="db-next-desc">Start with the fundamentals of web structure.</div>
-                <a href="introduction.html" id="db-next-btn" class="button primary-button" style="margin-top:auto;font-size:0.85rem;">Start Lesson &rarr;</a>
+                <a href="introduction.html" id="db-next-btn" class="button primary-button db-widget-btn db-next-btn-el">Start Lesson &rarr;</a>
             </div>
 
             <!-- Recently Completed -->
@@ -178,7 +178,7 @@
 
         <!-- SAVED CODE -->
         <section class="db-card db-savedcode-section db-widget" id="db-savedcode-section">
-            <button class="db-savedcode-toggle" id="db-savedcode-toggle" aria-expanded="false">
+            <button type="button" class="db-savedcode-toggle" id="db-savedcode-toggle" aria-expanded="false">
                 <span>&#x1F4BE; Saved Code Snippets</span>
                 <span class="db-savedcode-count" id="db-savedcode-count">0 saved</span>
                 <svg class="db-toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -192,12 +192,12 @@
 
         <!-- Focus Mode Banner -->
         <div class="db-focus-hint hidden" id="db-focus-hint">
-            <span>&#x1F3AF; Focus Mode active &mdash; distractions hidden. <button id="db-exit-focus" class="db-exit-focus-btn">Exit Focus Mode</button></span>
+            <span>&#x1F3AF; Focus Mode active &mdash; distractions hidden. <button type="button" id="db-exit-focus" class="db-exit-focus-btn">Exit Focus Mode</button></span>
         </div>
 
     </main>
 
-    <button id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+    <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 

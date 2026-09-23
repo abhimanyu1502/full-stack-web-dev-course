@@ -177,9 +177,9 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%; /* Safari */
+    -moz-text-size-adjust: 100%;    /* Firefox (legacy) */
+    text-size-adjust: 100%;          /* Chrome, Edge — standard property */
 }
 
 body {
@@ -724,7 +724,6 @@ textarea:focus-visible {
     position: sticky;
     top: 4rem;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
     border-right: 1px solid var(--border-color);
     background-color: var(--sidebar-bg);
@@ -1693,7 +1692,6 @@ pre code {
         z-index: 100 !important;
         box-shadow: var(--shadow-xl);
         overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
         touch-action: pan-y !important;
         overscroll-behavior-y: contain;
         contain: none !important;
@@ -4894,6 +4892,16 @@ pre code {
     }
     .logo a {
         font-size: 1rem;
+        /* Prevent long titles from breaking layout */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 120px;
+    }
+    /* Give header-container room to breathe on very small screens */
+    .header-container {
+        gap: 0.35rem;
+        padding: 0 0.75rem;
     }
 }
 
@@ -5514,5 +5522,80 @@ button:not(.db-savedcode-toggle):not(.sidebar-close-btn) {
 .user-badge-logout:hover { color: var(--error-color, #ef4444); background: rgba(239,68,68,0.08); }
 
 /* ── Sidebar nav my-progress link ── */
-.sidebar nav li a[href="my-progress.html"] { }
+/* .sidebar nav li a[href="my-progress.html"] — no extra styles needed */
 
+/* ── Cloud sync pill — always hidden (no active backend) ── */
+#cloud-sync-status-pill { display: none !important; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ── 26. Utility classes replacing removed inline styles ─────────────────
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Replaces style="display:none" on JS-toggled banners */
+.hidden-banner { display: none; }
+
+/* Pagination container (replaces inline flex layout on introduction.html) */
+.pagination-right {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Login prompt banner warning variant */
+.login-prompt-banner-style {
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    background: rgba(245, 158, 11, 0.06) !important;
+}
+
+/* Offline notice rows in login.html (replaces inline flex/input styles) */
+.offline-notice-note {
+    font-size: 0.78rem;
+    margin: 0.35rem 0;
+}
+.offline-notice-row {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+.offline-notice-input {
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.78rem;
+    border-radius: 6px;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+.offline-api-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+    border-radius: 6px;
+    background: #f59e0b;
+    color: #111;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+/* Default width:0 for JS-animated progress fills (replaces style="width:0%") */
+.db-level-fill,
+.db-prog-fill,
+.xp-bar-fill { width: 0; }
+
+/* Pagination — space-between layout (prev + next buttons) */
+.pagination-both {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Outline button — Previous Topic nav link */
+.button-outline {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    background: transparent;
+}
