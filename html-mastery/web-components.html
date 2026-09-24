@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Mastery — Beginner to Advanced</title>
+    <title>HTML Mastery — Web Components</title>
     <meta name="description" content="Learn HTML from absolute beginner level to advanced web development concepts.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
             </div>
 
             <div class="header-actions">
-                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -69,7 +69,7 @@
                         </path>
                     </svg>
                 </a>
-                <button id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
+                <button type="button" id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -93,18 +93,18 @@
 
         <!-- Main Content -->
         <main class="content-area" id="main-content">
-            <section id="seo">
-                <h1>41. SEO (Search Engine Optimization)</h1>
+            <section id="web-components">
+                <h1>Web Components Intro</h1>
 
                 <div class="explanation">
-                    <p>SEO is the practice of making your webpage rank higher in search engine results (like Google).
-                        Your HTML structure is the foundation of good SEO.</p>
+                    <p>Web Components allow you to create your own custom, reusable, encapsulated HTML tags. It's like
+                        building your own native HTML element.</p>
                 </div>
                 <!-- Tag Placement Indicator: Head vs Body -->
-                <div class="tag-placement-callout placement-both-box">
-                    <div class="placement-badge">🌐 &lt;head&gt; &amp; &lt;body&gt; SEO: <head> metadata + <body> headings</div>
+                <div class="tag-placement-callout placement-body-box">
+                    <div class="placement-badge">👁️ &lt;body&gt; Used under &lt;body&gt; tag</div>
                     <div class="placement-content">
-                        <strong>Tag Placement:</strong> Search engine optimization relies heavily on <code>&lt;head&gt;</code> tags (<code>&lt;title&gt;</code>, <code>&lt;meta name="description"&gt;</code>, <code>&lt;link rel="canonical"&gt;</code>) combined with semantic <code>&lt;body&gt;</code> tags (headings and alt text).
+                        <strong>Tag Placement:</strong> Custom web component tags are placed in the <code>&lt;body&gt;</code> tag to instantiate custom HTML elements defined via <code>customElements.define()</code>.
                     </div>
                 </div>
 
@@ -113,65 +113,57 @@
                 <div class="code-block-wrapper">
                     <div class="code-header">
                         <span class="language-label">HTML</span>
-                        <button class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                        <button type="button" class="copy-button" aria-label="Copy code to clipboard">Copy</button>
                     </div>
-                    <pre><code class="language-html">&lt;head&gt;
-    &lt;title&gt;
-        Machine Learning Portfolio | Abhimanyu
-    &lt;/title&gt;
+                    <pre><code class="language-html">&lt;!-- Usage in HTML --&gt;
+&lt;user-card&gt;&lt;/user-card&gt;</code></pre>
+                </div>
 
-    &lt;meta
-        name="description"
-        content="Engineering projects and machine learning portfolio."
-    &gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;
-        Machine Learning Portfolio
-    &lt;/h1&gt;
+                <div class="code-block-wrapper">
+                    <div class="code-header">
+                        <span class="language-label">JavaScript</span>
+                        <button type="button" class="copy-button" aria-label="Copy code to clipboard">Copy</button>
+                    </div>
+                    <pre><code class="language-javascript">class UserCard extends HTMLElement {
 
-    &lt;main&gt;
+    connectedCallback() {
 
-        &lt;article&gt;
+        this.innerHTML = `
+            &lt;article class="card"&gt;
+                &lt;h2&gt;Abhimanyu&lt;/h2&gt;
+                &lt;p&gt;Engineering Student&lt;/p&gt;
+            &lt;/article&gt;
+        `;
 
-            &lt;h2&gt;
-                Projects
-            &lt;/h2&gt;
-            
-            &lt;img src="project.jpg" alt="Neural network visualization"&gt;
+    }
 
-        &lt;/article&gt;
+}
 
-    &lt;/main&gt;
-&lt;/body&gt;</code></pre>
+// Register the custom element
+customElements.define(
+    "user-card",
+    UserCard
+);</code></pre>
                 </div>
 
                 <h2>Explanation of the Code</h2>
                 <ul class="code-explanation-list">
-                    <li><code>title</code>: The most critical SEO element. It should be unique for every page and
-                        include your main keywords.</li>
-                    <li><code>meta description</code>: A compelling summary that encourages users to click your link in
-                        search results.</li>
-                    <li><strong>Semantic structure:</strong> Using <code>&lt;main&gt;</code> and
-                        <code>&lt;article&gt;</code> helps search engines understand what part of the page contains the
-                        actual content versus just menus and footers.
-                    </li>
-                    <li><strong>Headings:</strong> Always use a single <code>&lt;h1&gt;</code> and logically order your
-                        <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> tags.
-                    </li>
-                    <li><strong>Image alt text:</strong> Search engines can't "see" images, so they read the alt text to
-                        understand what the image is about.</li>
+                    <li>Custom element names must contain a hyphen (e.g., <code>user-card</code>) to avoid clashing with
+                        future standard HTML tags.</li>
+                    <li>We define a JavaScript class that extends <code>HTMLElement</code>.</li>
+                    <li><code>connectedCallback()</code> runs when the element is added to the page, setting its
+                        internal HTML.</li>
                 </ul>
             </section>
             <div class="pagination-container">
-                <a href="browser-rendering.html" class="button pagination-prev-btn">&larr; Previous Topic</a>
-                <a href="security-basics.html" class="button primary-button">Next Topic &rarr;</a>
+                <a href="dialog.html" class="button pagination-prev-btn">&larr; Previous Topic</a>
+                <a href="svg.html" class="button primary-button">Next Topic &rarr;</a>
             </div>
 
         </main>
     </div>
 
-    <button id="back-to-top" class="icon-button hidden" aria-label="Back to top">
+    <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
@@ -182,7 +174,7 @@
     <script src="quiz-engine.js?v=1"></script>
     <script src="quiz-data.js?v=1"></script>
     <script src="progress.js?v=1"></script>
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 
 </html>

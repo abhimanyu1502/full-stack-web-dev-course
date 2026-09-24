@@ -128,41 +128,41 @@
                 </div>
 
                 <h2>Comparison Table</h2>
-                <div style="overflow-x:auto;">
-                    <table style="width:100%; text-align:left; border-collapse: collapse; margin-bottom: 1.5rem;">
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
                         <thead>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <th style="padding: 0.5rem;">Method</th>
-                                <th style="padding: 0.5rem;">Download</th>
-                                <th style="padding: 0.5rem;">Execution</th>
-                                <th style="padding: 0.5rem;">Order</th>
+                            <tr>
+                                <th>Method</th>
+                                <th>Download</th>
+                                <th>Execution</th>
+                                <th>Order</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="border-bottom: 1px solid var(--border-light);">
-                                <td style="padding: 0.5rem;"><strong>Normal</strong></td>
-                                <td style="padding: 0.5rem;">Blocks HTML parsing</td>
-                                <td style="padding: 0.5rem;">Immediately</td>
-                                <td style="padding: 0.5rem;">Normal</td>
+                            <tr>
+                                <td><strong>Normal</strong></td>
+                                <td>Blocks HTML parsing</td>
+                                <td>Immediately</td>
+                                <td>Normal</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid var(--border-light);">
-                                <td style="padding: 0.5rem;"><strong>defer</strong></td>
-                                <td style="padding: 0.5rem;">During parsing (Background)</td>
-                                <td style="padding: 0.5rem;">After HTML is fully parsed</td>
-                                <td style="padding: 0.5rem;">Preserved (in order of appearance)</td>
+                            <tr>
+                                <td><strong>defer</strong></td>
+                                <td>During parsing (Background)</td>
+                                <td>After HTML is fully parsed</td>
+                                <td>Preserved (in order of appearance)</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid var(--border-light);">
-                                <td style="padding: 0.5rem;"><strong>async</strong></td>
-                                <td style="padding: 0.5rem;">During parsing (Background)</td>
-                                <td style="padding: 0.5rem;">As soon as it finishes downloading</td>
-                                <td style="padding: 0.5rem;">Not guaranteed (Fastest wins)</td>
+                            <tr>
+                                <td><strong>async</strong></td>
+                                <td>During parsing (Background)</td>
+                                <td>As soon as it finishes downloading</td>
+                                <td>Not guaranteed (Fastest wins)</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
-            <div class="pagination-container" style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-                <a href="svg.html" class="button" style="border: 1px solid var(--border-color); color: var(--text-primary);">&larr; Previous Topic</a>
+            <div class="pagination-container">
+                <a href="svg.html" class="button pagination-prev-btn">&larr; Previous Topic</a>
                 <a href="http-and-html.html" class="button primary-button">Next Topic &rarr;</a>
             </div>
 

@@ -180,7 +180,6 @@ html {
     scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%; /* Safari */
     -moz-text-size-adjust: 100%;    /* Firefox (legacy) */
-    text-size-adjust: 100%;          /* Chrome, Edge — standard property */
 }
 
 body {
@@ -673,6 +672,11 @@ textarea:focus-visible {
     border-top: 1px solid var(--border-color);
 }
 
+.pagination-prev-btn {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
 .diagram-block-compact {
     flex: 1;
     max-width: 320px;
@@ -739,7 +743,6 @@ textarea:focus-visible {
     top: 4rem;
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
     touch-action: pan-y !important;
     border-right: 1px solid var(--border-color);
     background-color: var(--sidebar-bg);
@@ -1796,7 +1799,6 @@ pre code {
         z-index: 100 !important;
         box-shadow: var(--shadow-xl);
         overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
         touch-action: pan-y !important;
         overscroll-behavior-y: contain;
         contain: none !important;
@@ -4693,13 +4695,46 @@ body.mobile-nav-open {
     max-width: 100%;
 }
 
-/* ── 12. Tables — horizontal scroll on small screens ────────────────────── */
 table {
     display: block;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     max-width: 100%;
     border-collapse: collapse;
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.comparison-table thead tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.interactive-checklist {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
 }
 
 /* ── 13. Forms — accessible input sizing ─────────────────────────────────── */
