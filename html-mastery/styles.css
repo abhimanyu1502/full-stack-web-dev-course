@@ -748,8 +748,6 @@ textarea:focus-visible {
     transition: transform var(--transition-smooth), background-color var(--transition-base), left var(--transition-smooth);
     will-change: transform, left;
     overscroll-behavior-y: contain;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-color) transparent;
 }
 
 .sidebar::-webkit-scrollbar {
