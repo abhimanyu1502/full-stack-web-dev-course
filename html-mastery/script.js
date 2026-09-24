@@ -36,22 +36,17 @@ const HTML_TOPICS = [
     "34. Global Attributes",
     "35. Details and Summary",
     "36. Dialog",
-    "37. Template",
-    "38. SVG",
-    "39. Canvas",
-    "40. Web Components",
-    "41. Shadow DOM",
-    "42. Script Loading",
-    "43. DOM",
-    "44. HTTP and HTML",
-    "45. Browser Rendering",
-    "46. SEO",
-    "47. Security Basics",
-    "48. HTML Debugging and Validation",
-    "49. Professional HTML Checklist",
-    "50. Practice Project",
-    "51. Practice Answer",
-    "52. Questions and Answers"
+    "37. SVG",
+    "38. Script Loading",
+    "39. HTTP and HTML",
+    "40. Browser Rendering",
+    "41. SEO",
+    "42. Security Basics",
+    "43. HTML Debugging and Validation",
+    "44. Professional HTML Checklist",
+    "45. Practice Project",
+    "46. Practice Answer",
+    "47. Questions and Answers"
 ];
 
 const getTopicFile = (topic) => {
@@ -897,40 +892,15 @@ const quizzes = {
         options: ['dialog.open()', 'dialog.show()', 'dialog.showModal()'],
         answer: 2
     },
-    'template': {
-        q: 'Is the content inside a <template> tag visible on the page immediately?',
-        options: ['Yes', 'No, it must be cloned and inserted by JavaScript', 'Only if it has the visible attribute'],
-        answer: 1
-    },
     'svg': {
         q: 'What is the main advantage of SVG images?',
         options: ['They are smaller file sizes than JPG', 'They can be styled with CSS and scaled infinitely without losing quality', 'They load faster on slow networks'],
-        answer: 1
-    },
-    'canvas': {
-        q: 'How do you draw graphics on a <canvas> element?',
-        options: ['Using CSS', 'Using native HTML tags like <circle>', 'Using JavaScript (like getContext("2d"))'],
-        answer: 2
-    },
-    'web-components': {
-        q: 'Which API allows you to define your own custom HTML tags?',
-        options: ['Custom Elements API', 'Shadow DOM', 'HTML Templates'],
-        answer: 0
-    },
-    'shadow-dom': {
-        q: 'What is the primary benefit of the Shadow DOM?',
-        options: ['It hides elements from screen readers', 'It encapsulates CSS styles so they do not leak out or get overridden', 'It makes rendering 3D graphics faster'],
         answer: 1
     },
     'script-loading': {
         q: 'Which attribute downloads the script in the background but executes it only after HTML parsing is fully complete?',
         options: ['async', 'defer', 'preload'],
         answer: 1
-    },
-    'dom': {
-        q: 'What does DOM stand for?',
-        options: ['Document Object Model', 'Data Output Mechanism', 'Document Orientation Markup'],
-        answer: 0
     },
     'http-and-html': {
         q: 'What HTTP status code means "Not Found"?',
@@ -1559,8 +1529,8 @@ function getHtmlChallenge(pageId) {
     
     // Determine difficulty by topic complexity
     let difficulty = 'Easy';
-    const mediumTopics = ['canvas', 'web-components', 'shadow-dom', 'practice-project'];
-    const intermediateTopics = ['form-validation', 'get-post', 'audio-and-video', 'iframe', 'accessibility', 'aria', 'dialog', 'svg', 'script-loading', 'dom', 'seo', 'security-basics'];
+    const mediumTopics = ['practice-project', 'practice-answer'];
+    const intermediateTopics = ['form-validation', 'get-post', 'audio-and-video', 'iframe', 'accessibility', 'aria', 'dialog', 'svg', 'script-loading', 'seo', 'security-basics'];
     if (mediumTopics.includes(pageId)) {
         difficulty = 'Hard';
     } else if (intermediateTopics.includes(pageId)) {

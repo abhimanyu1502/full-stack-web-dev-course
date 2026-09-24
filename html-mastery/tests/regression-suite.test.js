@@ -29,7 +29,7 @@ function assert(condition, testName, details = '') {
 // ----------------------------------------------------
 console.log('\n--- 1. Verifying All HTML Routes & Links ---');
 const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
-assert(htmlFiles.length >= 50, `HTML files count (${htmlFiles.length}) >= 50`);
+assert(htmlFiles.length >= 45, `HTML files count (${htmlFiles.length}) >= 45`);
 
 htmlFiles.forEach(file => {
     const src = fs.readFileSync(file, 'utf8');
@@ -103,7 +103,7 @@ vm.runInContext(progressSrc, context);
 const ps = context.window.progressSystem;
 
 assert(!!ps, 'progressSystem initializes cleanly');
-assert(Array.isArray(ps.htmlTopics) && ps.htmlTopics.length >= 50, `HTML Topics registered in progress.js (Found ${ps.htmlTopics?.length})`);
+assert(Array.isArray(ps.htmlTopics) && ps.htmlTopics.length === 47, `HTML Topics registered in progress.js (Found ${ps.htmlTopics?.length})`);
 
 // Verify every topic route exists
 ps.htmlTopics.forEach(t => {

@@ -4,8 +4,8 @@
  * Strategy: Network-first for HTML, Cache-first for CSS/JS/fonts.
  */
 
-const CACHE_NAME    = 'htmlmastery-v6';
-const DYNAMIC_CACHE = 'htmlmastery-dynamic-v6';
+const CACHE_NAME    = 'htmlmastery-v7';
+const DYNAMIC_CACHE = 'htmlmastery-dynamic-v7';
 
 // Core assets to pre-cache on install
 const PRECACHE_ASSETS = [

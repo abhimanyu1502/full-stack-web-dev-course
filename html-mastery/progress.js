@@ -47,22 +47,17 @@ class StudentProgressSystem {
             { id: 'global-attributes', title: '34. Global Attributes', url: 'global-attributes.html' },
             { id: 'details-and-summary', title: '35. Details & Summary', url: 'details-and-summary.html' },
             { id: 'dialog', title: '36. Dialog Modal', url: 'dialog.html' },
-            { id: 'template', title: '37. HTML Template', url: 'template.html' },
-            { id: 'svg', title: '38. SVG Graphics', url: 'svg.html' },
-            { id: 'canvas', title: '39. HTML Canvas', url: 'canvas.html' },
-            { id: 'web-components', title: '40. Web Components', url: 'web-components.html' },
-            { id: 'shadow-dom', title: '41. Shadow DOM', url: 'shadow-dom.html' },
-            { id: 'script-loading', title: '42. Script Loading', url: 'script-loading.html' },
-            { id: 'dom', title: '43. The DOM', url: 'dom.html' },
-            { id: 'http-and-html', title: '44. HTTP Protocol', url: 'http-and-html.html' },
-            { id: 'browser-rendering', title: '45. Browser Rendering', url: 'browser-rendering.html' },
-            { id: 'seo', title: '46. SEO Basics', url: 'seo.html' },
-            { id: 'security-basics', title: '47. Web Security', url: 'security-basics.html' },
-            { id: 'html-debugging', title: '48. HTML Debugging', url: 'html-debugging.html' },
-            { id: 'professional-html-checklist', title: '49. HTML Checklist', url: 'professional-html-checklist.html' },
-            { id: 'practice-project', title: '50. Practice Project', url: 'practice-project.html' },
-            { id: 'practice-answer', title: '51. Practice Solution', url: 'practice-answer.html' },
-            { id: 'questions-and-answers', title: '52. HTML Q&A', url: 'questions-and-answers.html' }
+            { id: 'svg', title: '37. SVG Graphics', url: 'svg.html' },
+            { id: 'script-loading', title: '38. Script Loading', url: 'script-loading.html' },
+            { id: 'http-and-html', title: '39. HTTP Protocol', url: 'http-and-html.html' },
+            { id: 'browser-rendering', title: '40. Browser Rendering', url: 'browser-rendering.html' },
+            { id: 'seo', title: '41. SEO Basics', url: 'seo.html' },
+            { id: 'security-basics', title: '42. Web Security', url: 'security-basics.html' },
+            { id: 'html-debugging', title: '43. HTML Debugging', url: 'html-debugging.html' },
+            { id: 'professional-html-checklist', title: '44. HTML Checklist', url: 'professional-html-checklist.html' },
+            { id: 'practice-project', title: '45. Practice Project', url: 'practice-project.html' },
+            { id: 'practice-answer', title: '46. Practice Solution', url: 'practice-answer.html' },
+            { id: 'questions-and-answers', title: '47. HTML Q&A', url: 'questions-and-answers.html' }
         ];
 
         this.cssTopics = [
