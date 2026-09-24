@@ -685,7 +685,7 @@ class StudentProgressSystem {
             dashBtn.id = 'btn-open-dashboard';
             dashBtn.type = 'button';
             dashBtn.className = 'button secondary-button dash-trigger-btn';
-            dashBtn.innerHTML = `📊 Dashboard <span class="xp-pill">Lv.${lvl.level} · ${this.data.xp} XP</span>`;
+            dashBtn.innerHTML = `📊 <span class="dash-btn-text">Dashboard</span> <span class="xp-pill">Lv.${lvl.level} · ${this.data.xp} XP</span>`;
 
             dashBtn.addEventListener('click', () => {
                 this.renderDashboardModal();
