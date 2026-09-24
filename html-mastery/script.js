@@ -222,6 +222,10 @@ function initMainApp() {
         document.body.style.overflow = '';
     }
 
+    // Expose sidebar controls globally for SPA navigation (e.g. css.html)
+    window.closeSidebar = closeSidebar;
+    window.openSidebar = openSidebar;
+
     if (mobileMenuToggle && sidebar) {
         mobileMenuToggle.addEventListener('click', () => {
             sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
@@ -255,12 +259,20 @@ function initMainApp() {
             }
         });
 
-        // Close sidebar on nav link click (mobile)
+        // Close sidebar on click outside
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+            if (sidebar.classList.contains('open')) {
                 if (!sidebar.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                     closeSidebar();
                 }
+            }
+        });
+
+        // Close sidebar on nav link click (for both MPA and SPA pages)
+        sidebar.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (link && sidebar.classList.contains('open')) {
+                closeSidebar();
             }
         });
     }

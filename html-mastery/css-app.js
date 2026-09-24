@@ -48,19 +48,30 @@ document.addEventListener('DOMContentLoaded', () => {
         a.textContent = lesson.title;
         a.id = `link-${lesson.id}`;
         
+        const closeMobileSidebar = () => {
+            if (typeof window.closeSidebar === 'function') {
+                window.closeSidebar();
+            } else {
+                const sb = document.getElementById('sidebar');
+                if (sb && sb.classList.contains('open')) sb.classList.remove('open');
+                const backdrop = document.querySelector('.sidebar-backdrop');
+                if (backdrop) backdrop.classList.remove('active');
+                const toggle = document.getElementById('mobile-menu-toggle');
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.setAttribute('aria-label', 'Open navigation menu');
+                }
+                document.body.classList.remove('mobile-nav-open');
+                document.body.style.overflow = '';
+            }
+        };
+
         // INTERCEPT CLICK FOR SPA — no page refresh
         a.addEventListener('click', (e) => {
             e.preventDefault();
             history.pushState(null, '', `?topic=${lesson.id}`);
             renderLesson(lesson.id);
-            if (window.innerWidth <= 768) {
-                const sidebar = document.getElementById('sidebar');
-                if (sidebar) sidebar.classList.remove('open');
-                const backdrop = document.querySelector('.sidebar-backdrop');
-                if (backdrop) backdrop.classList.remove('active');
-                document.body.classList.remove('mobile-nav-open');
-                document.body.style.overflow = '';
-            }
+            closeMobileSidebar();
         });
         
         li.appendChild(a);
@@ -75,6 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Make renderLesson globally available so script.js search bar can use it
     window.renderLesson = (topicId) => {
+        // Automatically close mobile/tablet sidebar navigation if open
+        if (typeof window.closeSidebar === 'function') {
+            window.closeSidebar();
+        } else {
+            const sb = document.getElementById('sidebar');
+            if (sb && sb.classList.contains('open')) sb.classList.remove('open');
+            const backdrop = document.querySelector('.sidebar-backdrop');
+            if (backdrop) backdrop.classList.remove('active');
+            const toggle = document.getElementById('mobile-menu-toggle');
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Open navigation menu');
+            }
+            document.body.classList.remove('mobile-nav-open');
+            document.body.style.overflow = '';
+        }
+
         const currentLessonIndex = lessons.findIndex(l => l.id === topicId);
         const lesson = lessons[currentLessonIndex];
 
