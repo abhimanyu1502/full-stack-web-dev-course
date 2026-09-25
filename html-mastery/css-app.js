@@ -132,9 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Build the code example section — show code on left, rendered preview on right
         const codeExampleSection = lesson.codeExample ? `
             <div class="css-lesson-block" style="margin-top: 2rem;">
-                <h3 style="margin-bottom: 0.75rem; display:flex; align-items:center; gap:8px;">
-                    <span style="background:var(--accent-color); color:white; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600;">CODE EXAMPLE</span>
-                </h3>
+                <h2 style="margin-bottom: 0.75rem;">Code Example</h2>
                 <div class="code-example-grid" style="border:1px solid var(--border-color); border-radius:var(--radius-md); overflow:hidden;">
                     <!-- Code Side -->
                     <div style="background:#1e1e1e;">
@@ -154,19 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div style="margin-top:1.5rem;">
-                <h3 style="margin-bottom:0.5rem;">📋 Code Explanation</h3>
+                <h2 style="margin-bottom:0.5rem;">Explanation of the Code</h2>
                 <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem 1.25rem; color:var(--text-primary); line-height:1.6;">
                     ${lesson.codeExplanation}
                 </div>
             </div>
-        ` : `
+        ` : (lesson.codeExplanation ? `
             <div style="margin-top:1.5rem;">
-                <h3 style="margin-bottom:0.5rem;">📋 Code Explanation</h3>
+                <h2 style="margin-bottom:0.5rem;">Explanation of the Code</h2>
                 <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem 1.25rem; color:var(--text-primary); line-height:1.6;">
                     ${lesson.codeExplanation}
                 </div>
             </div>
-        `;
+        ` : '');
 
         let html = `
             <div class="lesson-header" style="margin-bottom: 2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border-color);">
@@ -214,6 +212,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>${lesson.takeaways}</p>
                     </div>
                 </div>
+
+                ${lesson.exercise && lesson.exercise.instruction ? `
+                <div style="margin-top: 2rem; margin-bottom: 1.5rem;">
+                    <h2>Practice</h2>
+                    <div class="card practice-card">
+                        <div class="card-icon">💻</div>
+                        <div class="card-content">
+                            <strong>Try it yourself</strong>
+                            <p>${escapeHtml(lesson.exercise.instruction)}</p>
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
             </section>
 
             <!-- Visual Interactive Playground Container -->
@@ -255,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Initialize Reusable Code Sandbox
+        // Initialize Reusable Code Sandbox (clean, matching HTML section design)
         const initCssEditor = () => {
             if (typeof InteractiveCodeEditor !== 'undefined') {
                 const exContainer = document.getElementById('lesson-exercise-container');
@@ -264,16 +275,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 new InteractiveCodeEditor({
                     container: exContainer,
                     id: `css_${lesson.id}`,
-                    title: (lesson.exercise && lesson.exercise.title) ? lesson.exercise.title : `Practice: ${lesson.title}`,
-                    instructions: (lesson.exercise && (lesson.exercise.instruction || lesson.exercise.instructions)) ? (lesson.exercise.instruction || lesson.exercise.instructions) : '',
-                    hints: (lesson.exercise && lesson.exercise.hints) ? lesson.exercise.hints : [],
-                    solutionCSS: (lesson.exercise && lesson.exercise.solutionCSS) ? lesson.exercise.solutionCSS : '',
-                    solutionHTML: (lesson.exercise && lesson.exercise.solutionHTML) ? lesson.exercise.solutionHTML : '',
-                    solutionExplanation: (lesson.exercise && lesson.exercise.solutionExplanation) ? lesson.exercise.solutionExplanation : '',
+                    title: `Practice: ${lesson.title}`,
                     starterHTML: (lesson.exercise && lesson.exercise.starterHTML) ? lesson.exercise.starterHTML : '<div>\n  <h1>Practice CSS</h1>\n  <p>Style this element!</p>\n</div>',
                     starterCSS: (lesson.exercise && lesson.exercise.starterCSS) ? lesson.exercise.starterCSS : 'h1 {\n  color: #2563eb;\n}\n\np {\n  color: #4b5563;\n}',
-                    showCSS: true,
-                    defaultTab: 'css'
+                    showCSS: true
                 });
             } else {
                 setTimeout(initCssEditor, 40);
