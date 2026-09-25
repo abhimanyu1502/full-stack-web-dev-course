@@ -247,28 +247,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Render the code example iframe
+        // Render the code example iframe safely without triggering SecurityError
         if (lesson.codeExample) {
             const exampleFrame = document.getElementById('example-preview');
             if (exampleFrame) {
-                const edoc = exampleFrame.contentWindow.document;
-                edoc.open();
-                edoc.write(`<!DOCTYPE html><html><head><style>body{font-family:sans-serif;padding:12px;} ${lesson.codeExample.css || ''}</style></head><body>${lesson.codeExample.html}</body></html>`);
-                edoc.close();
+                exampleFrame.srcdoc = `<!DOCTYPE html><html><head><style>body{font-family:sans-serif;padding:12px;} ${lesson.codeExample.css || ''}</style></head><body>${lesson.codeExample.html}</body></html>`;
             }
         }
 
         // Initialize Reusable Code Sandbox
-        if (typeof InteractiveCodeEditor !== 'undefined' && lesson.exercise) {
-            new InteractiveCodeEditor({
-                container: '#lesson-exercise-container',
-                id: `css_${lesson.id}`,
-                title: `Practice: ${lesson.title}`,
-                starterHTML: lesson.exercise.starterHTML || '<div>\n  <p>Hello CSS</p>\n</div>',
-                starterCSS: lesson.exercise.starterCSS || 'p {\n  color: #3b82f6;\n}',
-                showCSS: true
-            });
-        }
+        const initCssEditor = () => {
+            if (typeof InteractiveCodeEditor !== 'undefined') {
+                const exContainer = document.getElementById('lesson-exercise-container');
+                if (!exContainer) return;
+                exContainer.innerHTML = '';
+                new InteractiveCodeEditor({
+                    container: exContainer,
+                    id: `css_${lesson.id}`,
+                    title: (lesson.exercise && lesson.exercise.title) ? lesson.exercise.title : `Practice: ${lesson.title}`,
+                    instructions: (lesson.exercise && (lesson.exercise.instruction || lesson.exercise.instructions)) ? (lesson.exercise.instruction || lesson.exercise.instructions) : '',
+                    hints: (lesson.exercise && lesson.exercise.hints) ? lesson.exercise.hints : [],
+                    solutionCSS: (lesson.exercise && lesson.exercise.solutionCSS) ? lesson.exercise.solutionCSS : '',
+                    solutionHTML: (lesson.exercise && lesson.exercise.solutionHTML) ? lesson.exercise.solutionHTML : '',
+                    solutionExplanation: (lesson.exercise && lesson.exercise.solutionExplanation) ? lesson.exercise.solutionExplanation : '',
+                    starterHTML: (lesson.exercise && lesson.exercise.starterHTML) ? lesson.exercise.starterHTML : '<div>\n  <h1>Practice CSS</h1>\n  <p>Style this element!</p>\n</div>',
+                    starterCSS: (lesson.exercise && lesson.exercise.starterCSS) ? lesson.exercise.starterCSS : 'h1 {\n  color: #2563eb;\n}\n\np {\n  color: #4b5563;\n}',
+                    showCSS: true,
+                    defaultTab: 'css'
+                });
+            } else {
+                setTimeout(initCssEditor, 40);
+            }
+        };
+        initCssEditor();
 
         // Initialize Lightweight Quiz Engine Checkpoints
         let cssCheckpointId = null;

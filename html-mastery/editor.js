@@ -21,11 +21,17 @@ class InteractiveCodeEditor {
 
         this.id = opts.id || 'editor_' + Math.random().toString(36).substring(2, 9);
         this.title = opts.title || 'Interactive Sandbox';
+        this.instructions = opts.instructions || opts.instruction || '';
+        this.hints = Array.isArray(opts.hints) ? opts.hints : [];
+        this.solutionHTML = opts.solutionHTML || '';
+        this.solutionCSS = opts.solutionCSS || '';
+        this.solutionExplanation = opts.solutionExplanation || '';
         this.initialHTML = opts.html !== undefined ? opts.html : (opts.starterHTML !== undefined ? opts.starterHTML : '<h1>Hello World</h1>\n<p>Start editing this code!</p>');
         this.initialCSS = opts.css !== undefined ? opts.css : (opts.starterCSS !== undefined ? opts.starterCSS : '');
         this.showCSS = opts.showCSS !== undefined ? opts.showCSS : (this.initialCSS.trim().length > 0);
+        this.defaultTab = opts.defaultTab || (this.showCSS ? 'css' : 'html');
         this.storageKey = `saved_code_${this.id}`;
-        this.activeTab = 'html'; // 'html', 'css', or 'preview' (for mobile)
+        this.activeTab = this.defaultTab;
 
         this.render();
         this.bindEvents();
@@ -64,17 +70,63 @@ class InteractiveCodeEditor {
                 </div>
             </div>
 
+            ${this.instructions ? `
+            <div class="editor-instructions-bar">
+                <div class="editor-instruction-main">
+                    <span class="editor-instruction-icon">🎯</span>
+                    <span class="editor-instruction-text"><strong>Challenge:</strong> ${this.escapeHTML(this.instructions)}</span>
+                </div>
+                ${(this.hints.length > 0 || this.solutionCSS || this.solutionHTML) ? `
+                <div class="editor-instruction-actions">
+                    ${this.hints.length > 0 ? `
+                    <button type="button" class="btn-editor-aux btn-hint-toggle" title="Show helpful hint">
+                        💡 <span>Hint</span>
+                    </button>
+                    ` : ''}
+                    ${(this.solutionCSS || this.solutionHTML) ? `
+                    <button type="button" class="btn-editor-aux btn-solution-toggle" title="Reveal solution">
+                        🔑 <span>Solution</span>
+                    </button>
+                    ` : ''}
+                </div>
+                ` : ''}
+            </div>
+            ${this.hints.length > 0 ? `
+            <div class="editor-drawer editor-hint-drawer" style="display:none;">
+                <div class="editor-drawer-header">💡 Helpful Hints</div>
+                <ul class="editor-drawer-list">${this.hints.map(h => `<li>${this.escapeHTML(typeof h === 'string' ? h : (h.hint || ''))}</li>`).join('')}</ul>
+            </div>
+            ` : ''}
+            ${(this.solutionCSS || this.solutionHTML) ? `
+            <div class="editor-drawer editor-solution-drawer" style="display:none;">
+                <div class="editor-drawer-header">
+                    <span>🔑 Official Solution</span>
+                    <button type="button" class="btn-apply-solution">Apply Solution</button>
+                </div>
+                ${this.solutionExplanation ? `<p class="editor-solution-expl">${this.escapeHTML(this.solutionExplanation)}</p>` : ''}
+                ${this.solutionCSS ? `
+                <div class="editor-solution-code-label">CSS Solution</div>
+                <pre class="editor-solution-code"><code>${this.escapeHTML(this.solutionCSS)}</code></pre>
+                ` : ''}
+                ${this.solutionHTML && !this.solutionCSS ? `
+                <div class="editor-solution-code-label">HTML Solution</div>
+                <pre class="editor-solution-code"><code>${this.escapeHTML(this.solutionHTML)}</code></pre>
+                ` : ''}
+            </div>
+            ` : ''}
+            ` : ''}
+
             <!-- Mobile Viewport Tab Switcher -->
             <div class="editor-mobile-tabs" role="tablist" aria-label="Editor tabs">
-                <button type="button" class="mobile-tab-btn active" data-tab="html" role="tab" aria-selected="true">
+                <button type="button" class="mobile-tab-btn ${this.defaultTab === 'html' ? 'active' : ''}" data-tab="html" role="tab" aria-selected="${this.defaultTab === 'html'}">
                     <span class="tab-dot html-dot"></span> HTML
                 </button>
                 ${this.showCSS ? `
-                <button type="button" class="mobile-tab-btn" data-tab="css" role="tab" aria-selected="false">
+                <button type="button" class="mobile-tab-btn ${this.defaultTab === 'css' ? 'active' : ''}" data-tab="css" role="tab" aria-selected="${this.defaultTab === 'css'}">
                     <span class="tab-dot css-dot"></span> CSS
                 </button>
                 ` : ''}
-                <button type="button" class="mobile-tab-btn" data-tab="preview" role="tab" aria-selected="false">
+                <button type="button" class="mobile-tab-btn ${this.defaultTab === 'preview' ? 'active' : ''}" data-tab="preview" role="tab" aria-selected="${this.defaultTab === 'preview'}">
                     <span class="tab-dot live-dot"></span> Live Output 👁️
                 </button>
             </div>
@@ -217,8 +269,54 @@ class InteractiveCodeEditor {
                 });
             });
 
-            // Set initial mobile active pane
-            if (this.paneHTML) this.paneHTML.classList.add('mobile-pane-active');
+            // Set initial mobile active pane based on defaultTab
+            if (this.defaultTab === 'css' && this.paneCSS) {
+                this.paneCSS.classList.add('mobile-pane-active');
+            } else if (this.defaultTab === 'preview' && this.panePreview) {
+                this.panePreview.classList.add('mobile-pane-active');
+            } else if (this.paneHTML) {
+                this.paneHTML.classList.add('mobile-pane-active');
+            }
+        }
+
+        // Hint toggle
+        const btnHint = this.container.querySelector('.btn-hint-toggle');
+        const hintDrawer = this.container.querySelector('.editor-hint-drawer');
+        if (btnHint && hintDrawer) {
+            btnHint.addEventListener('click', () => {
+                const isOpen = hintDrawer.style.display !== 'none';
+                hintDrawer.style.display = isOpen ? 'none' : 'block';
+                btnHint.classList.toggle('active', !isOpen);
+            });
+        }
+
+        // Solution toggle
+        const btnSolution = this.container.querySelector('.btn-solution-toggle');
+        const solutionDrawer = this.container.querySelector('.editor-solution-drawer');
+        if (btnSolution && solutionDrawer) {
+            btnSolution.addEventListener('click', () => {
+                const isOpen = solutionDrawer.style.display !== 'none';
+                solutionDrawer.style.display = isOpen ? 'none' : 'block';
+                btnSolution.classList.toggle('active', !isOpen);
+            });
+        }
+
+        // Apply solution button
+        const btnApply = this.container.querySelector('.btn-apply-solution');
+        if (btnApply) {
+            btnApply.addEventListener('click', () => {
+                if (this.solutionHTML && this.textareaHTML) {
+                    this.textareaHTML.value = this.solutionHTML;
+                    this.updateLineNumbers(this.textareaHTML, this.linesHTML);
+                }
+                if (this.solutionCSS && this.showCSS && this.textareaCSS) {
+                    this.textareaCSS.value = this.solutionCSS;
+                    this.updateLineNumbers(this.textareaCSS, this.linesCSS);
+                }
+                this.saveCodeLocally();
+                this.executeCode();
+                this.flashIndicator('Solution Applied');
+            });
         }
 
         // Textarea typing events & auto-run debounce

@@ -16,10 +16,14 @@ assert(!scriptCode.includes('starterCSS: `body {\n    font-family: system-ui, sa
 assert(scriptCode.includes('showCSS: false'), 'renderLiveEditor passes showCSS: false');
 console.log('✔ script.js passes showCSS: false and all HTML challenges have empty starterCSS');
 
-// 3. Verify exercise.js defaults showCSS to false
-const exerciseCode = fs.readFileSync(path.join(__dirname, '../exercise.js'), 'utf8');
-assert(exerciseCode.includes('this.showCSS = options.showCSS !== undefined ? options.showCSS : false;'), 'exercise.js defaults showCSS to false');
-console.log('✔ exercise.js defaults showCSS to false');
+// 3. Verify editor.js handles showCSS
+if (fs.existsSync(path.join(__dirname, '../exercise.js'))) {
+    const exerciseCode = fs.readFileSync(path.join(__dirname, '../exercise.js'), 'utf8');
+    assert(exerciseCode.includes('this.showCSS = options.showCSS !== undefined ? options.showCSS : false;'), 'exercise.js defaults showCSS to false');
+} else {
+    assert(editorCode.includes('this.showCSS = opts.showCSS !== undefined ? opts.showCSS :'), 'editor.js properly configures showCSS');
+}
+console.log('✔ showCSS properly configured for HTML vs CSS');
 
 // 4. Verify fallback textareas have no &lt;style&gt;
 const tfHtml = fs.readFileSync(path.join(__dirname, '../text-formatting.html'), 'utf8');

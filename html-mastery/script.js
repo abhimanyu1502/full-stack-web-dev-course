@@ -1604,9 +1604,14 @@ function renderLiveEditor() {
                 container: section,
                 id: `html_${pageId}`,
                 title: challengeData.title || 'Interactive HTML Sandbox',
+                instructions: challengeData.instructions || '',
+                hints: challengeData.hints || [],
+                solutionHTML: challengeData.solutionHTML || '',
+                solutionExplanation: challengeData.solutionExplanation || '',
                 starterHTML: challengeData.starterHTML || '<h1>Hello World</h1>\n<p>Start practicing!</p>',
                 starterCSS: '',
-                showCSS: false
+                showCSS: false,
+                defaultTab: 'html'
             });
         } else {
             setTimeout(initEditor, 40);
