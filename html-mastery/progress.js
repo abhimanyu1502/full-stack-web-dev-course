@@ -139,7 +139,7 @@ class StudentProgressSystem {
             quizScores: {},
             xp: 0,
             badges: [],
-            currentLesson: { id: 'introduction', title: '1. Introduction to HTML', track: 'html', url: 'introduction.html' },
+            currentLesson: null,
             savedCode: {},
             bookmarks: [],
             streak: { count: 1, lastVisit: new Date().toISOString().split('T')[0] },

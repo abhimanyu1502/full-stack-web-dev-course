@@ -133,11 +133,27 @@
     // ─── Continue Learning ────────────────────────────────────────────────────
     function renderContinue(p) {
         const cur = p.data.currentLesson;
-        if (!cur) return;
+        const card = $('db-continue-card');
+        const btn  = $('db-continue-btn');
+
+        if (!cur) {
+            // Brand-new user — show a "Start Learning" prompt instead
+            setText('db-continue-lesson', 'Introduction to HTML');
+            setText('db-continue-track', 'HTML Track · Lesson 1');
+            if (btn) {
+                btn.href        = 'introduction.html';
+                btn.textContent = 'Start Learning →';
+            }
+            return;
+        }
+
+        // Returning user — show their actual last lesson
         setText('db-continue-lesson', cur.title);
         setText('db-continue-track', (cur.track === 'css' ? 'CSS' : 'HTML') + ' Track');
-        const btn = $('db-continue-btn');
-        if (btn) btn.href = cur.url;
+        if (btn) {
+            btn.href        = cur.url;
+            btn.textContent = 'Resume →';
+        }
     }
 
     // ─── Daily Goal ───────────────────────────────────────────────────────────
