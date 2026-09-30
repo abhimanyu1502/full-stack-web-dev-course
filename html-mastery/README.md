@@ -2,19 +2,19 @@
 
 An interactive, production-grade web development learning platform with 52 HTML modules, 49 CSS topics, visual layout playgrounds, sandboxed code editor, gamification engine, and a native Node.js + SQLite cloud backend.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://abhim-html-mastery-v1.surge.sh/dashboard.html)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-webmastery.in-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery.in/dashboard.html)
 [![GitHub Pages Mirror](https://img.shields.io/badge/Mirror-GitHub%20Pages-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
 [![Documentation](https://img.shields.io/badge/Documentation-Complete-blue?style=for-the-badge&logo=readme&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme)
 [![Node.js CI](https://img.shields.io/badge/Node.js-CI%20Passing-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-[Live Demo (Surge)](https://abhim-html-mastery-v1.surge.sh/dashboard.html) | [GitHub Pages Mirror](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)
+[Live Demo](https://webmastery.in/dashboard.html) | [GitHub Pages Mirror](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://webmastery.in/playgrounds.html)
 
-> 🚀 **WORKING LIVE PREVIEW (SURGE.SH)**: [https://abhim-html-mastery-v1.surge.sh](https://abhim-html-mastery-v1.surge.sh)  
-> 📊 **Interactive Learning Dashboard**: [https://abhim-html-mastery-v1.surge.sh/dashboard.html](https://abhim-html-mastery-v1.surge.sh/dashboard.html)  
-> 🎮 **CSS Layout Playgrounds**: [https://abhim-html-mastery-v1.surge.sh/playgrounds.html](https://abhim-html-mastery-v1.surge.sh/playgrounds.html)  
-> 📖 **First Lesson (Introduction to HTML)**: [https://abhim-html-mastery-v1.surge.sh/introduction.html](https://abhim-html-mastery-v1.surge.sh/introduction.html)  
-> 🎨 **CSS Mastery Track**: [https://abhim-html-mastery-v1.surge.sh/css.html](https://abhim-html-mastery-v1.surge.sh/css.html)  
+> 🚀 **WORKING LIVE PREVIEW**: [https://webmastery.in](https://webmastery.in)  
+> 📊 **Interactive Learning Dashboard**: [https://webmastery.in/dashboard.html](https://webmastery.in/dashboard.html)  
+> 🎮 **CSS Layout Playgrounds**: [https://webmastery.in/playgrounds.html](https://webmastery.in/playgrounds.html)  
+> 📖 **First Lesson (Introduction to HTML)**: [https://webmastery.in/introduction.html](https://webmastery.in/introduction.html)  
+> 🎨 **CSS Mastery Track**: [https://webmastery.in/css.html](https://webmastery.in/css.html)  
 > 🌐 **GitHub Pages Mirror**: [https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
 
 ---

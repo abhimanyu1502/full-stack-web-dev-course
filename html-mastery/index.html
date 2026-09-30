@@ -1,16 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HTML & CSS Mastery — Master modern full stack web development from beginner to advanced.">
-    <meta http-equiv="refresh" content="0; url=dashboard.html">
-    <link rel="stylesheet" href="styles.css?v=3">
-    <title>HTML Mastery — Redirecting to Dashboard</title>
+    <title>Learn HTML and CSS with HTML Mastery | Free Interactive Web Platform</title>
+    <meta name="description" content="Master modern HTML5 and CSS3 from beginner to advanced with HTML Mastery. 96+ structured lessons, real-time code exercises, visual CSS playgrounds, and guided projects.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://webmastery.in/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webmastery.in/">
+    <meta property="og:title" content="Learn HTML and CSS with HTML Mastery | Free Interactive Web Platform">
+    <meta property="og:description" content="Master modern HTML5 and CSS3 with 96+ structured lessons, in-browser code editor, interactive playgrounds, and real-world projects.">
+    <meta property="og:site_name" content="HTML Mastery">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learn HTML and CSS with HTML Mastery | Free Interactive Web Platform">
+    <meta name="twitter:description" content="Master modern HTML5 and CSS3 with 96+ structured lessons, in-browser code editor, interactive playgrounds, and real-world projects.">
+
+    <!-- Google Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://webmastery.in/#website",
+          "url": "https://webmastery.in/",
+          "name": "HTML Mastery",
+          "description": "Comprehensive interactive platform to learn HTML5 and CSS3 with live coding and real-world projects.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://webmastery.in/dashboard.html?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://webmastery.in/#organization",
+          "name": "HTML Mastery",
+          "url": "https://webmastery.in/",
+          "logo": "https://webmastery.in/",
+          "description": "Free, open-access frontend web development learning curriculum."
+        }
+      ]
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5757929382976713"
+         crossorigin="anonymous"></script>
 </head>
 <body>
-    <main id="main-content" class="redirect-container">
-        <p>Redirecting to <a href="dashboard.html">Learning Dashboard</a>...</p>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">HTML Mastery</a>
+            </div>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="search-input" placeholder="Search HTML & CSS topics..." aria-label="Search documentation">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+            <div class="header-actions">
+                <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle dark/light theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <a href="dashboard.html" class="button primary-button">My Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="landing-page-wrap" id="main-content">
+        <section class="landing-hero">
+            <div class="landing-badge">&#x2728; Complete Frontend Foundation</div>
+            <h1>Learn HTML and CSS with HTML Mastery</h1>
+            <p class="landing-hero-desc">An interactive, structured learning platform designed to take you from your first HTML tag to building accessible, responsive, and production-ready web interfaces with modern CSS.</p>
+            
+            <div class="landing-cta-group">
+                <a href="introduction.html" class="button primary-button btn-hero">Start HTML Course &rarr;</a>
+                <a href="css.html" class="button button-outline btn-hero">Explore CSS Track</a>
+                <a href="dashboard.html" class="button button-outline btn-hero-sm">View Dashboard</a>
+            </div>
+        </section>
+
+        <!-- Feature Pillars -->
+        <section class="landing-features-grid">
+            <div class="landing-feature-card">
+                <div class="landing-feature-icon">&#x1F4D6;</div>
+                <h2 class="landing-feature-title">47 Structured HTML Lessons</h2>
+                <p class="landing-feature-desc">Master document structure, semantic tags, forms, input validation, audio/video, web components, accessibility with ARIA, security basics, and SEO.</p>
+            </div>
+
+            <div class="landing-feature-card">
+                <div class="landing-feature-icon">&#x1F3A8;</div>
+                <h2 class="landing-feature-title">49 In-Depth CSS Topics</h2>
+                <p class="landing-feature-desc">Learn the cascade, specificity, box model, Flexbox, CSS Grid, media queries, animations, transforms, CSS variables, and modern selectors like :has.</p>
+            </div>
+
+            <div class="landing-feature-card">
+                <div class="landing-feature-icon">&#x26A1;</div>
+                <h2 class="landing-feature-title">In-Browser Code Editors</h2>
+                <p class="landing-feature-desc">Write, edit, and run HTML and CSS in real time. Experience instant visual feedback with zero setup or software installations required.</p>
+            </div>
+
+            <div class="landing-feature-card">
+                <div class="landing-feature-icon">&#x1F3AE;</div>
+                <h2 class="landing-feature-title">Interactive CSS Playgrounds</h2>
+                <p class="landing-feature-desc">Manipulate sliders and controls in real time to visualize how tricky concepts like Box Model, Flexbox, Grid, and z-index behave under the hood.</p>
+            </div>
+
+            <div class="landing-feature-card">
+                <div class="landing-feature-icon">&#x1F680;</div>
+                <h2 class="landing-feature-title">13 Real-World Projects</h2>
+                <p class="landing-feature-desc">Apply your knowledge with progressive 5-milestone projects ranging from personal portfolios and responsive navbars to admin dashboards.</p>
+            </div>
+
+            <div class="landing-feature-card">
+                <div class="landing-feature-icon">&#x1F3AF;</div>
+                <h2 class="landing-feature-title">Gamified Progress &amp; XP</h2>
+                <p class="landing-feature-desc">Track daily streaks, earn XP, complete interactive self-assessment quizzes, and save custom code snippets privately in your browser.</p>
+            </div>
+        </section>
+
+        <!-- Curriculum Highlights -->
+        <section class="trust-card curriculum-section">
+            <h2>Explore the HTML &amp; CSS Curriculums</h2>
+            <p>Our curriculum is organized sequentially to help you build solid mental models before advancing to complex layouts:</p>
+
+            <div class="contact-grid curriculum-grid">
+                <div class="contact-card">
+                    <div class="contact-card-title">&#x1F4D1; HTML5 Fundamentals Track</div>
+                    <p class="contact-card-desc curriculum-desc">Learn how the web is structured with standard tags, forms, tables, and accessibility.</p>
+                    <ul class="curriculum-list">
+                        <li><a href="introduction.html">Introduction &amp; Document Anatomy</a></li>
+                        <li><a href="semantic-html.html">Semantic HTML &amp; Landmarks</a></li>
+                        <li><a href="forms.html">Forms, Inputs &amp; Validation</a></li>
+                        <li><a href="accessibility.html">Accessibility (a11y) &amp; ARIA</a></li>
+                        <li><a href="responsive-images.html">Responsive Images &amp; Picture Element</a></li>
+                        <li><a href="seo.html">Technical SEO &amp; Metadata</a></li>
+                    </ul>
+                    <a href="introduction.html" class="button primary-button btn-track-start">Start HTML Track &rarr;</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-title">&#x1F3A8; Modern CSS Track</div>
+                    <p class="contact-card-desc curriculum-desc">Build gorgeous, responsive web applications using modern CSS layout and animation systems.</p>
+                    <ul class="curriculum-list">
+                        <li><a href="css.html#what-is-css">CSS Syntax &amp; The Cascade</a></li>
+                        <li><a href="css.html#css-box-model">The CSS Box Model &amp; Box Sizing</a></li>
+                        <li><a href="css.html#flexbox-introduction">Flexbox Layouts &amp; Alignment</a></li>
+                        <li><a href="css.html#grid-introduction">CSS Grid Architecture</a></li>
+                        <li><a href="css.html#media-queries">Responsive Media Queries</a></li>
+                        <li><a href="css.html#css-animations">Keyframe Animations &amp; Transitions</a></li>
+                    </ul>
+                    <a href="css.html" class="button primary-button btn-track-start">Start CSS Track &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Methodology -->
+        <section class="trust-card why-section">
+            <h2>Why Learn with HTML Mastery?</h2>
+            <p>Most tutorials jump straight into heavy JavaScript frameworks without teaching the underlying mechanics of HTML and CSS. HTML Mastery ensures you understand how web browsers actually render elements, parse styles, compute layout geometry, and handle accessibility trees.</p>
+            <p>Whether you are preparing for technical frontend job interviews, building your first website, or strengthening your existing development skills, HTML Mastery provides the hands-on practice you need to succeed.</p>
+            <div class="why-cta-wrap">
+                <a href="dashboard.html" class="button primary-button btn-hero-lg">Enter Learning Dashboard &rarr;</a>
+            </div>
+        </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand-title">HTML Mastery</div>
+                    <p class="footer-brand-desc">Master modern HTML5 and CSS3 through structured lessons, interactive editors, real-time visual playgrounds, and guided projects.</p>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Curriculum</div>
+                    <ul class="footer-links">
+                        <li><a href="introduction.html">HTML Course (47 Topics)</a></li>
+                        <li><a href="css.html">CSS Course (49 Topics)</a></li>
+                        <li><a href="playgrounds.html">CSS Playgrounds</a></li>
+                        <li><a href="projects.html">Guided Projects</a></li>
+                        <li><a href="questions-and-answers.html">Interview Q&amp;A</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Platform</div>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Learning Dashboard</a></li>
+                        <li><a href="my-progress.html">My Progress &amp; XP</a></li>
+                        <li><a href="professional-html-checklist.html">HTML Checklist</a></li>
+                        <li><a href="practice-project.html">Capstone Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About &amp; Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact &amp; Feedback</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">&copy; 2026 HTML Mastery. All educational materials are freely provided for personal learning.</span>
+                <span class="footer-tagline">Built with semantic HTML &amp; modern CSS.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=6"></script>
 </body>
 </html>

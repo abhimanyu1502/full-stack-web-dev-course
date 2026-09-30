@@ -1,0 +1,7 @@
+# Google AdSense Authorized Digital Sellers (ads.txt)
+# ==============================================================================
+# IMPORTANT INSTRUCTION:
+# Replace YOUR-ADSENSE-PUBLISHER-ID with your actual Google AdSense publisher ID
+# (e.g. pub-XXXXXXXXXXXXXXXX) once your Google AdSense account is approved.
+# ==============================================================================
+google.com, pub-YOUR-ADSENSE-PUBLISHER-ID, DIRECT, f08c47fec0942fa0

@@ -4,12 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Progress — HTML &amp; CSS Mastery</title>
-    <meta name="description" content="View your personal learning progress, XP, level, streak, completed lessons, quiz scores, and projects.">
+    <title>My Learning Progress & XP | HTML Mastery</title>
+    <meta name="description" content="Track your frontend web development learning progress, completed HTML and CSS lessons, daily streak, total XP, and earned badges on HTML Mastery.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://webmastery.in/my-progress.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webmastery.in/my-progress.html">
+    <meta property="og:title" content="My Learning Progress & XP | HTML Mastery">
+    <meta property="og:description" content="Track your frontend web development learning progress, completed HTML and CSS lessons, daily streak, total XP, and earned badges on HTML Mastery.">
+    <meta property="og:site_name" content="HTML Mastery">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Learning Progress & XP | HTML Mastery">
+    <meta name="twitter:description" content="Track your frontend web development learning progress, completed HTML and CSS lessons, daily streak, total XP, and earned badges on HTML Mastery.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
         /* ── Progress Page Styles ── */
         .progress-page-hero {
@@ -273,6 +289,38 @@
             .xp-bar-track { width: 100%; }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "My Learning Progress & XP | HTML Mastery",
+      "description": "Track your frontend web development learning progress, completed HTML and CSS lessons, daily streak, total XP, and earned badges on HTML Mastery.",
+      "url": "https://webmastery.in/my-progress.html"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://webmastery.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "My Progress",
+          "item": "https://webmastery.in/my-progress.html"
+        }
+      ]
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5757929382976713"
+         crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -320,7 +368,7 @@
                         <span class="hero-level-badge" id="hero-level-badge">Lv 1</span>
                     </div>
                     <div class="hero-info">
-                        <div class="hero-name" id="hero-name">Loading…</div>
+                        <h1 class="hero-name" id="hero-name" style="font-size:1.6rem; border-bottom:none; margin:0 0 0.25rem 0; padding-bottom:0;">Loading…</h1>
                         <div class="hero-title" id="hero-bio">Aspiring Full Stack Web Developer</div>
                         <div class="xp-bar-wrap">
                             <div class="xp-bar-label">
@@ -555,5 +603,47 @@
             }
         });
     </script>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand-title">HTML Mastery</div>
+                    <p class="footer-brand-desc">Master modern HTML5 and CSS3 through structured lessons, interactive editors, real-time visual playgrounds, and guided projects.</p>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Curriculum</div>
+                    <ul class="footer-links">
+                        <li><a href="introduction.html">HTML Course (47 Topics)</a></li>
+                        <li><a href="css.html">CSS Course (49 Topics)</a></li>
+                        <li><a href="playgrounds.html">CSS Playgrounds</a></li>
+                        <li><a href="projects.html">Guided Projects</a></li>
+                        <li><a href="questions-and-answers.html">Interview Q&amp;A</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Platform</div>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Learning Dashboard</a></li>
+                        <li><a href="my-progress.html">My Progress &amp; XP</a></li>
+                        <li><a href="professional-html-checklist.html">HTML Checklist</a></li>
+                        <li><a href="practice-project.html">Capstone Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About &amp; Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact &amp; Feedback</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">&copy; 2026 HTML Mastery. All educational materials are freely provided for personal learning.</span>
+                <span class="footer-tagline">Built with semantic HTML &amp; modern CSS.</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

@@ -4,15 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Mastery — Beginner to Advanced</title>
-    <meta name="description" content="Learn HTML from absolute beginner level to advanced web development concepts.">
+    <title>HTTP Protocol and HTML Document Delivery | HTML Mastery</title>
+    <meta name="description" content="Understand the relationship between HTTP requests, server response status codes (200, 301, 404, 500), MIME content-types, and HTML document parsing.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://webmastery.in/http-and-html.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://webmastery.in/http-and-html.html">
+    <meta property="og:title" content="HTTP Protocol and HTML Document Delivery | HTML Mastery">
+    <meta property="og:description" content="Understand the relationship between HTTP requests, server response status codes (200, 301, 404, 500), MIME content-types, and HTML document parsing.">
+    <meta property="og:site_name" content="HTML Mastery">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HTTP Protocol and HTML Document Delivery | HTML Mastery">
+    <meta name="twitter:description" content="Understand the relationship between HTTP requests, server response status codes (200, 301, 404, 500), MIME content-types, and HTML document parsing.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "HTTP Protocol and HTML Document Delivery | HTML Mastery",
+      "description": "Understand the relationship between HTTP requests, server response status codes (200, 301, 404, 500), MIME content-types, and HTML document parsing.",
+      "url": "https://webmastery.in/http-and-html.html",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Course",
+        "name": "HTML Mastery Course",
+        "url": "https://webmastery.in/introduction.html"
+      },
+      "publisher": {
+        "@type": "EducationalOrganization",
+        "name": "HTML Mastery",
+        "url": "https://webmastery.in/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://webmastery.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "HTML Course",
+          "item": "https://webmastery.in/introduction.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "HTTP and HTML",
+          "item": "https://webmastery.in/http-and-html.html"
+        }
+      ]
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5757929382976713"
+         crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,7 +86,7 @@
     <header class="site-header">
         <div class="header-container">
             <div class="logo">
-                <a href="#">HTML Mastery</a>
+                <a href="index.html">HTML Mastery</a>
             </div>
 
             <div class="search-container">
@@ -93,6 +155,14 @@
 
         <!-- Main Content -->
         <main class="content-area" id="main-content">
+            <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
+                <ol class="breadcrumbs-list">
+                    <li class="breadcrumbs-item"><a href="index.html" class="breadcrumbs-link">Home</a></li>
+                    <li class="breadcrumbs-item"><a href="introduction.html" class="breadcrumbs-link">HTML Course</a></li>
+                    <li class="breadcrumbs-item"><span class="breadcrumbs-current" aria-current="page">HTTP and HTML</span></li>
+                </ol>
+            </nav>
+
             <section id="http-and-html">
                 <h1>39. HTTP and HTML Relationship</h1>
 
@@ -153,6 +223,49 @@ Content-Type: text/html
 
         </main>
     </div>
+
+        <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand-title">HTML Mastery</div>
+                    <p class="footer-brand-desc">Master modern HTML5 and CSS3 through structured lessons, interactive editors, real-time visual playgrounds, and guided projects.</p>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Curriculum</div>
+                    <ul class="footer-links">
+                        <li><a href="introduction.html">HTML Course (47 Topics)</a></li>
+                        <li><a href="css.html">CSS Course (49 Topics)</a></li>
+                        <li><a href="playgrounds.html">CSS Playgrounds</a></li>
+                        <li><a href="projects.html">Guided Projects</a></li>
+                        <li><a href="questions-and-answers.html">Interview Q&amp;A</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Platform</div>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Learning Dashboard</a></li>
+                        <li><a href="my-progress.html">My Progress &amp; XP</a></li>
+                        <li><a href="professional-html-checklist.html">HTML Checklist</a></li>
+                        <li><a href="practice-project.html">Capstone Project</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">About &amp; Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact &amp; Feedback</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">&copy; 2026 HTML Mastery. All educational materials are freely provided for personal learning.</span>
+                <span class="footer-tagline">Built with semantic HTML &amp; modern CSS.</span>
+            </div>
+        </div>
+    </footer>
 
     <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
