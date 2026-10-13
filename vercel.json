@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "buildCommand": "echo 'Static build ready'",
   "outputDirectory": "html-mastery",
   "cleanUrls": false,
   "trailingSlash": false,

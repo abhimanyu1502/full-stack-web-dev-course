@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Full Stack Web Development Mastery Platform - Interactive Curriculum, Playgrounds, and Cloud Engine",
   "scripts": {
-    "start": "node html-mastery/server/index.js",
-    "dev": "node --watch html-mastery/server/index.js",
+    "build": "echo 'Static build ready'",
     "test": "npm test --prefix html-mastery",
     "test:py": "python -m unittest discover -s project/tests",
     "test:all": "npm test && npm run test:py"
