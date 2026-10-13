@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
-Sitemap: https://webmastery-v1.vercel.app/sitemap.xml
+Disallow: /server/
+Disallow: /tests/
+Disallow: /404.html
+Disallow: /200.html
 
 User-agent: Googlebot
 Allow: /
@@ -12,6 +15,9 @@ User-agent: Mediapartners-Google
 Allow: /
 
 User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://webmastery-v1.vercel.app/sitemap.xml
