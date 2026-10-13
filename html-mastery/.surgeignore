@@ -1,9 +1,0 @@
-# Surge Deployment Ignore Rules
-.git
-.gitignore
-.env*
-node_modules
-tests
-package.json
-package-lock.json
-server/data/*.db

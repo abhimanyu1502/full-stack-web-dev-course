@@ -1,349 +1,349 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://webmastery-v1.surge.sh/</loc>
+    <loc>https://webmastery-v1.vercel.app/</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/dashboard.html</loc>
+    <loc>https://webmastery-v1.vercel.app/dashboard.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/my-progress.html</loc>
+    <loc>https://webmastery-v1.vercel.app/my-progress.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/css.html</loc>
+    <loc>https://webmastery-v1.vercel.app/css.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/playgrounds.html</loc>
+    <loc>https://webmastery-v1.vercel.app/playgrounds.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/projects.html</loc>
+    <loc>https://webmastery-v1.vercel.app/projects.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/questions-and-answers.html</loc>
+    <loc>https://webmastery-v1.vercel.app/questions-and-answers.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/about.html</loc>
+    <loc>https://webmastery-v1.vercel.app/about.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/contact.html</loc>
+    <loc>https://webmastery-v1.vercel.app/contact.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/privacy-policy.html</loc>
+    <loc>https://webmastery-v1.vercel.app/privacy-policy.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/terms.html</loc>
+    <loc>https://webmastery-v1.vercel.app/terms.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/introduction.html</loc>
+    <loc>https://webmastery-v1.vercel.app/introduction.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/basic-html-document.html</loc>
+    <loc>https://webmastery-v1.vercel.app/basic-html-document.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/html-elements.html</loc>
+    <loc>https://webmastery-v1.vercel.app/html-elements.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/attributes.html</loc>
+    <loc>https://webmastery-v1.vercel.app/attributes.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/headings.html</loc>
+    <loc>https://webmastery-v1.vercel.app/headings.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/paragraphs-and-basic-text.html</loc>
+    <loc>https://webmastery-v1.vercel.app/paragraphs-and-basic-text.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/text-formatting.html</loc>
+    <loc>https://webmastery-v1.vercel.app/text-formatting.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/links.html</loc>
+    <loc>https://webmastery-v1.vercel.app/links.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/buttons-and-links.html</loc>
+    <loc>https://webmastery-v1.vercel.app/buttons-and-links.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/images.html</loc>
+    <loc>https://webmastery-v1.vercel.app/images.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/lists.html</loc>
+    <loc>https://webmastery-v1.vercel.app/lists.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/div-span.html</loc>
+    <loc>https://webmastery-v1.vercel.app/div-span.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/semantic-html.html</loc>
+    <loc>https://webmastery-v1.vercel.app/semantic-html.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/tables.html</loc>
+    <loc>https://webmastery-v1.vercel.app/tables.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/forms.html</loc>
+    <loc>https://webmastery-v1.vercel.app/forms.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/input-types.html</loc>
+    <loc>https://webmastery-v1.vercel.app/input-types.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/textarea.html</loc>
+    <loc>https://webmastery-v1.vercel.app/textarea.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/select-and-dropdown.html</loc>
+    <loc>https://webmastery-v1.vercel.app/select-and-dropdown.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/form-validation.html</loc>
+    <loc>https://webmastery-v1.vercel.app/form-validation.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/get-post.html</loc>
+    <loc>https://webmastery-v1.vercel.app/get-post.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/audio-and-video.html</loc>
+    <loc>https://webmastery-v1.vercel.app/audio-and-video.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/iframe.html</loc>
+    <loc>https://webmastery-v1.vercel.app/iframe.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/figure-and-figcaption.html</loc>
+    <loc>https://webmastery-v1.vercel.app/figure-and-figcaption.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/head-section-and-metadata.html</loc>
+    <loc>https://webmastery-v1.vercel.app/head-section-and-metadata.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/open-graph.html</loc>
+    <loc>https://webmastery-v1.vercel.app/open-graph.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/css-and-javascript-integration.html</loc>
+    <loc>https://webmastery-v1.vercel.app/css-and-javascript-integration.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/id-class-and-data.html</loc>
+    <loc>https://webmastery-v1.vercel.app/id-class-and-data.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/accessibility.html</loc>
+    <loc>https://webmastery-v1.vercel.app/accessibility.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/aria.html</loc>
+    <loc>https://webmastery-v1.vercel.app/aria.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/responsive-images.html</loc>
+    <loc>https://webmastery-v1.vercel.app/responsive-images.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/picture.html</loc>
+    <loc>https://webmastery-v1.vercel.app/picture.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/lazy-loading.html</loc>
+    <loc>https://webmastery-v1.vercel.app/lazy-loading.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/html-entities.html</loc>
+    <loc>https://webmastery-v1.vercel.app/html-entities.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/global-attributes.html</loc>
+    <loc>https://webmastery-v1.vercel.app/global-attributes.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/details-and-summary.html</loc>
+    <loc>https://webmastery-v1.vercel.app/details-and-summary.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/dialog.html</loc>
+    <loc>https://webmastery-v1.vercel.app/dialog.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/svg.html</loc>
+    <loc>https://webmastery-v1.vercel.app/svg.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/script-loading.html</loc>
+    <loc>https://webmastery-v1.vercel.app/script-loading.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/http-and-html.html</loc>
+    <loc>https://webmastery-v1.vercel.app/http-and-html.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/browser-rendering.html</loc>
+    <loc>https://webmastery-v1.vercel.app/browser-rendering.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/seo.html</loc>
+    <loc>https://webmastery-v1.vercel.app/seo.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/security-basics.html</loc>
+    <loc>https://webmastery-v1.vercel.app/security-basics.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/html-debugging.html</loc>
+    <loc>https://webmastery-v1.vercel.app/html-debugging.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/professional-html-checklist.html</loc>
+    <loc>https://webmastery-v1.vercel.app/professional-html-checklist.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/practice-project.html</loc>
+    <loc>https://webmastery-v1.vercel.app/practice-project.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/practice-answer.html</loc>
+    <loc>https://webmastery-v1.vercel.app/practice-answer.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://webmastery-v1.surge.sh/web-components.html</loc>
+    <loc>https://webmastery-v1.vercel.app/web-components.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

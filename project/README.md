@@ -2,7 +2,7 @@
 
 A modular Python service providing data modeling, curriculum ingestion, API clients, and analytics for the **Full Stack Web Development Mastery Platform**.
 
-[![Live Platform](https://img.shields.io/badge/Live%20Demo-webmastery--v1.surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery-v1.surge.sh)
+[![Live Platform](https://img.shields.io/badge/Live%20Demo-webmastery--v1.surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery-v1.vercel.app)
 [![GitHub Pages Mirror](https://img.shields.io/badge/Mirror-GitHub%20Pages-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/)
 [![Python CI](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
@@ -11,9 +11,9 @@ A modular Python service providing data modeling, curriculum ingestion, API clie
 
 | Platform Section | Live URL |
 | :--- | :--- |
-| **🚀 Main Web App** | **[https://webmastery-v1.surge.sh](https://webmastery-v1.surge.sh)** |
-| **📊 Learning Dashboard** | **[https://webmastery-v1.surge.sh/dashboard.html](https://webmastery-v1.surge.sh/dashboard.html)** |
-| **🎮 Interactive Playgrounds** | **[https://webmastery-v1.surge.sh/playgrounds.html](https://webmastery-v1.surge.sh/playgrounds.html)** |
+| **🚀 Main Web App** | **[https://webmastery-v1.vercel.app](https://webmastery-v1.vercel.app)** |
+| **📊 Learning Dashboard** | **[https://webmastery-v1.vercel.app/dashboard.html](https://webmastery-v1.vercel.app/dashboard.html)** |
+| **🎮 Interactive Playgrounds** | **[https://webmastery-v1.vercel.app/playgrounds.html](https://webmastery-v1.vercel.app/playgrounds.html)** |
 | **🔄 GitHub Pages Mirror** | **[https://abhimanyu1502.github.io/full-stack-web-dev-course/](https://abhimanyu1502.github.io/full-stack-web-dev-course/)** |
 
 ---
@@ -85,5 +85,5 @@ jupyter lab notebooks/course_analytics.ipynb
 ## 🔗 Related Resources
 
 - **Frontend Platform Source**: [`../html-mastery/`](../html-mastery/)
-- **Live Hosted Application**: [https://webmastery-v1.surge.sh](https://webmastery-v1.surge.sh)
+- **Live Hosted Application**: [https://webmastery-v1.vercel.app](https://webmastery-v1.vercel.app)
 - **GitHub Repository**: [https://github.com/abhimanyu1502/full-stack-web-dev-course](https://github.com/abhimanyu1502/full-stack-web-dev-course)

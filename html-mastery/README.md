@@ -2,7 +2,7 @@
 
 An interactive, production-grade web development learning platform with 52 HTML modules, 49 CSS topics, visual layout playgrounds, sandboxed code editor, gamification engine, and a native Node.js + SQLite cloud backend.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-webmastery--v1.surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery-v1.surge.sh)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-webmastery--v1.surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery-v1.vercel.app)
 [![GitHub Pages Mirror](https://img.shields.io/badge/Mirror-GitHub%20Pages-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/)
 [![Documentation](https://img.shields.io/badge/Documentation-Complete-blue?style=for-the-badge&logo=readme&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme)
 [![Node.js CI](https://img.shields.io/badge/Node.js-CI%20Passing-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course/actions)
@@ -12,11 +12,11 @@ An interactive, production-grade web development learning platform with 52 HTML 
 
 | Platform Section | Live URL |
 | :--- | :--- |
-| **🚀 Main Web App** | **[https://webmastery-v1.surge.sh](https://webmastery-v1.surge.sh)** |
-| **📊 Learning Dashboard** | **[https://webmastery-v1.surge.sh/dashboard.html](https://webmastery-v1.surge.sh/dashboard.html)** |
-| **🎮 Interactive Playgrounds** | **[https://webmastery-v1.surge.sh/playgrounds.html](https://webmastery-v1.surge.sh/playgrounds.html)** |
-| **🎨 CSS Mastery Curriculum** | **[https://webmastery-v1.surge.sh/css.html](https://webmastery-v1.surge.sh/css.html)** |
-| **📖 HTML Lesson 1 (Introduction)** | **[https://webmastery-v1.surge.sh/introduction.html](https://webmastery-v1.surge.sh/introduction.html)** |
+| **🚀 Main Web App** | **[https://webmastery-v1.vercel.app](https://webmastery-v1.vercel.app)** |
+| **📊 Learning Dashboard** | **[https://webmastery-v1.vercel.app/dashboard.html](https://webmastery-v1.vercel.app/dashboard.html)** |
+| **🎮 Interactive Playgrounds** | **[https://webmastery-v1.vercel.app/playgrounds.html](https://webmastery-v1.vercel.app/playgrounds.html)** |
+| **🎨 CSS Mastery Curriculum** | **[https://webmastery-v1.vercel.app/css.html](https://webmastery-v1.vercel.app/css.html)** |
+| **📖 HTML Lesson 1 (Introduction)** | **[https://webmastery-v1.vercel.app/introduction.html](https://webmastery-v1.vercel.app/introduction.html)** |
 | **🔄 GitHub Pages Mirror** | **[https://abhimanyu1502.github.io/full-stack-web-dev-course/](https://abhimanyu1502.github.io/full-stack-web-dev-course/)** |
 
 ---
