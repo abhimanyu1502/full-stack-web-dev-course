@@ -2,20 +2,22 @@
 
 An interactive, production-grade web development learning platform with 52 HTML modules, 49 CSS topics, visual layout playgrounds, sandboxed code editor, gamification engine, and a native Node.js + SQLite cloud backend.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-webmastery-v1.surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery-v1.surge.sh/dashboard.html)
-[![GitHub Pages Mirror](https://img.shields.io/badge/Mirror-GitHub%20Pages-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-webmastery--v1.surge.sh-6366f1?style=for-the-badge&logo=surge&logoColor=white)](https://webmastery-v1.surge.sh)
+[![GitHub Pages Mirror](https://img.shields.io/badge/Mirror-GitHub%20Pages-brightgreen?style=for-the-badge&logo=githubpages&logoColor=white)](https://abhimanyu1502.github.io/full-stack-web-dev-course/)
 [![Documentation](https://img.shields.io/badge/Documentation-Complete-blue?style=for-the-badge&logo=readme&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme)
 [![Node.js CI](https://img.shields.io/badge/Node.js-CI%20Passing-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://github.com/abhimanyu1502/full-stack-web-dev-course/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-[Live Demo](https://webmastery-v1.surge.sh/dashboard.html) | [GitHub Pages Mirror](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html) | [Documentation](https://github.com/abhimanyu1502/full-stack-web-dev-course#readme) | [Interactive Playgrounds](https://webmastery-v1.surge.sh/playgrounds.html)
+## 🌐 Live Platform Access
 
-> 🚀 **WORKING LIVE PREVIEW**: [https://webmastery-v1.surge.sh](https://webmastery-v1.surge.sh)  
-> 📊 **Interactive Learning Dashboard**: [https://webmastery-v1.surge.sh/dashboard.html](https://webmastery-v1.surge.sh/dashboard.html)  
-> 🎮 **CSS Layout Playgrounds**: [https://webmastery-v1.surge.sh/playgrounds.html](https://webmastery-v1.surge.sh/playgrounds.html)  
-> 📖 **First Lesson (Introduction to HTML)**: [https://webmastery-v1.surge.sh/introduction.html](https://webmastery-v1.surge.sh/introduction.html)  
-> 🎨 **CSS Mastery Track**: [https://webmastery-v1.surge.sh/css.html](https://webmastery-v1.surge.sh/css.html)  
-> 🌐 **GitHub Pages Mirror**: [https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html](https://abhimanyu1502.github.io/full-stack-web-dev-course/html-mastery/dashboard.html)
+| Platform Section | Live URL |
+| :--- | :--- |
+| **🚀 Main Web App** | **[https://webmastery-v1.surge.sh](https://webmastery-v1.surge.sh)** |
+| **📊 Learning Dashboard** | **[https://webmastery-v1.surge.sh/dashboard.html](https://webmastery-v1.surge.sh/dashboard.html)** |
+| **🎮 Interactive Playgrounds** | **[https://webmastery-v1.surge.sh/playgrounds.html](https://webmastery-v1.surge.sh/playgrounds.html)** |
+| **🎨 CSS Mastery Curriculum** | **[https://webmastery-v1.surge.sh/css.html](https://webmastery-v1.surge.sh/css.html)** |
+| **📖 HTML Lesson 1 (Introduction)** | **[https://webmastery-v1.surge.sh/introduction.html](https://webmastery-v1.surge.sh/introduction.html)** |
+| **🔄 GitHub Pages Mirror** | **[https://abhimanyu1502.github.io/full-stack-web-dev-course/](https://abhimanyu1502.github.io/full-stack-web-dev-course/)** |
 
 ---
 
@@ -28,6 +30,7 @@ Learning frontend and fullstack web development through passive video tutorials 
 ## 💡 Solution
 
 A zero-friction, browser-first educational platform that fuses structured curriculum with active learning mechanics:
+
 - **Instant Hands-On Sandboxes**: Real-time code execution with live preview iframe sandboxing and automated solution verification.
 - **Visual Intuition**: 4 dedicated interactive playgrounds allowing learners to visually manipulate Flexbox axes, Grid areas, Box Model margins/padding, and CSS Positioning schemes in real time.
 - **Cognitive Reinforcement**: Integrated checkpoint quizzes, multi-tier progressive hints, and an AI pedagogical tutor providing context-aware guidance.
@@ -106,12 +109,14 @@ graph TD
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) version **18.0.0 or higher** (Node.js 22+ recommended)
 - Any modern web browser
 
 ### Installation & Run
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/abhimanyu1502/full-stack-web-dev-course.git
    cd full-stack-web-dev-course/html-mastery
@@ -119,6 +124,7 @@ graph TD
 
 2. **Start the platform server:**
    *(No `npm install` needed! Uses zero external dependencies)*
+
    ```bash
    npm start
    ```
@@ -178,6 +184,7 @@ npm test
 ```
 
 Expected output:
+
 ```text
 ====================================================
    TEST SUITE: HTML & CSS MASTERY FULLSTACK PLATFORM  

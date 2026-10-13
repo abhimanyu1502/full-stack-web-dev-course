@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 
 <head>
+    <meta name="google-adsense-account" content="ca-pub-5757929382976713">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to HTML | HTML Mastery</title>
@@ -122,15 +123,6 @@
                     </svg>
                 </button>
                 <a href="#practice-project" class="button primary-button">Practice</a>
-                <a href="https://github.com" target="_blank" rel="noopener" class="icon-button github-link"
-                    aria-label="GitHub Repository">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                        </path>
-                    </svg>
-                </a>
                 <button type="button" id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -167,15 +159,10 @@
                 <h1>1. Introduction to HTML</h1>
 
                 <div class="explanation">
-                    <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard
-                        language used to create web pages.</p>
-                    <p>HTML exists to tell the browser what each piece of content means and how the page is structured.
-                        Think of a webpage like a building. HTML provides the basic structure (the walls, floors, and
-                        rooms), CSS provides the presentation (paint, decorations), and JavaScript provides the behavior
-                        (electricity, plumbing).</p>
-                    <p>Even if you use modern frameworks like React, Vue, or Angular, they all ultimately generate HTML
-                        for the browser to understand. Learning HTML properly is the foundation of all web development.
-                    </p>
+                    <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the foundational standard language used to create and structure content on the World Wide Web. Every website you visit — from a simple personal blog to complex web applications like Gmail or GitHub — is ultimately built on HTML at its core.</p>
+                    <p>HTML exists to tell the browser what each piece of content <em>means</em> and how the page is structured semantically. Think of a webpage like a building: HTML provides the architectural structure (the walls, floors, and rooms), CSS provides the interior design and presentation (paint, furniture, decorations), and JavaScript provides the behaviour and interactivity (electricity, plumbing, automated systems).</p>
+                    <p>HyperText refers to the foundational concept of hyperlinks — the ability to link from one document to another anywhere on the web, creating the interconnected network of information we navigate daily. This linking capability, invented by Tim Berners-Lee in 1991 at CERN, is what transformed isolated documents into the World Wide Web.</p>
+                    <p>Even if you eventually use modern JavaScript frameworks like React, Vue, Angular, or Svelte, they all ultimately generate HTML for browsers to interpret and render. React components compile down to HTML elements. Vue templates produce HTML markup. Angular renders to the DOM. Understanding raw HTML deeply means you will always understand what your tools are producing, giving you a significant advantage when debugging, optimising performance, or ensuring accessibility compliance.</p>
                 </div>
                 <!-- Tag Placement Indicator: Head vs Body -->
                 <div class="tag-placement-callout placement-both-box">
@@ -237,6 +224,44 @@
                     <li><code>&lt;p&gt;</code> defines a paragraph of text.</li>
                     <li>The browser reads these tags and translates them into a visual representation for the user.</li>
                 </ul>
+
+                <h2>Why This Matters in Professional Development</h2>
+                <div class="explanation">
+                    <p>Understanding HTML deeply — not just superficially — separates junior developers from senior frontend engineers. Many developers skip HTML fundamentals and jump straight into JavaScript frameworks, leading to common problems they can't diagnose: poor accessibility scores, search engine penalties for missing semantic structure, and layout bugs caused by invalid nesting.</p>
+                    <p>Here is why HTML mastery is indispensable even in a modern framework-dominated world:</p>
+                    <ul class="code-explanation-list">
+                        <li><strong>Accessibility compliance:</strong> Screen readers, keyboard navigation, and assistive technologies depend entirely on proper HTML structure. Frameworks do not automatically make sites accessible — developers must understand semantic HTML to write inclusive code. WCAG 2.1 compliance, required by law in many jurisdictions, is built on a foundation of correct HTML.</li>
+                        <li><strong>Search engine optimisation (SEO):</strong> Search engines crawl and index your HTML source. Proper heading hierarchy (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>), semantic elements (<code>&lt;article&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>), structured data (JSON-LD), and meaningful link text all directly influence how and whether your pages appear in search results.</li>
+                        <li><strong>Performance optimisation:</strong> How you write HTML affects Core Web Vitals. Render-blocking scripts, missing <code>loading="lazy"</code> attributes on images, absent <code>srcset</code> attributes for responsive images, and bloated DOM trees all degrade performance scores measured by Google's PageSpeed Insights and Lighthouse.</li>
+                        <li><strong>Maintainability and team communication:</strong> When HTML is written semantically, code becomes self-documenting. Other developers, designers, and QA engineers can understand the page structure without needing to decode layers of JavaScript logic.</li>
+                    </ul>
+                </div>
+
+                <h2>Common Mistakes Beginners Make</h2>
+                <div class="explanation">
+                    <p>Awareness of common mistakes accelerates learning and helps you write better HTML from day one:</p>
+                    <ul class="code-explanation-list">
+                        <li><strong>Using <code>&lt;div&gt;</code> for everything:</strong> Overusing generic container elements like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> instead of semantic elements like <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;aside&gt;</code>, and <code>&lt;header&gt;</code> is called "div soup." It makes code harder to understand and harms accessibility and SEO.</li>
+                        <li><strong>Skipping or duplicating heading levels:</strong> Jumping from <code>&lt;h1&gt;</code> directly to <code>&lt;h4&gt;</code> or using multiple <code>&lt;h1&gt;</code> tags on a single page disrupts both the document outline used by assistive technologies and the content hierarchy signals that search engines rely on.</li>
+                        <li><strong>Missing alt attributes on images:</strong> Every <code>&lt;img&gt;</code> element must have an <code>alt</code> attribute. Omitting it fails WCAG accessibility standards and prevents search engines from understanding image content. Use descriptive text for informative images and <code>alt=""</code> for purely decorative ones.</li>
+                        <li><strong>Using deprecated HTML attributes for styling:</strong> Older HTML used attributes like <code>bgcolor</code>, <code>align</code>, <code>border</code>, and <code>font</code> tags for visual styling. All styling should be done with CSS, keeping content and presentation properly separated.</li>
+                        <li><strong>Unclosed or improperly nested tags:</strong> Forgetting to close elements or nesting elements incorrectly (like placing a <code>&lt;p&gt;</code> inside another <code>&lt;p&gt;</code>) causes the browser's HTML parser to apply error recovery rules, which can produce unexpected layouts across different browsers.</li>
+                    </ul>
+                </div>
+
+                <h2>How Browsers Parse and Render HTML</h2>
+                <div class="explanation">
+                    <p>When a browser receives an HTML file from a server, it goes through a multi-stage rendering pipeline:</p>
+                    <ul class="code-explanation-list">
+                        <li><strong>1. Tokenisation:</strong> The browser reads the HTML byte-by-byte and converts the character stream into tokens — start tags, end tags, attribute tokens, and text content.</li>
+                        <li><strong>2. Tree Construction (DOM):</strong> Tokens are processed into a tree of objects called the Document Object Model (DOM). Each HTML element becomes a node in this tree with parent-child relationships reflecting the document structure.</li>
+                        <li><strong>3. CSS parsing (CSSOM):</strong> Simultaneously, the browser parses linked stylesheets and style tags to build the CSS Object Model (CSSOM), a tree of style rules.</li>
+                        <li><strong>4. Render Tree:</strong> The DOM and CSSOM are combined into a render tree containing only visible nodes with their computed styles applied.</li>
+                        <li><strong>5. Layout:</strong> The browser calculates the exact position and size of every element on screen based on the render tree and viewport dimensions.</li>
+                        <li><strong>6. Paint and Composite:</strong> Elements are drawn to screen layers and composited together into the final visible page.</li>
+                    </ul>
+                    <p>Understanding this pipeline explains why certain HTML choices matter for performance — for example, why large inline scripts in the <code>&lt;head&gt;</code> delay the first render, why missing <code>width</code> and <code>height</code> attributes on images cause layout shifts (CLS), and why the order of stylesheets relative to scripts matters.</p>
+                </div>
 
                 <h2>Practice</h2>
                 <div class="card practice-card">

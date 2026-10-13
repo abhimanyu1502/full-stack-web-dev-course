@@ -11,6 +11,11 @@
   },
   "author": "Abhimanyu Tiwari",
   "license": "MIT",
+  "homepage": "https://webmastery-v1.surge.sh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhimanyu1502/full-stack-web-dev-course.git"
+  },
   "engines": {
     "node": ">=18.0.0"
   }

@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 
 <head>
+    <meta name="google-adsense-account" content="ca-pub-5757929382976713">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML & CSS Interview Questions and Answers | HTML Mastery</title>
@@ -110,15 +111,6 @@
                     </svg>
                 </button>
                 <a href="#practice-project" class="button primary-button">Practice</a>
-                <a href="https://github.com" target="_blank" rel="noopener" class="icon-button github-link"
-                    aria-label="GitHub Repository">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                        </path>
-                    </svg>
-                </a>
                 <button type="button" id="mobile-menu-toggle" class="icon-button mobile-only" aria-label="Toggle menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -165,101 +157,90 @@
                 </div>
 
 
-                <div class="faq-container">
+                                <div class="faq-container">
                     <details class="faq-item">
                         <summary>What does HTML stand for?</summary>
-                        <p><strong>HyperText Markup Language.</strong></p>
+                        <p><strong>HTML stands for HyperText Markup Language.</strong> It is the standard markup language used to structure and give meaning to content on the World Wide Web. HyperText refers to the system of linking documents via hyperlinks — allowing non-linear navigation between pages. Markup Language describes how HTML uses tags like <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;img&gt;</code> to annotate plain text so browsers know how to structure and display it. HTML is not a programming language — it has no loops or conditional logic. It is a declarative, descriptive language that communicates the semantic structure of a document to browsers, search engines, and assistive technologies like screen readers. HTML was invented by Tim Berners-Lee in 1991 and is currently maintained as a living standard by the WHATWG and W3C organisations.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is the difference between a tag and an element?</summary>
-                        <p>A tag is markup such as <code>&lt;p&gt;</code>. An element includes the opening tag, content
-                            and closing tag, such as <code>&lt;p&gt;Hello&lt;/p&gt;</code>.</p>
+                        <p>A <strong>tag</strong> is the raw markup notation used to denote the start or end of an HTML structure, wrapped in angle brackets. <code>&lt;p&gt;</code> is an opening tag and <code>&lt;/p&gt;</code> is a closing tag. An <strong>element</strong> refers to the complete unit: the opening tag, all content inside it, and the closing tag together. For example, <code>&lt;p&gt;Hello World&lt;/p&gt;</code> is a paragraph element, while <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code> are individually just tags. Some elements are void elements — such as <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, and <code>&lt;input&gt;</code> — which have only an opening tag with no closing tag because they cannot contain child content by definition. Understanding this distinction is important when reading HTML specifications, debugging layout issues, and communicating clearly with other developers and tools.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is an attribute?</summary>
-                        <p>An attribute provides additional information or configuration for an element, such as
-                            <code>href</code>, <code>src</code>, <code>alt</code>, or <code>class</code>.
-                        </p>
+                        <p>An <strong>attribute</strong> provides additional configuration, metadata, or behaviour for an HTML element. Attributes appear inside the opening tag in <code>name="value"</code> format. For example, in <code>&lt;a href="https://example.com"&gt;</code>, the <code>href</code> attribute specifies where the link navigates. Common attributes include: <code>src</code> (source file for images or scripts), <code>alt</code> (text alternative for images), <code>class</code> (CSS styling hook), <code>id</code> (unique identifier), <code>type</code> (input type), <code>placeholder</code> (hint text in inputs), and <code>disabled</code> (disables interaction). Boolean attributes like <code>disabled</code>, <code>checked</code>, and <code>required</code> are activated simply by their presence — no value is needed. Some attributes are global (valid on any element) while others are element-specific. Mastering attributes is essential for building accessible, well-structured, and SEO-optimised web pages.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is the purpose of DOCTYPE?</summary>
-                        <p>It tells the browser to use modern HTML parsing behavior.</p>
+                        <p>The <strong><code>&lt;!DOCTYPE html&gt;</code> declaration</strong> must appear at the very top of every HTML document before the <code>&lt;html&gt;</code> tag. Its primary purpose is to tell the browser which version of HTML the document uses and to trigger <strong>standards mode</strong> rendering. Without a DOCTYPE, browsers fall back to <strong>quirks mode</strong> — a legacy compatibility mode that emulates inconsistent behaviour from early 2000s browsers. In quirks mode, the CSS box model behaves differently, certain layout rules are ignored, and cross-browser consistency breaks down significantly. Including DOCTYPE also signals to HTML validators and automated tools that the page intends to comply with web standards. The modern HTML5 DOCTYPE is elegantly simple — just <code>&lt;!DOCTYPE html&gt;</code> — compared to the long, complex DOCTYPE declarations required by older HTML versions like XHTML 1.0 or HTML 4.01.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is the difference between head and body?</summary>
-                        <p>The head contains metadata and resources. The body contains the document's visible content.
-                        </p>
+                        <p>An HTML document is divided into two primary sections. The <strong><code>&lt;head&gt;</code></strong> element contains metadata and resources the browser needs to configure the page, but that are not directly visible to users on screen. This includes the document title (<code>&lt;title&gt;</code>), character encoding declaration, viewport settings for responsive design, CSS stylesheet links, JavaScript references, Open Graph tags for social media sharing, and search engine metadata like meta descriptions. The <strong><code>&lt;body&gt;</code></strong> element contains all the visible content that users actually see and interact with — text, headings, images, buttons, forms, navigation menus, and every other rendered element. The browser reads and processes the head first, which is why placing CSS in the head prevents a flash-of-unstyled-content, and why scripts without <code>defer</code> or <code>async</code> in the head can block page rendering.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>Why is alt important?</summary>
-                        <p>It provides a text alternative for images and improves accessibility.</p>
+                        <summary>Why is the alt attribute important on images?</summary>
+                        <p>The <code>alt</code> attribute on <code>&lt;img&gt;</code> elements provides a critical <strong>text alternative</strong> for users who cannot see images, including blind and visually impaired users relying on screen readers. When a screen reader encounters an image, it announces the alt text aloud, allowing users to understand what the image conveys. Beyond accessibility, <strong>search engines</strong> use alt text to understand and index image content, directly improving image SEO and page relevance scores in results. When an image fails to load due to a broken URL or network error, the alt text is displayed in its place so users understand what was intended. For purely decorative images that convey no information, use an empty <code>alt=""</code> attribute — this tells screen readers to skip the image entirely. Omitting alt entirely is different from an empty alt and may cause screen readers to announce the image filename instead, creating confusing audio output. Providing descriptive alt text is both a WCAG 2.1 accessibility requirement and an established SEO best practice.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is the difference between ul and ol?</summary>
-                        <p><code>ul</code> creates an unordered list while <code>ol</code> creates an ordered list.</p>
+                        <p>HTML provides two types of list elements. <strong><code>&lt;ul&gt;</code> (unordered list)</strong> renders a list where the order of items does not carry meaning, typically displayed with bullet points. Use it for navigation menus, feature lists, ingredient lists, or any collection where sequence is irrelevant. <strong><code>&lt;ol&gt;</code> (ordered list)</strong> renders a numbered list where the sequence is significant — step-by-step instructions, ranked items, tutorial steps, or any content where order matters. Both elements use <code>&lt;li&gt;</code> child elements to define each entry. Choosing between them is a semantic decision: using <code>&lt;ol&gt;</code> communicates to screen readers and search engines that order carries meaning. The <code>type</code> attribute on <code>&lt;ol&gt;</code> allows customising numbering style (1, A, a, I, i). Nested lists are created by placing a new <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> inside an <code>&lt;li&gt;</code>. Never use lists purely for visual indentation — use CSS instead.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>Why is semantic HTML important?</summary>
-                        <p>It communicates the meaning and structure of content to browsers, assistive technologies,
-                            search engines and developers.</p>
+                        <p>Semantic HTML means using elements that accurately describe the meaning and role of content, rather than just its visual appearance. For example, using <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> instead of generic <code>&lt;div&gt;</code> elements throughout your markup. Semantic HTML provides four major benefits. First, it significantly improves <strong>accessibility</strong> — screen readers navigate semantic landmarks, announce the page structure correctly, and help users skip to the content they need. Second, it improves <strong>SEO</strong> — search engines use semantic structure to understand content hierarchy, identify important headings, and determine page topic relevance. Third, it improves <strong>developer experience</strong> by making code self-documenting and easier to maintain. Fourth, it provides meaningful CSS hooks without cluttering markup with arbitrary class names. The practical rule: if you need a class like <code>class="nav"</code> on a <code>&lt;div&gt;</code>, use the real <code>&lt;nav&gt;</code> element instead.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>When should you use a button instead of a link?</summary>
-                        <p>Use a button for an action and a link for navigation.</p>
+                        <p>Use a <strong><code>&lt;button&gt;</code></strong> when the element triggers an <em>action</em> on the current page — submitting a form, opening a modal dialog, toggling a navigation menu, incrementing a counter, or calling a JavaScript function. Buttons are interactive controls that perform operations in-context. Use an <strong><code>&lt;a&gt;</code> anchor</strong> when navigating to a new location — a different page, URL, file download, or an in-page anchor section. The distinction matters greatly for accessibility. Screen readers announce these elements differently, informing users whether to expect navigation or an action. Keyboard users expect Enter to activate both, but Space only activates buttons — not links. Using a styled <code>&lt;div&gt;</code> with an <code>onclick</code> handler instead of a real button is a significant accessibility anti-pattern: these elements are not keyboard-focusable by default, are not announced as interactive controls by screen readers, and require substantial extra ARIA work to fix.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is the difference between id and class?</summary>
-                        <p>An id normally identifies one unique element, while a class can be reused across multiple
-                            elements.</p>
+                        <p>Both <code>id</code> and <code>class</code> are HTML attributes that attach identifiers to elements, but they serve different purposes and follow different rules. An <strong><code>id</code></strong> must be unique within a document — no two elements should share the same id value. It is used to uniquely identify a single element for JavaScript targeting, CSS styling, URL fragment navigation (e.g., <code>href="#section-id"</code>), and connecting form labels to inputs via the <code>for</code> attribute. A <strong><code>class</code></strong> can be shared across multiple elements, and a single element can have multiple classes (space-separated). Classes are the primary mechanism for reusable CSS styling and DOM queries. In CSS specificity, an id selector (<code>#id</code>) has significantly higher specificity than a class selector (<code>.class</code>), which can cause cascade conflicts if ids are used heavily in stylesheets. Modern best practice: use classes for all styling, reserve ids for JavaScript hooks and landmark navigation.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>Why should labels be connected to inputs?</summary>
-                        <p>They improve usability and accessibility, especially for screen-reader users.</p>
+                        <summary>Why should labels be connected to form inputs?</summary>
+                        <p>The <code>&lt;label&gt;</code> element should always be explicitly associated with its corresponding <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, or <code>&lt;textarea&gt;</code>. Association is established either by nesting the input inside the label, or by matching the label's <code>for</code> attribute to the input's <code>id</code>. The benefits are significant and multi-dimensional. For <strong>accessibility</strong>, screen readers announce the label text when a user focuses the input, providing critical context about what information is expected. Without a label, a screen reader might only say "edit text" with no useful information. For <strong>usability</strong>, clicking the label text directly focuses or activates the associated input — especially important on mobile where touch targets are small, and for checkboxes and radio buttons where users intuitively click the text rather than the small control. Unlabelled form fields are one of the most common WCAG 2.1 violations and can make forms completely unusable for screen reader and keyboard-only users.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>What is GET?</summary>
-                        <p>GET is commonly used to retrieve, search or filter resources, with parameters often
-                            represented in the URL.</p>
+                        <summary>What is the HTTP GET method and when is it used?</summary>
+                        <p>The <strong>HTTP GET method</strong> retrieves a resource from a server without modifying server-side data. When sending a GET request, data is appended to the URL as query parameters — for example, <code>/search?q=html+tutorial&amp;page=2</code>. GET is the default method for HTML forms when no <code>method</code> attribute is specified, and it is the method browsers use when you type a URL and press Enter. GET requests are considered <strong>safe</strong> and <strong>idempotent</strong> — making the same request multiple times has no additional effect and should not modify state. Because data appears in the URL, GET requests are bookmarkable, shareable, and cached by browsers, making them ideal for search queries, page navigation, and filtering. However, GET must never be used for sensitive data like passwords because URLs appear in browser history, server logs, and HTTP referrer headers transmitted to third-party sites.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>What is POST?</summary>
-                        <p>POST is commonly used to submit data in the request body, often for operations that create or
-                            change server-side data.</p>
+                        <summary>What is the HTTP POST method and when is it used?</summary>
+                        <p>The <strong>HTTP POST method</strong> submits data to a server to create or modify a resource. Unlike GET, POST sends data in the <strong>request body</strong> rather than the URL, making it suitable for sensitive or large data — user registrations, login credentials, form submissions, file uploads, and payment information. POST requests are <em>not idempotent</em> — repeating the same POST request may create duplicate records or trigger duplicate actions, which is why browsers display a warning when you refresh a page loaded via POST. Because data is not in the URL, POST is more discreet, but requests are not directly bookmarkable or shareable. In HTML, you specify POST with <code>&lt;form method="post"&gt;</code>. In REST API design, POST typically creates new resources while PUT or PATCH update existing ones. Always use POST whenever a user action has server-side consequences such as writing to a database or sending an email.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>What is ARIA?</summary>
-                        <p>ARIA provides accessibility roles, states and properties for cases where native HTML does not
-                            sufficiently express the required semantics or interaction.</p>
+                        <summary>What is ARIA and why is it important?</summary>
+                        <p><strong>ARIA (Accessible Rich Internet Applications)</strong> is a W3C specification of HTML attributes that adds semantic information to elements, making dynamic web content and custom UI components accessible to users with disabilities. ARIA provides three categories of attributes. <strong>Roles</strong> describe what an element is — for example, <code>role="dialog"</code>, <code>role="tablist"</code>, or <code>role="alert"</code>. <strong>States</strong> describe the current condition of an element — <code>aria-expanded="true"</code>, <code>aria-checked="false"</code>, or <code>aria-disabled="true"</code>. <strong>Properties</strong> provide additional context — <code>aria-label="Close menu"</code>, <code>aria-describedby="error-message"</code>, or <code>aria-live="polite"</code> for dynamic content announcements. The cardinal rule of ARIA is: "No ARIA is better than bad ARIA" — incorrectly applied ARIA can make a site less accessible than without it. Always prefer native semantic HTML elements first, since they have built-in accessibility semantics built directly into the browser.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>What is lazy loading?</summary>
-                        <p>Lazy loading allows suitable non-critical resources to be loaded later, often when they
-                            approach the viewport.</p>
+                        <summary>What is lazy loading and how does it improve performance?</summary>
+                        <p><strong>Lazy loading</strong> is a performance optimisation technique where non-critical resources — primarily images and iframes — are deferred and only loaded when they are about to become visible in the user's viewport, rather than loading everything when the page initially renders. In HTML, lazy loading is enabled by adding the <code>loading="lazy"</code> attribute to <code>&lt;img&gt;</code> or <code>&lt;iframe&gt;</code> elements — no JavaScript required. The performance benefits are substantial: significantly reduced initial page load time and data consumption; improved Core Web Vitals scores (particularly LCP — Largest Contentful Paint and FID — First Input Delay); and lower server bandwidth costs. Lazy loading is especially valuable for long-scrolling pages with many images. Resources that are immediately visible in the viewport (above-the-fold content) should always use <code>loading="eager"</code> or omit the attribute to avoid delaying critical content. Browser support is now excellent across all modern browsers.</p>
                     </details>
 
                     <details class="faq-item">
                         <summary>What is the DOM?</summary>
-                        <p>The DOM is the browser's object representation/tree of the HTML document.</p>
+                        <p>The <strong>DOM (Document Object Model)</strong> is the browser's live, in-memory object representation of an HTML document as a hierarchical tree of nodes. When a browser parses an HTML file, it constructs the DOM — a structured tree where each HTML element, text node, attribute, and comment becomes an object with properties, methods, and parent/child relationships. The DOM is entirely separate from the original HTML source file and can be dynamically modified by JavaScript at runtime without changing the actual file. For example, <code>document.querySelector('h1').textContent = 'New Heading'</code> updates the DOM immediately, changing what the user sees. All frontend interactivity operates on the DOM: event listeners, style manipulation, element creation, removal, and reordering. The DOM combines with the CSSOM (CSS Object Model) to form the render tree, which the browser's layout and paint engines use to determine the final visual output on screen.</p>
                     </details>
 
                     <details class="faq-item">
-                        <summary>What does defer do?</summary>
-                        <p>It allows a script to download during HTML parsing and execute after parsing, while
-                            preserving order among deferred scripts.</p>
+                        <summary>What does the defer attribute on a script tag do?</summary>
+                        <p>The <strong><code>defer</code> attribute</strong> on a <code>&lt;script&gt;</code> tag instructs the browser to download the script file in the background while HTML document parsing continues, then execute the script only after the entire HTML document has been fully parsed — but before the <code>DOMContentLoaded</code> event fires. Without <code>defer</code>, a script encountered during HTML parsing causes the browser to completely halt parsing, download the script, execute it, and only then resume parsing the remaining HTML. This is called render-blocking and significantly delays initial page display. The <code>defer</code> attribute also <strong>preserves execution order</strong> — multiple deferred scripts execute in document source order, unlike <code>async</code> which executes each script as soon as it downloads regardless of order. Best practice for application scripts: use <code>defer</code> in the <code>&lt;head&gt;</code> for clean document organisation, or place scripts at the bottom of <code>&lt;body&gt;</code>. Reserve <code>async</code> for fully independent scripts like analytics tracking.</p>
                     </details>
                 </div>
             </section>

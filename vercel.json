@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "outputDirectory": "html-mastery",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "all"
+        }
+      ]
+    }
+  ]
+}

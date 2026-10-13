@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Dashboard | HTML Mastery</title>
-    <meta name="description" content="Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.">
+    <meta name="description"
+        content="Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://webmastery-v1.surge.sh/dashboard.html">
+    <link rel="canonical" href="https://webmastery-v1.abhi.sh/dashboard.html">
+    <meta name="google-site-verification" content="IinanySX0A4rRM31dFn1IciSNekz8yrQJzHdbjNb-Mo">
+    <meta name="google-site-verification" content="google78d0da314e343578">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://webmastery-v1.surge.sh/dashboard.html">
+    <meta property="og:url" content="https://webmastery-v1.abhi.sh/dashboard.html">
     <meta property="og:title" content="Learning Dashboard | HTML Mastery">
-    <meta property="og:description" content="Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.">
+    <meta property="og:description"
+        content="Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.">
     <meta property="og:site_name" content="HTML Mastery">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Learning Dashboard | HTML Mastery">
-    <meta name="twitter:description" content="Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.">
+    <meta name="twitter:description"
+        content="Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="stylesheet" href="dashboard.css?v=5">
 
@@ -33,7 +41,7 @@
       "@type": "WebPage",
       "name": "Learning Dashboard | HTML Mastery",
       "description": "Your personalized HTML & CSS learning dashboard. Track completed modules, day streaks, XP levels, daily coding challenges, and saved code snippets.",
-      "url": "https://webmastery-v1.surge.sh/dashboard.html"
+      "url": "https://webmastery-v1.abhi.sh/dashboard.html"
     }
     </script>
     <script type="application/ld+json">
@@ -45,39 +53,71 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://webmastery-v1.surge.sh/"
+          "item": "https://webmastery-v1.abhi.sh/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Dashboard",
-          "item": "https://webmastery-v1.surge.sh/dashboard.html"
+          "item": "https://webmastery-v1.abhi.sh/dashboard.html"
         }
       ]
     }
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5757929382976713"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div id="progress-container"><div id="progress-bar"></div></div>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
 
     <header class="site-header">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">HTML Mastery</a></div>
+                <a href="index.html">HTML Mastery</a>
+            </div>
             <div class="search-container">
-                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="search-input" placeholder="Search HTML & CSS topics..." aria-label="Search documentation">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search HTML & CSS topics..."
+                    aria-label="Search documentation">
                 <div id="search-results" class="search-results hidden"></div>
             </div>
             <div class="header-actions">
-                <button type="button" id="focus-mode-btn" class="icon-button" aria-label="Toggle Focus Mode" title="Focus Mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
+                <button type="button" id="focus-mode-btn" class="icon-button" aria-label="Toggle Focus Mode"
+                    title="Focus Mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83">
+                        </path>
+                    </svg>
                 </button>
                 <button type="button" id="theme-toggle" class="icon-button" aria-label="Toggle theme">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
                 </button>
                 <a href="introduction.html" class="button primary-button db-start-btn">Start Learning</a>
             </div>
@@ -130,7 +170,8 @@
                         <div class="db-continue-lesson" id="db-continue-lesson">Introduction to HTML</div>
                         <div class="db-continue-track" id="db-continue-track">HTML Track</div>
                     </div>
-                    <a href="introduction.html" id="db-continue-btn" class="button primary-button db-continue-btn">Resume &rarr;</a>
+                    <a href="introduction.html" id="db-continue-btn"
+                        class="button primary-button db-continue-btn">Resume &rarr;</a>
                 </div>
             </div>
 
@@ -144,8 +185,10 @@
                     </div>
                 </div>
                 <div class="db-goal-edit-form hidden" id="db-goal-edit-form">
-                    <input type="text" id="db-goal-input" class="db-goal-input" maxlength="80" placeholder="e.g. Complete 2 exercises">
-                    <button type="button" class="button primary-button db-goal-save-btn-el" id="db-goal-save-btn">Save</button>
+                    <input type="text" id="db-goal-input" class="db-goal-input" maxlength="80"
+                        placeholder="e.g. Complete 2 exercises">
+                    <button type="button" class="button primary-button db-goal-save-btn-el"
+                        id="db-goal-save-btn">Save</button>
                 </div>
                 <div class="db-goal-done-state hidden" id="db-goal-done-state">
                     <span>&#x2705; Goal complete! Great work today.</span>
@@ -162,7 +205,9 @@
                         <span class="db-prog-name">HTML</span>
                         <span class="db-prog-pct" id="html-pct">0%</span>
                     </div>
-                    <div class="db-prog-track"><div class="db-prog-fill db-html-fill" id="html-fill"></div></div>
+                    <div class="db-prog-track">
+                        <div class="db-prog-fill db-html-fill" id="html-fill"></div>
+                    </div>
                     <div class="db-prog-detail" id="html-detail">0 of 47 lessons completed</div>
                 </div>
                 <div class="db-prog-item">
@@ -170,7 +215,9 @@
                         <span class="db-prog-name">CSS</span>
                         <span class="db-prog-pct" id="css-pct">0%</span>
                     </div>
-                    <div class="db-prog-track"><div class="db-prog-fill db-css-fill" id="css-fill"></div></div>
+                    <div class="db-prog-track">
+                        <div class="db-prog-fill db-css-fill" id="css-fill"></div>
+                    </div>
                     <div class="db-prog-detail" id="css-detail">0 of 33 lessons completed</div>
                 </div>
                 <div class="db-prog-item">
@@ -178,7 +225,9 @@
                         <span class="db-prog-name">Overall</span>
                         <span class="db-prog-pct" id="overall-pct">0%</span>
                     </div>
-                    <div class="db-prog-track"><div class="db-prog-fill db-overall-fill" id="overall-fill"></div></div>
+                    <div class="db-prog-track">
+                        <div class="db-prog-fill db-overall-fill" id="overall-fill"></div>
+                    </div>
                     <div class="db-prog-detail" id="overall-detail">0 total lessons completed</div>
                 </div>
             </div>
@@ -194,7 +243,8 @@
                 <div class="db-challenge-q" id="db-challenge-q">Loading today's challenge...</div>
                 <div class="db-challenge-meta" id="db-challenge-meta"></div>
                 <div class="db-challenge-actions">
-                    <a href="introduction.html" id="db-challenge-btn" class="button primary-button db-widget-btn">Start Challenge &rarr;</a>
+                    <a href="introduction.html" id="db-challenge-btn" class="button primary-button db-widget-btn">Start
+                        Challenge &rarr;</a>
                     <button type="button" class="db-challenge-skip" id="db-challenge-skip">Try a different one</button>
                 </div>
             </div>
@@ -205,31 +255,36 @@
                 <div class="db-next-track-badge" id="db-next-track">HTML</div>
                 <div class="db-next-title" id="db-next-title">Introduction to HTML</div>
                 <div class="db-next-desc" id="db-next-desc">Start with the fundamentals of web structure.</div>
-                <a href="introduction.html" id="db-next-btn" class="button primary-button db-widget-btn db-next-btn-el">Start Lesson &rarr;</a>
+                <a href="introduction.html" id="db-next-btn"
+                    class="button primary-button db-widget-btn db-next-btn-el">Start Lesson &rarr;</a>
             </div>
-                <ul class="db-recent-list" id="db-recent-list">
-                    <li class="db-recent-empty">No lessons completed yet. <a href="introduction.html">Start here &rarr;</a></li>
-                </ul>
+            <ul class="db-recent-list" id="db-recent-list">
+                <li class="db-recent-empty">No lessons completed yet. <a href="introduction.html">Start here &rarr;</a>
+                </li>
+            </ul>
             </div>
-                <div class="db-bookmarks-list" id="db-bookmarks-list">
-                    <p class="db-empty-state">No bookmarks yet. Click <strong>&#x1F516;</strong> on any lesson to save it here.</p>
-                </div>
+            <div class="db-bookmarks-list" id="db-bookmarks-list">
+                <p class="db-empty-state">No bookmarks yet. Click <strong>&#x1F516;</strong> on any lesson to save it
+                    here.</p>
+            </div>
             </div>
         </section>
 
         <!-- Focus Mode Banner -->
         <div class="db-focus-hint hidden" id="db-focus-hint">
-            <span>&#x1F3AF; Focus Mode active &mdash; distractions hidden. <button type="button" id="db-exit-focus" class="db-exit-focus-btn">Exit Focus Mode</button></span>
+            <span>&#x1F3AF; Focus Mode active &mdash; distractions hidden. <button type="button" id="db-exit-focus"
+                    class="db-exit-focus-btn">Exit Focus Mode</button></span>
         </div>
 
     </main>
 
-        <footer class="site-footer">
+    <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-brand-title">HTML Mastery</div>
-                    <p class="footer-brand-desc">Master modern HTML5 and CSS3 through structured lessons, interactive editors, real-time visual playgrounds, and guided projects.</p>
+                    <p class="footer-brand-desc">Master modern HTML5 and CSS3 through structured lessons, interactive
+                        editors, real-time visual playgrounds, and guided projects.</p>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">Curriculum</div>
@@ -261,14 +316,18 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span class="footer-copy">&copy; 2026 HTML Mastery. All educational materials are freely provided for personal learning.</span>
+                <span class="footer-copy">&copy; 2026 HTML Mastery. All educational materials are freely provided for
+                    personal learning.</span>
                 <span class="footer-tagline">Built with semantic HTML &amp; modern CSS.</span>
             </div>
         </div>
     </footer>
 
     <button type="button" id="back-to-top" class="icon-button hidden" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
     </button>
 
     <div id="subtle-toast-container" class="subtle-toast-container"></div>
@@ -278,4 +337,5 @@
     <script src="script.js?v=5"></script>
     <script src="dashboard.js?v=1"></script>
 </body>
+
 </html>

@@ -28,7 +28,7 @@ function assert(condition, testName, details = '') {
 // 1. ROUTE & HTML INTEGRITY
 // ----------------------------------------------------
 console.log('\n--- 1. Verifying All HTML Routes & Links ---');
-const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html') && !f.startsWith('google'));
 assert(htmlFiles.length >= 45, `HTML files count (${htmlFiles.length}) >= 45`);
 
 htmlFiles.forEach(file => {
