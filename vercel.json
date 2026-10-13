@@ -1,5 +1,6 @@
 {
-  "buildCommand": "echo 'Static build ready'",
+  "framework": null,
+  "buildCommand": null,
   "outputDirectory": "html-mastery",
   "cleanUrls": false,
   "trailingSlash": false,
